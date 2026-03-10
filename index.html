@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- EDIT: Page title shown in browser tab -->
+  <title>Kyle Whittle</title>
+  <!-- END EDIT -->
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #faf7f2;
+      color: #2c2c2c;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    main {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 60px 24px 80px;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding-bottom: 56px;
+      border-bottom: 1px solid #e8e0d4;
+    }
+
+    .avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: #c8a97e;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+      flex-shrink: 0;
+    }
+
+    .avatar span {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 40px;
+      font-weight: 400;
+      color: #faf7f2;
+      letter-spacing: 2px;
+      /* EDIT: Initials displayed in the avatar circle */
+      /* Change the text content below to your initials */
+    }
+
+    .hero h1 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 2.2rem;
+      font-weight: 400;
+      letter-spacing: 0.5px;
+      color: #2c2c2c;
+      margin-bottom: 6px;
+    }
+
+    .hero .title {
+      font-size: 1rem;
+      color: #7a6f63;
+      letter-spacing: 0.5px;
+    }
+
+    .hero .tagline {
+      margin-top: 14px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.1rem;
+      font-style: italic;
+      color: #c8a97e;
+    }
+
+    /* ── Sections ── */
+    section {
+      padding: 48px 0;
+      border-bottom: 1px solid #e8e0d4;
+    }
+
+    section:last-child {
+      border-bottom: none;
+    }
+
+    h2 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 0.75rem;
+      font-weight: 400;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: #c8a97e;
+      margin-bottom: 20px;
+    }
+
+    p {
+      color: #444;
+      max-width: 60ch;
+    }
+
+    /* ── Stoic Quote ── */
+    .quote-block {
+      padding: 48px 0;
+      border-bottom: 1px solid #e8e0d4;
+      text-align: center;
+    }
+
+    .quote-block blockquote {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.45rem;
+      font-style: italic;
+      color: #c8a97e;
+      line-height: 1.6;
+      max-width: 52ch;
+      margin: 0 auto 16px;
+    }
+
+    .quote-block cite {
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #a89880;
+      font-style: normal;
+    }
+
+    /* ── Who I Work With ── */
+    .client-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 4px;
+    }
+
+    .client-list li {
+      color: #444;
+      padding-left: 20px;
+      position: relative;
+    }
+
+    .client-list li::before {
+      content: "—";
+      position: absolute;
+      left: 0;
+      color: #c8a97e;
+    }
+
+    /* ── Services ── */
+    .services-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .services-list li {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .service-name {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #2c2c2c;
+    }
+
+    .service-desc {
+      font-size: 0.9rem;
+      color: #7a6f63;
+      max-width: 55ch;
+    }
+
+    /* ── How to Work With Me ── */
+    .steps-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      counter-reset: steps;
+    }
+
+    .steps-list li {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      counter-increment: steps;
+    }
+
+    .steps-list li::before {
+      content: counter(steps);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.3rem;
+      color: #c8a97e;
+      min-width: 24px;
+      line-height: 1.4;
+    }
+
+    .step-content strong {
+      display: block;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #2c2c2c;
+      margin-bottom: 2px;
+    }
+
+    .step-content span {
+      font-size: 0.9rem;
+      color: #7a6f63;
+    }
+
+    /* ── Contact ── */
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+
+    .contact-links a {
+      color: #2c2c2c;
+      text-decoration: none;
+      font-size: 0.95rem;
+      border-bottom: 1px solid #c8a97e;
+      padding-bottom: 1px;
+      transition: color 0.15s, border-color 0.15s;
+    }
+
+    .contact-links a:hover {
+      color: #c8a97e;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 520px) {
+      .hero h1 { font-size: 1.8rem; }
+      .quote-block blockquote { font-size: 1.2rem; }
+      .steps-list li { gap: 14px; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+
+    <!-- ═══════════════════════════════════════════
+         HERO
+    ═══════════════════════════════════════════ -->
+    <header class="hero">
+      <div class="avatar">
+        <!-- EDIT: Change "KW" to your initials -->
+        <span>KW</span>
+        <!-- END EDIT -->
+      </div>
+
+      <h1><!-- EDIT: Your full name -->Kyle Whittle<!-- END EDIT --></h1>
+      <p class="title"><!-- EDIT: Your job title or tagline -->Life Coach &middot; Learning Experience Designer<!-- END EDIT --></p>
+      <p class="tagline"><!-- EDIT: Tagline -->"How does this stop you?"<!-- END EDIT --></p>
+    </header>
+
+    <!-- ═══════════════════════════════════════════
+         STOIC QUOTE
+    ═══════════════════════════════════════════ -->
+    <!-- EDIT: Replace quote text and attribution as desired -->
+    <div class="quote-block">
+      <blockquote>
+        "You have power over your mind — not outside events. Realize this, and you will find strength."
+      </blockquote>
+      <cite>Marcus Aurelius</cite>
+    </div>
+    <!-- END EDIT -->
+
+    <!-- ═══════════════════════════════════════════
+         ABOUT
+    ═══════════════════════════════════════════ -->
+    <section id="about">
+      <h2>About</h2>
+      <!-- EDIT: Write 2–4 sentences about yourself -->
+      <p>
+        I help people get out of their own way. As a life coach trained in Stoicism,
+        I work with clients to separate what they can control from what they can't —
+        and then act decisively on what remains. My background in Learning Experience
+        Design shapes how I coach: every conversation is structured to move you forward,
+        not just feel good.
+      </p>
+      <!-- END EDIT -->
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         WHO I WORK WITH
+    ═══════════════════════════════════════════ -->
+    <section id="who">
+      <h2>Who I Work With</h2>
+      <!-- EDIT: Describe your ideal client -->
+      <p style="margin-bottom: 20px;">
+        You're capable — but something keeps getting in the way. Maybe it's indecision,
+        avoidance, or a story you've been telling yourself for years. My clients tend to be
+        people who are done with excuses and ready for a framework that demands honest work.
+      </p>
+      <ul class="client-list">
+        <li>You feel stuck and can't clearly see why</li>
+        <li>You're tired of repeating the same patterns</li>
+        <li>You want a disciplined, honest approach — not empty motivation</li>
+        <li>You're willing to be challenged, not just validated</li>
+      </ul>
+      <!-- END EDIT -->
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         WHAT I OFFER
+    ═══════════════════════════════════════════ -->
+    <section id="services">
+      <h2>What I Offer</h2>
+      <!-- EDIT: Update or add/remove services as needed -->
+      <ul class="services-list">
+        <li>
+          <span class="service-name">1-on-1 Life Coaching</span>
+          <span class="service-desc">Regular sessions focused on clarity, accountability, and forward motion. We identify what's blocking you and build a plan to move through it.</span>
+        </li>
+        <li>
+          <span class="service-name">Stoicism-Based Coaching Programs</span>
+          <span class="service-desc">A structured program applying Stoic philosophy to modern life challenges — designed for people who want a durable framework, not a quick fix.</span>
+        </li>
+        <li>
+          <span class="service-name">Workshop &amp; Group Sessions</span>
+          <span class="service-desc">Group settings for teams or cohorts looking to build a shared vocabulary around resilience, decision-making, and personal responsibility.</span>
+        </li>
+      </ul>
+      <!-- END EDIT -->
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         HOW TO WORK WITH ME
+    ═══════════════════════════════════════════ -->
+    <section id="process">
+      <h2>How to Work With Me</h2>
+      <!-- EDIT: Update steps if your process differs -->
+      <ol class="steps-list">
+        <li>
+          <div class="step-content">
+            <strong>Reach out</strong>
+            <span>Send me an email with a few sentences about where you are and what you're trying to change.</span>
+          </div>
+        </li>
+        <li>
+          <div class="step-content">
+            <strong>Discovery call (free)</strong>
+            <span>We talk for 30 minutes. You ask questions, I ask questions, and we figure out if working together makes sense.</span>
+          </div>
+        </li>
+        <li>
+          <div class="step-content">
+            <strong>Coaching begins</strong>
+            <span>If it's a fit, we establish a cadence and get to work. No long commitments up front — just show up and do the work.</span>
+          </div>
+        </li>
+      </ol>
+      <!-- END EDIT -->
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         CONTACT
+    ═══════════════════════════════════════════ -->
+    <section id="contact">
+      <h2>Contact</h2>
+      <!-- EDIT: Replace href values and link text with your real info -->
+      <div class="contact-links">
+        <a href="mailto:kbwhittle88@gmail.com">kbwhittle88@gmail.com</a>
+      </div>
+      <!-- END EDIT -->
+    </section>
+
+  </main>
+</body>
+</html>
