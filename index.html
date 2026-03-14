@@ -7,6 +7,7 @@
   <title>Kyle Whittle</title>
   <!-- END EDIT -->
   <style>
+    html { scroll-behavior: smooth; }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
@@ -78,14 +79,109 @@
       color: #c8a97e;
     }
 
+    /* ── CTA Button ── */
+    .cta-btn {
+      display: inline-block;
+      margin-top: 28px;
+      padding: 14px 36px;
+      background: #c8a97e;
+      color: #faf7f2;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 40px;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .cta-btn:hover {
+      background: #b89768;
+      transform: translateY(-1px);
+    }
+
+    .cta-floating {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 1000;
+      padding: 12px 28px;
+      background: #c8a97e;
+      color: #faf7f2;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 40px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .cta-floating:hover {
+      background: #b89768;
+      transform: translateY(-2px);
+    }
+
+    /* ── Navigation ── */
+    .site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 900;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 8px 28px;
+      padding: 14px 24px;
+      background: #faf7f2;
+      border-bottom: 1px solid #e8e0d4;
+    }
+
+    .site-nav a {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: #7a6f63;
+      transition: color 0.15s;
+    }
+
+    .site-nav a:hover {
+      color: #c8a97e;
+    }
+
     /* ── Sections ── */
     section {
       padding: 48px 0;
       border-bottom: 1px solid #e8e0d4;
+      scroll-margin-top: 56px;
     }
 
     section:last-child {
       border-bottom: none;
+    }
+
+    /* ── Section Ornament Dividers ── */
+    .hero,
+    section,
+    .quote-block {
+      position: relative;
+    }
+
+    .hero::after,
+    section:not(:last-child)::after,
+    .quote-block::after {
+      content: "◆";
+      position: absolute;
+      bottom: -0.35em;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.45rem;
+      color: #c8a97e;
+      background: #faf7f2;
+      padding: 0 12px;
+      line-height: 1;
     }
 
     h2 {
@@ -108,6 +204,7 @@
       padding: 48px 0;
       border-bottom: 1px solid #e8e0d4;
       text-align: center;
+      scroll-margin-top: 56px;
     }
 
     .quote-block blockquote {
@@ -239,10 +336,23 @@
       .hero h1 { font-size: 1.8rem; }
       .quote-block blockquote { font-size: 1.2rem; }
       .steps-list li { gap: 14px; }
+      .cta-floating { padding: 10px 22px; font-size: 0.75rem; bottom: 16px; right: 16px; }
+      .site-nav { gap: 14px; padding: 10px 16px; }
+      .site-nav a { font-size: 0.6rem; letter-spacing: 1.5px; }
     }
   </style>
 </head>
 <body>
+  <!-- EDIT: Navigation links -->
+  <nav class="site-nav">
+    <a href="#about">About</a>
+    <a href="#who">Clients</a>
+    <a href="#services">Services</a>
+    <a href="#process">Process</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <!-- END EDIT -->
+
   <main>
 
     <!-- ═══════════════════════════════════════════
@@ -258,6 +368,9 @@
       <h1><!-- EDIT: Your full name -->Kyle Whittle<!-- END EDIT --></h1>
       <p class="title"><!-- EDIT: Your job title or tagline -->Life Coach &middot; Learning Experience Designer<!-- END EDIT --></p>
       <p class="tagline"><!-- EDIT: Tagline -->"How does this stop you?"<!-- END EDIT --></p>
+      <!-- EDIT: CTA button text and link -->
+      <a href="mailto:kbwhittle88@gmail.com" class="cta-btn">Book a Free Call</a>
+      <!-- END EDIT -->
     </header>
 
     <!-- ═══════════════════════════════════════════
@@ -373,5 +486,9 @@
     </section>
 
   </main>
+
+  <!-- EDIT: Floating CTA button (always visible) -->
+  <a href="mailto:kbwhittle88@gmail.com" class="cta-floating">Book a Free Call</a>
+  <!-- END EDIT -->
 </body>
 </html>
