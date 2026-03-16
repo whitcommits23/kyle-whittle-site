@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — Kyle Whittle</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='16' fill='%23c8a97e'/><text x='16' y='16' font-family='Georgia,serif' font-size='12' font-weight='400' fill='%23faf7f2' text-anchor='middle' dominant-baseline='central' letter-spacing='1'>KW</text></svg>">
+  <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='16' fill='%23c8a97e'/><text x='16' y='16' font-family='Georgia,serif' font-size='12' font-weight='400' fill='%23faf7f2' text-anchor='middle' dominant-baseline='central' letter-spacing='1'>KW</text></svg>">
+  <style>
+    html { scroll-behavior: smooth; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #faf7f2;
+      color: #2c2c2c;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    main {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 60px 24px 80px;
+    }
+
+    /* ── Navigation ── */
+    .site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 900;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 8px 28px;
+      padding: 14px 24px;
+      background: #faf7f2;
+      border-bottom: 1px solid #e8e0d4;
+    }
+
+    .site-nav a {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: #7a6f63;
+      transition: color 0.15s;
+    }
+
+    .site-nav a:hover,
+    .site-nav a.active {
+      color: #c8a97e;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding-bottom: 56px;
+      border-bottom: 1px solid #e8e0d4;
+    }
+
+    .avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: #c8a97e;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+      flex-shrink: 0;
+    }
+
+    .avatar span {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 40px;
+      font-weight: 400;
+      color: #faf7f2;
+      letter-spacing: 2px;
+    }
+
+    .hero h1 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 2.2rem;
+      font-weight: 400;
+      letter-spacing: 0.5px;
+      color: #2c2c2c;
+      margin-bottom: 6px;
+    }
+
+    .hero .title {
+      font-size: 1rem;
+      color: #7a6f63;
+      letter-spacing: 0.5px;
+    }
+
+    /* ── Sections ── */
+    section {
+      padding: 48px 0;
+      border-bottom: 1px solid #e8e0d4;
+      scroll-margin-top: 56px;
+    }
+
+    section:last-child {
+      border-bottom: none;
+    }
+
+    /* ── Section Ornament Dividers ── */
+    .hero,
+    section {
+      position: relative;
+    }
+
+    .hero::after,
+    section:not(:last-child)::after {
+      content: "\25C6";
+      position: absolute;
+      bottom: -0.35em;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.45rem;
+      color: #c8a97e;
+      background: #faf7f2;
+      padding: 0 12px;
+      line-height: 1;
+    }
+
+    h2 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 0.75rem;
+      font-weight: 400;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: #c8a97e;
+      margin-bottom: 20px;
+    }
+
+    p {
+      color: #444;
+      max-width: 60ch;
+    }
+
+    p + p {
+      margin-top: 14px;
+    }
+
+    /* ── Highlights List ── */
+    .highlights-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 4px;
+    }
+
+    .highlights-list li {
+      color: #444;
+      padding-left: 20px;
+      position: relative;
+    }
+
+    .highlights-list li::before {
+      content: "\2014";
+      position: absolute;
+      left: 0;
+      color: #c8a97e;
+    }
+
+    /* ── Education ── */
+    .edu-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .edu-list li {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .edu-degree {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #2c2c2c;
+    }
+
+    .edu-detail {
+      font-size: 0.9rem;
+      color: #7a6f63;
+    }
+
+    /* ── CTA Button ── */
+    .cta-btn {
+      display: inline-block;
+      margin-top: 28px;
+      padding: 14px 36px;
+      background: #c8a97e;
+      color: #faf7f2;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 40px;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .cta-btn:hover {
+      background: #b89768;
+      transform: translateY(-1px);
+    }
+
+    .cta-section {
+      text-align: center;
+    }
+
+    .cta-section p {
+      max-width: 50ch;
+      margin: 0 auto;
+    }
+
+    .cta-floating {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 1000;
+      padding: 12px 28px;
+      background: #c8a97e;
+      color: #faf7f2;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 40px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .cta-floating:hover {
+      background: #b89768;
+      transform: translateY(-2px);
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 520px) {
+      .hero h1 { font-size: 1.8rem; }
+      .cta-floating { padding: 10px 22px; font-size: 0.75rem; bottom: 16px; right: 16px; }
+      .site-nav { gap: 14px; padding: 10px 16px; }
+      .site-nav a { font-size: 0.6rem; letter-spacing: 1.5px; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="site-nav">
+    <a href="index.html">Home</a>
+    <a href="about.html" class="active">About</a>
+    <a href="index.html#services">Services</a>
+    <a href="index.html#process">Process</a>
+    <a href="index.html#contact">Contact</a>
+  </nav>
+
+  <main>
+
+    <!-- ═══════════════════════════════════════════
+         HERO
+    ═══════════════════════════════════════════ -->
+    <header class="hero">
+      <div class="avatar">
+        <span>KW</span>
+      </div>
+      <h1>Kyle Whittle</h1>
+      <p class="title">Life Coach &middot; Learning Experience Designer</p>
+    </header>
+
+    <!-- ═══════════════════════════════════════════
+         MY STORY
+    ═══════════════════════════════════════════ -->
+    <section>
+      <h2>My Story</h2>
+      <!-- EDIT: Update summary paragraphs as needed -->
+      <p>
+        Throughout my career, leadership and developing people have been at
+        the center of everything I do. Over the past decade I've built
+        onboarding programs, designed training systems, and led teams across
+        companies like Qualtrics, McMaster-Carr, Canopy, and Entrata — and
+        a key part of every role was coaching people up. Helping someone see
+        what's holding them back, giving them a framework to move forward,
+        and holding them accountable to the work.
+      </p>
+      <p>
+        That's what eventually made coaching a natural next step. The same
+        skills I used to develop teams at scale — systems thinking, structured
+        feedback, clear accountability — are exactly what individuals need to
+        get unstuck. Pair that with Stoic philosophy and a background in
+        Instructional Design and I/O Psychology, and you get a coaching
+        approach that's more framework than fluff.
+      </p>
+      <!-- END EDIT -->
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         WHAT I BRING
+    ═══════════════════════════════════════════ -->
+    <section>
+      <h2>What I Bring</h2>
+      <!-- EDIT: Update highlights as needed -->
+      <ul class="highlights-list">
+        <li>10+ years building training, enablement, and development programs at scale</li>
+        <li>Designed learning systems adopted by over 250,000 people</li>
+        <li>Built and scaled global teams across five organizations</li>
+        <li>Deep expertise in how people actually learn and change, grounded in Instructional Design and Organizational Psychology</li>
+        <li>Stoicism as a practical operating system, not just philosophy</li>
+      </ul>
+      <!-- END EDIT -->
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         EDUCATION & CREDENTIALS
+    ═══════════════════════════════════════════ -->
+    <section>
+      <h2>Education &amp; Credentials</h2>
+      <!-- EDIT: Update education entries as needed -->
+      <ul class="edu-list">
+        <li>
+          <span class="edu-degree">Master of Business Administration</span>
+          <span class="edu-detail">Strategy &middot; Quantic School of Business and Technology</span>
+        </li>
+        <li>
+          <span class="edu-degree">Master of Education in Instructional Design</span>
+          <span class="edu-detail">Psychometrics &middot; University of Utah</span>
+        </li>
+        <li>
+          <span class="edu-degree">Bachelor of Science in I/O Psychology</span>
+          <span class="edu-detail">Statistics &middot; Brigham Young University–Idaho</span>
+        </li>
+      </ul>
+      <!-- END EDIT -->
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         CTA
+    ═══════════════════════════════════════════ -->
+    <section class="cta-section">
+      <h2>Let's Talk</h2>
+      <p>
+        If you're ready to stop going in circles and start building something
+        that works, I'd like to hear from you.
+      </p>
+      <a href="mailto:kbwhittle88@gmail.com" class="cta-btn">Book a Free Call</a>
+    </section>
+
+  </main>
+
+  <a href="mailto:kbwhittle88@gmail.com" class="cta-floating">Book a Free Call</a>
+</body>
+</html>
