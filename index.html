@@ -41,22 +41,15 @@
       width: 120px;
       height: 120px;
       border-radius: 50%;
-      background: #c8a97e;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      overflow: hidden;
       margin-bottom: 24px;
       flex-shrink: 0;
     }
 
-    .avatar span {
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 40px;
-      font-weight: 400;
-      color: #faf7f2;
-      letter-spacing: 2px;
-      /* EDIT: Initials displayed in the avatar circle */
-      /* Change the text content below to your initials */
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
     .hero h1 {
@@ -299,9 +292,7 @@
     ═══════════════════════════════════════════ -->
     <header class="hero">
       <div class="avatar">
-        <!-- EDIT: Change "KW" to your initials -->
-        <span>KW</span>
-        <!-- END EDIT -->
+        <img src="HS-11.jpg" alt="Kyle Whittle">
       </div>
 
       <h1><!-- EDIT: Your full name -->Kyle Whittle<!-- END EDIT --></h1>
