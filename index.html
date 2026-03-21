@@ -251,70 +251,6 @@
       color: #c8a97e;
     }
 
-    /* ── Services ── */
-    .services-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
-    }
-
-    .services-list li {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-
-    .service-name {
-      font-size: 0.95rem;
-      font-weight: 600;
-      color: #2c2c2c;
-    }
-
-    .service-desc {
-      font-size: 0.9rem;
-      color: #7a6f63;
-      max-width: 55ch;
-    }
-
-    /* ── How to Work With Me ── */
-    .steps-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      counter-reset: steps;
-    }
-
-    .steps-list li {
-      display: flex;
-      gap: 20px;
-      align-items: flex-start;
-      counter-increment: steps;
-    }
-
-    .steps-list li::before {
-      content: counter(steps);
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 1.3rem;
-      color: #c8a97e;
-      min-width: 24px;
-      line-height: 1.4;
-    }
-
-    .step-content strong {
-      display: block;
-      font-size: 0.95rem;
-      font-weight: 600;
-      color: #2c2c2c;
-      margin-bottom: 2px;
-    }
-
-    .step-content span {
-      font-size: 0.9rem;
-      color: #7a6f63;
-    }
-
     /* ── Contact ── */
     .contact-links {
       display: flex;
@@ -339,7 +275,6 @@
     @media (max-width: 520px) {
       .hero h1 { font-size: 1.8rem; }
       .quote-block blockquote { font-size: 1.2rem; }
-      .steps-list li { gap: 14px; }
       .cta-floating { padding: 10px 22px; font-size: 0.75rem; bottom: 16px; right: 16px; }
       .site-nav { gap: 14px; padding: 10px 16px; }
       .site-nav a { font-size: 0.6rem; letter-spacing: 1.5px; }
@@ -350,9 +285,9 @@
   <!-- EDIT: Navigation links -->
   <nav class="site-nav">
     <a href="index.html" class="active">Home</a>
+    <a href="services.html#services">Services</a>
+    <a href="services.html#process">Process</a>
     <a href="about.html">About</a>
-    <a href="index.html#services">Services</a>
-    <a href="index.html#process">Process</a>
     <a href="contact.html">Contact</a>
   </nav>
   <!-- END EDIT -->
@@ -422,58 +357,6 @@
         <li>You want a disciplined, honest approach — not empty motivation</li>
         <li>You're willing to be challenged, not just validated</li>
       </ul>
-      <!-- END EDIT -->
-    </section>
-
-    <!-- ═══════════════════════════════════════════
-         WHAT I OFFER
-    ═══════════════════════════════════════════ -->
-    <section id="services">
-      <h2>What I Offer</h2>
-      <!-- EDIT: Update or add/remove services as needed -->
-      <ul class="services-list">
-        <li>
-          <span class="service-name">1-on-1 Life Coaching</span>
-          <span class="service-desc">Regular sessions focused on clarity, accountability, and forward motion. We identify what's blocking you and build a plan to move through it.</span>
-        </li>
-        <li>
-          <span class="service-name">Stoicism-Based Coaching Programs</span>
-          <span class="service-desc">A structured program applying Stoic philosophy to modern life challenges — designed for people who want a durable framework, not a quick fix.</span>
-        </li>
-        <li>
-          <span class="service-name">Workshop &amp; Group Sessions</span>
-          <span class="service-desc">Group settings for teams or cohorts looking to build a shared vocabulary around resilience, decision-making, and personal responsibility.</span>
-        </li>
-      </ul>
-      <!-- END EDIT -->
-    </section>
-
-    <!-- ═══════════════════════════════════════════
-         HOW TO WORK WITH ME
-    ═══════════════════════════════════════════ -->
-    <section id="process">
-      <h2>How to Work With Me</h2>
-      <!-- EDIT: Update steps if your process differs -->
-      <ol class="steps-list">
-        <li>
-          <div class="step-content">
-            <strong>Reach out</strong>
-            <span>Send me an email with a few sentences about where you are and what you're trying to change.</span>
-          </div>
-        </li>
-        <li>
-          <div class="step-content">
-            <strong>Discovery call (free)</strong>
-            <span>We talk for 30 minutes. You ask questions, I ask questions, and we figure out if working together makes sense.</span>
-          </div>
-        </li>
-        <li>
-          <div class="step-content">
-            <strong>Coaching begins</strong>
-            <span>If it's a fit, we establish a cadence and get to work. No long commitments up front — just show up and do the work.</span>
-          </div>
-        </li>
-      </ol>
       <!-- END EDIT -->
     </section>
 
