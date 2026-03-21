@@ -150,7 +150,8 @@
       transition: color 0.15s;
     }
 
-    .site-nav a:hover {
+    .site-nav a:hover,
+    .site-nav a.active {
       color: #c8a97e;
     }
 
@@ -348,11 +349,11 @@
 <body>
   <!-- EDIT: Navigation links -->
   <nav class="site-nav">
+    <a href="index.html" class="active">Home</a>
     <a href="about.html">About</a>
-    <a href="#who">Clients</a>
-    <a href="#services">Services</a>
-    <a href="#process">Process</a>
-    <a href="#contact">Contact</a>
+    <a href="index.html#services">Services</a>
+    <a href="index.html#process">Process</a>
+    <a href="contact.html">Contact</a>
   </nav>
   <!-- END EDIT -->
 
@@ -372,7 +373,7 @@
       <p class="title"><!-- EDIT: Your job title or tagline -->Life Coach &middot; Learning Experience Designer<!-- END EDIT --></p>
       <p class="tagline"><!-- EDIT: Tagline -->"How does this stop you?"<!-- END EDIT --></p>
       <!-- EDIT: CTA button text and link -->
-      <a href="mailto:kbwhittle88@gmail.com" class="cta-btn">Book a Free Call</a>
+      <a href="contact.html" class="cta-btn">Book a Free Call</a>
       <!-- END EDIT -->
     </header>
 
@@ -483,6 +484,7 @@
       <h2>Contact</h2>
       <!-- EDIT: Replace href values and link text with your real info -->
       <div class="contact-links">
+        <a href="contact.html">Fill out the contact form</a>
         <a href="mailto:kbwhittle88@gmail.com">kbwhittle88@gmail.com</a>
       </div>
       <!-- END EDIT -->
@@ -491,7 +493,7 @@
   </main>
 
   <!-- EDIT: Floating CTA button (always visible) -->
-  <a href="mailto:kbwhittle88@gmail.com" class="cta-floating">Book a Free Call</a>
+  <a href="contact.html" class="cta-floating">Book a Free Call</a>
   <!-- END EDIT -->
 </body>
 </html>
