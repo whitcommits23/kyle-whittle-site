@@ -4,24 +4,30 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About — Kyle Whittle</title>
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='16' fill='%23c8a97e'/><text x='16' y='16' font-family='Georgia,serif' font-size='12' font-weight='400' fill='%23faf7f2' text-anchor='middle' dominant-baseline='central' letter-spacing='1'>KW</text></svg>">
-  <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='16' fill='%23c8a97e'/><text x='16' y='16' font-family='Georgia,serif' font-size='12' font-weight='400' fill='%23faf7f2' text-anchor='middle' dominant-baseline='central' letter-spacing='1'>KW</text></svg>">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='16' fill='%23e85d26'/><text x='16' y='16' font-family='Georgia,serif' font-size='12' font-weight='400' fill='%23ffffff' text-anchor='middle' dominant-baseline='central' letter-spacing='1'>KW</text></svg>">
+  <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='16' fill='%23e85d26'/><text x='16' y='16' font-family='Georgia,serif' font-size='12' font-weight='400' fill='%23ffffff' text-anchor='middle' dominant-baseline='central' letter-spacing='1'>KW</text></svg>">
   <style>
+    :root {
+      --bg: #ffffff;
+      --bg-alt: #f5f5f5;
+      --text: #1a1a1a;
+      --text-muted: #666666;
+      --accent: #e85d26;
+      --accent-hover: #cf4f1e;
+      --border: #e0e0e0;
+      --values-bg: #111111;
+      --values-text: #ffffff;
+    }
+
     html { scroll-behavior: smooth; }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      background: #faf7f2;
-      color: #2c2c2c;
+      background: var(--bg);
+      color: var(--text);
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
       font-size: 16px;
       line-height: 1.7;
-    }
-
-    main {
-      max-width: 680px;
-      margin: 0 auto;
-      padding: 60px 24px 80px;
     }
 
     /* ── Navigation ── */
@@ -30,79 +36,151 @@
       top: 0;
       z-index: 900;
       display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 8px 28px;
-      padding: 14px 24px;
-      background: #faf7f2;
-      border-bottom: 1px solid #e8e0d4;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 24px;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
     }
 
-    .site-nav a {
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .nav-logo-circle {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #ffffff;
+      font-family: Futura, "Century Gothic", "Trebuchet MS", Arial, sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .nav-logo-name {
+      font-family: Futura, "Century Gothic", "Trebuchet MS", Arial, sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: var(--text);
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .nav-links a {
       font-size: 0.7rem;
       font-weight: 600;
       letter-spacing: 2px;
       text-transform: uppercase;
       text-decoration: none;
-      color: #7a6f63;
-      transition: color 0.15s;
+      color: var(--text);
+      padding-bottom: 4px;
+      border-bottom: 2px solid transparent;
+      transition: color 0.15s, border-color 0.15s;
     }
 
-    .site-nav a:hover,
-    .site-nav a.active {
-      color: #c8a97e;
+    .nav-links a:hover {
+      color: var(--accent);
     }
+
+    .nav-links a.active {
+      color: var(--accent);
+      border-bottom: 2px solid var(--accent);
+    }
+
+    /* ── Container (narrow content) ── */
+    .container {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .page-top { padding-top: 60px; }
+    .page-bottom { padding-bottom: 80px; }
 
     /* ── Hero ── */
     .hero {
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
       align-items: center;
-      text-align: center;
+      gap: 40px;
       padding-bottom: 56px;
-      border-bottom: 1px solid #e8e0d4;
+      border-bottom: 1px solid var(--border);
+      position: relative;
     }
 
-    .avatar {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      background: #c8a97e;
+    .hero-text {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .hero-photo {
+      flex: 0 0 280px;
+      width: 280px;
+      height: 360px;
+      border-radius: 12px;
+      overflow: hidden;
+      background: var(--bg-alt);
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 24px;
-      flex-shrink: 0;
+      order: 2;
     }
 
-    .avatar span {
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 40px;
-      font-weight: 400;
-      color: #faf7f2;
-      letter-spacing: 2px;
+    .hero-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
     }
 
-    .hero h1 {
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 2.2rem;
-      font-weight: 400;
-      letter-spacing: 0.5px;
-      color: #2c2c2c;
-      margin-bottom: 6px;
+    .hero-photo .placeholder {
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
     }
 
-    .hero .title {
-      font-size: 1rem;
-      color: #7a6f63;
-      letter-spacing: 0.5px;
+    .hero .tagline {
+      font-family: Futura, "Century Gothic", "Trebuchet MS", Arial, sans-serif;
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+
+    .hero .tagline .accent {
+      color: var(--accent);
+    }
+
+    .hero .subtitle {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      max-width: 34ch;
+      line-height: 1.6;
     }
 
     /* ── Sections ── */
     section {
       padding: 48px 0;
-      border-bottom: 1px solid #e8e0d4;
+      border-bottom: 1px solid var(--border);
       scroll-margin-top: 56px;
+      position: relative;
     }
 
     section:last-child {
@@ -110,37 +188,32 @@
     }
 
     /* ── Section Ornament Dividers ── */
-    .hero,
-    section {
-      position: relative;
-    }
-
     .hero::after,
-    section:not(:last-child)::after {
+    section:not(:last-child):not(.values-section)::after {
       content: "\25C6";
       position: absolute;
       bottom: -0.35em;
       left: 50%;
       transform: translateX(-50%);
       font-size: 0.45rem;
-      color: #c8a97e;
-      background: #faf7f2;
+      color: var(--accent);
+      background: var(--bg);
       padding: 0 12px;
       line-height: 1;
     }
 
     h2 {
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 0.75rem;
-      font-weight: 400;
+      font-family: Futura, "Century Gothic", "Trebuchet MS", Arial, sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
       letter-spacing: 2.5px;
       text-transform: uppercase;
-      color: #c8a97e;
+      color: var(--accent);
       margin-bottom: 20px;
     }
 
     p {
-      color: #444;
+      color: var(--text-muted);
       max-width: 60ch;
     }
 
@@ -158,7 +231,7 @@
     }
 
     .highlights-list li {
-      color: #444;
+      color: var(--text-muted);
       padding-left: 20px;
       position: relative;
     }
@@ -167,7 +240,56 @@
       content: "\2014";
       position: absolute;
       left: 0;
-      color: #c8a97e;
+      color: var(--accent);
+    }
+
+    /* ── Values Section ── */
+    .values-section {
+      background: var(--values-bg);
+      color: var(--values-text);
+      padding: 64px 24px;
+      text-align: center;
+      border-bottom: none;
+    }
+
+    .values-section::after {
+      display: none !important;
+    }
+
+    .values-section h2 {
+      color: var(--values-text);
+      font-size: 1.8rem;
+      font-weight: 700;
+      font-family: Futura, "Century Gothic", "Trebuchet MS", Arial, sans-serif;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 48px;
+    }
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .value-card h3 {
+      font-family: Futura, "Century Gothic", "Trebuchet MS", Arial, sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      color: var(--values-text);
+    }
+
+    .value-card p {
+      color: var(--values-text);
+      max-width: none;
+      font-size: 0.95rem;
+      line-height: 1.7;
+      opacity: 0.9;
     }
 
     /* ── Education ── */
@@ -187,12 +309,12 @@
     .edu-degree {
       font-size: 0.95rem;
       font-weight: 600;
-      color: #2c2c2c;
+      color: var(--text);
     }
 
     .edu-detail {
       font-size: 0.9rem;
-      color: #7a6f63;
+      color: var(--text-muted);
     }
 
     /* ── CTA Button ── */
@@ -200,8 +322,8 @@
       display: inline-block;
       margin-top: 28px;
       padding: 14px 36px;
-      background: #c8a97e;
-      color: #faf7f2;
+      background: var(--text);
+      color: #ffffff;
       font-size: 0.85rem;
       font-weight: 600;
       letter-spacing: 1.5px;
@@ -212,7 +334,7 @@
     }
 
     .cta-btn:hover {
-      background: #b89768;
+      background: #333333;
       transform: translateY(-1px);
     }
 
@@ -231,8 +353,8 @@
       right: 24px;
       z-index: 1000;
       padding: 12px 28px;
-      background: #c8a97e;
-      color: #faf7f2;
+      background: var(--text);
+      color: #ffffff;
       font-size: 0.8rem;
       font-weight: 600;
       letter-spacing: 1.5px;
@@ -244,26 +366,38 @@
     }
 
     .cta-floating:hover {
-      background: #b89768;
+      background: #333333;
       transform: translateY(-2px);
     }
 
     /* ── Responsive ── */
     @media (max-width: 520px) {
-      .hero h1 { font-size: 1.8rem; }
+      .hero { flex-direction: column; text-align: center; }
+      .hero-photo { flex: none; width: 100%; height: auto; max-height: 320px; order: -1; margin-bottom: 24px; }
+      .hero .tagline { font-size: 1.8rem; }
+      .hero .subtitle { max-width: none; }
+      .values-grid { grid-template-columns: 1fr; gap: 32px; }
+      .values-section h2 { font-size: 1.3rem; }
       .cta-floating { padding: 10px 22px; font-size: 0.75rem; bottom: 16px; right: 16px; }
-      .site-nav { gap: 14px; padding: 10px 16px; }
-      .site-nav a { font-size: 0.6rem; letter-spacing: 1.5px; }
+      .site-nav { flex-wrap: wrap; gap: 8px; padding: 10px 16px; }
+      .nav-logo-name { display: none; }
+      .nav-links { gap: 14px; }
+      .nav-links a { font-size: 0.6rem; letter-spacing: 1.5px; }
     }
   </style>
 </head>
 <body>
   <nav class="site-nav">
-    <a href="index.html">Home</a>
-    <a href="services.html#services">Services</a>
-    <a href="services.html#process">Process</a>
-    <a href="about.html" class="active">About</a>
-    <a href="contact.html">Contact</a>
+    <a href="index.html" class="nav-logo">
+      <span class="nav-logo-circle">KW</span>
+      <span class="nav-logo-name">Kyle Whittle</span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="services.html">What I Offer</a>
+      <a href="about.html" class="active">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
   </nav>
 
   <main>
@@ -271,90 +405,139 @@
     <!-- ═══════════════════════════════════════════
          HERO
     ═══════════════════════════════════════════ -->
-    <header class="hero">
-      <div class="avatar">
-        <span>KW</span>
-      </div>
-      <h1>Kyle Whittle</h1>
-      <p class="title">Life Coach &middot; Learning Experience Designer</p>
-    </header>
+    <div class="container page-top">
+      <header class="hero">
+        <div class="hero-text">
+          <!-- EDIT: Hero headline and subtitle -->
+          <p class="tagline">Hello legend.<br>I'm <span class="accent">Kyle Whittle.</span></p>
+          <p class="subtitle">Get clear AF on who you are and where you're going — with ease, confidence, and a genuine smile.</p>
+          <!-- END EDIT -->
+        </div>
+        <div class="hero-photo">
+          <img src="HS-12.jpeg" alt="Kyle Whittle">
+        </div>
+      </header>
+    </div>
 
     <!-- ═══════════════════════════════════════════
          MY STORY
     ═══════════════════════════════════════════ -->
-    <section>
-      <h2>My Story</h2>
-      <!-- EDIT: Update summary paragraphs as needed -->
-      <p>
-        Throughout my career, leadership and developing people have been at
-        the center of everything I do. Over the past decade I've built
-        onboarding programs, designed training systems, and led teams across
-        companies like Qualtrics, McMaster-Carr, Canopy, and Entrata — and
-        a key part of every role was coaching people up. Helping someone see
-        what's holding them back, giving them a framework to move forward,
-        and holding them accountable to the work.
-      </p>
-      <p>
-        That's what eventually made coaching a natural next step. The same
-        skills I used to develop teams at scale — systems thinking, structured
-        feedback, clear accountability — are exactly what individuals need to
-        get unstuck. Pair that with Stoic philosophy and a background in
-        Instructional Design and I/O Psychology, and you get a coaching
-        approach that's more framework than fluff.
-      </p>
-      <!-- END EDIT -->
-    </section>
+    <div class="container">
+      <section>
+        <h2>My Story</h2>
+        <!-- EDIT: Update summary paragraphs as needed -->
+        <p>
+          Here's the truth: I walked into the corporate world with zero idea how to
+          regulate my emotions or build real relationships. I could execute, hit targets,
+          lead projects — but the stuff underneath? The stuff that actually matters? I was
+          winging it. And it showed. Not just at work, but at home. The disconnection bled
+          into my family life in ways I didn't see until I couldn't ignore it anymore.
+        </p>
+        <p>
+          My wife was the one who nudged me toward coaching. She saw what I couldn't — that
+          I needed help, and that asking for it wasn't weakness. So I explored. And through
+          that exploration, I found philosophy. Not the dusty academic kind. Philosophy as a
+          love of wisdom — a way of actually living, not just thinking.
+        </p>
+        <p>
+          But it didn't happen overnight. That's the part nobody tells you. The moment you
+          decide to change is the exact moment the biggest obstacles show up — and most of
+          the time, the obstacle is you. I felt that. Hard. But I learned (and I'm still
+          learning) that the obstacle <em>is</em> the way. Every wall I hit became the lesson
+          I needed.
+        </p>
+        <p>
+          Along the way, I spent over a decade building onboarding programs, designing
+          training systems, and leading teams at companies like Qualtrics, McMaster-Carr,
+          Canopy, and Entrata. I got good at helping people grow in professional settings.
+          But coaching individuals one-on-one — helping someone see what's really in the way
+          and giving them a framework to move through it — that's where the real work happens.
+        </p>
+        <p>
+          That's why I'm here. Not because I've figured it all out, but because I know what
+          it's like to be in it. And I'm here to help.
+        </p>
+        <!-- END EDIT -->
+      </section>
+    </div>
 
     <!-- ═══════════════════════════════════════════
          WHAT I BRING
     ═══════════════════════════════════════════ -->
-    <section>
-      <h2>What I Bring</h2>
-      <!-- EDIT: Update highlights as needed -->
-      <ul class="highlights-list">
-        <li>10+ years building training, enablement, and development programs at scale</li>
-        <li>Designed learning systems adopted by over 250,000 people</li>
-        <li>Built and scaled global teams across five organizations</li>
-        <li>Deep expertise in how people actually learn and change, grounded in Instructional Design and Organizational Psychology</li>
-        <li>Stoicism as a practical operating system, not just philosophy</li>
-      </ul>
-      <!-- END EDIT -->
+    <div class="container">
+      <section>
+        <h2>What I Bring</h2>
+        <!-- EDIT: Update highlights as needed -->
+        <ul class="highlights-list">
+          <li>10+ years building training, enablement, and development programs at scale</li>
+          <li>Designed learning systems adopted by over 250,000 people</li>
+          <li>Built and scaled global teams across five organizations</li>
+          <li>Deep expertise in how people actually learn and change, grounded in Instructional Design and Organizational Psychology</li>
+          <li>Stoicism as a practical operating system, not just philosophy</li>
+        </ul>
+        <!-- END EDIT -->
+      </section>
+    </div>
+
+    <!-- ═══════════════════════════════════════════
+         VALUES I OPERATE BY
+    ═══════════════════════════════════════════ -->
+    <section class="values-section">
+      <h2>Values I Operate By</h2>
+      <div class="values-grid">
+        <div class="value-card">
+          <h3>Community</h3>
+          <p>I believe men go further together. My programs prove how far that can be. Connected, easy, safe, challenging, supportive.</p>
+        </div>
+        <div class="value-card">
+          <h3>Integrity</h3>
+          <p>I offer open, straight-talking advice with a loving challenge edge. Integrity matters – it creates safety, strength and dependability.</p>
+        </div>
+        <div class="value-card">
+          <h3>Curiosity</h3>
+          <p>Curious exploration guides every interaction into understanding you. 100% judgement-free enquiry to make your shit make sense.</p>
+        </div>
+      </div>
     </section>
 
     <!-- ═══════════════════════════════════════════
          EDUCATION & CREDENTIALS
     ═══════════════════════════════════════════ -->
-    <section>
-      <h2>Education &amp; Credentials</h2>
-      <!-- EDIT: Update education entries as needed -->
-      <ul class="edu-list">
-        <li>
-          <span class="edu-degree">Master of Business Administration</span>
-          <span class="edu-detail">Strategy &middot; Quantic School of Business and Technology</span>
-        </li>
-        <li>
-          <span class="edu-degree">Master of Education in Instructional Design</span>
-          <span class="edu-detail">Psychometrics &middot; University of Utah</span>
-        </li>
-        <li>
-          <span class="edu-degree">Bachelor of Science in I/O Psychology</span>
-          <span class="edu-detail">Statistics &middot; Brigham Young University–Idaho</span>
-        </li>
-      </ul>
-      <!-- END EDIT -->
-    </section>
+    <div class="container">
+      <section>
+        <h2>Education &amp; Credentials</h2>
+        <!-- EDIT: Update education entries as needed -->
+        <ul class="edu-list">
+          <li>
+            <span class="edu-degree">Master of Business Administration</span>
+            <span class="edu-detail">Strategy &middot; Quantic School of Business and Technology</span>
+          </li>
+          <li>
+            <span class="edu-degree">Master of Education in Instructional Design</span>
+            <span class="edu-detail">Psychometrics &middot; University of Utah</span>
+          </li>
+          <li>
+            <span class="edu-degree">Bachelor of Science in I/O Psychology</span>
+            <span class="edu-detail">Statistics &middot; Brigham Young University–Idaho</span>
+          </li>
+        </ul>
+        <!-- END EDIT -->
+      </section>
+    </div>
 
     <!-- ═══════════════════════════════════════════
          CTA
     ═══════════════════════════════════════════ -->
-    <section class="cta-section">
-      <h2>Let's Talk</h2>
-      <p>
-        If you're ready to stop going in circles and start building something
-        that works, I'd like to hear from you.
-      </p>
-      <a href="contact.html" class="cta-btn">Book a Free Call</a>
-    </section>
+    <div class="container page-bottom">
+      <section class="cta-section">
+        <h2>Let's Talk</h2>
+        <p>
+          If you're ready to stop going in circles and start building something
+          that works, I'd like to hear from you.
+        </p>
+        <a href="contact.html" class="cta-btn">Book a Free Call</a>
+      </section>
+    </div>
 
   </main>
 

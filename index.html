@@ -6,16 +6,26 @@
   <!-- EDIT: Page title shown in browser tab -->
   <title>Kyle Whittle</title>
   <!-- END EDIT -->
-  <!-- Favicon: KW monogram matching avatar -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='16' fill='%23c8a97e'/><text x='16' y='16' font-family='Georgia,serif' font-size='12' font-weight='400' fill='%23faf7f2' text-anchor='middle' dominant-baseline='central' letter-spacing='1'>KW</text></svg>">
-  <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='16' fill='%23c8a97e'/><text x='16' y='16' font-family='Georgia,serif' font-size='12' font-weight='400' fill='%23faf7f2' text-anchor='middle' dominant-baseline='central' letter-spacing='1'>KW</text></svg>">
+  <!-- Favicon: KW monogram -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='16' fill='%23e85d26'/><text x='16' y='16' font-family='Georgia,serif' font-size='12' font-weight='400' fill='%23ffffff' text-anchor='middle' dominant-baseline='central' letter-spacing='1'>KW</text></svg>">
+  <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='16' fill='%23e85d26'/><text x='16' y='16' font-family='Georgia,serif' font-size='12' font-weight='400' fill='%23ffffff' text-anchor='middle' dominant-baseline='central' letter-spacing='1'>KW</text></svg>">
   <style>
+    :root {
+      --bg: #ffffff;
+      --bg-alt: #f5f5f5;
+      --text: #1a1a1a;
+      --text-muted: #666666;
+      --accent: #e85d26;
+      --accent-hover: #cf4f1e;
+      --border: #e0e0e0;
+    }
+
     html { scroll-behavior: smooth; }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      background: #faf7f2;
-      color: #2c2c2c;
+      background: var(--bg);
+      color: var(--text);
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
       font-size: 16px;
       line-height: 1.7;
@@ -30,49 +40,61 @@
     /* ── Hero ── */
     .hero {
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
       align-items: center;
-      text-align: center;
+      gap: 40px;
       padding-bottom: 56px;
-      border-bottom: 1px solid #e8e0d4;
+      border-bottom: 1px solid var(--border);
     }
 
-    .avatar {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
+    .hero-text {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .hero-photo {
+      flex: 0 0 280px;
+      width: 280px;
+      height: 360px;
+      border-radius: 12px;
       overflow: hidden;
-      margin-bottom: 24px;
-      flex-shrink: 0;
+      order: 2;
     }
 
-    .avatar img {
+    .hero-photo img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-    }
-
-    .hero h1 {
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 2.2rem;
-      font-weight: 400;
-      letter-spacing: 0.5px;
-      color: #2c2c2c;
-      margin-bottom: 6px;
-    }
-
-    .hero .title {
-      font-size: 1rem;
-      color: #7a6f63;
-      letter-spacing: 0.5px;
+      object-position: center top;
+      display: block;
     }
 
     .hero .tagline {
-      margin-top: 14px;
-      font-family: Georgia, "Times New Roman", serif;
+      font-family: Futura, "Century Gothic", "Trebuchet MS", Arial, sans-serif;
+      font-size: 2.8rem;
+      font-weight: 700;
+      font-style: normal;
+      color: var(--text);
+      margin-bottom: 12px;
+      line-height: 1.15;
+    }
+
+    .hero .subtitle {
       font-size: 1.1rem;
-      font-style: italic;
-      color: #c8a97e;
+      color: var(--text-muted);
+      max-width: 30ch;
+      margin-bottom: 16px;
+      line-height: 1.6;
+    }
+
+    .hero .challenge {
+      font-family: Futura, "Century Gothic", "Trebuchet MS", Arial, sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 8px;
     }
 
     /* ── CTA Button ── */
@@ -80,8 +102,8 @@
       display: inline-block;
       margin-top: 28px;
       padding: 14px 36px;
-      background: #c8a97e;
-      color: #faf7f2;
+      background: var(--text);
+      color: #ffffff;
       font-size: 0.85rem;
       font-weight: 600;
       letter-spacing: 1.5px;
@@ -92,7 +114,7 @@
     }
 
     .cta-btn:hover {
-      background: #b89768;
+      background: #333333;
       transform: translateY(-1px);
     }
 
@@ -102,8 +124,8 @@
       right: 24px;
       z-index: 1000;
       padding: 12px 28px;
-      background: #c8a97e;
-      color: #faf7f2;
+      background: var(--text);
+      color: #ffffff;
       font-size: 0.8rem;
       font-weight: 600;
       letter-spacing: 1.5px;
@@ -115,7 +137,7 @@
     }
 
     .cta-floating:hover {
-      background: #b89768;
+      background: #333333;
       transform: translateY(-2px);
     }
 
@@ -125,33 +147,75 @@
       top: 0;
       z-index: 900;
       display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 8px 28px;
-      padding: 14px 24px;
-      background: #faf7f2;
-      border-bottom: 1px solid #e8e0d4;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 24px;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
     }
 
-    .site-nav a {
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .nav-logo-circle {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #ffffff;
+      font-family: Futura, "Century Gothic", "Trebuchet MS", Arial, sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .nav-logo-name {
+      font-family: Futura, "Century Gothic", "Trebuchet MS", Arial, sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: var(--text);
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .nav-links a {
       font-size: 0.7rem;
       font-weight: 600;
       letter-spacing: 2px;
       text-transform: uppercase;
       text-decoration: none;
-      color: #7a6f63;
-      transition: color 0.15s;
+      color: var(--text);
+      padding-bottom: 4px;
+      border-bottom: 2px solid transparent;
+      transition: color 0.15s, border-color 0.15s;
     }
 
-    .site-nav a:hover,
-    .site-nav a.active {
-      color: #c8a97e;
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    .nav-links a.active {
+      color: var(--accent);
+      border-bottom: 2px solid var(--accent);
     }
 
     /* ── Sections ── */
     section {
       padding: 48px 0;
-      border-bottom: 1px solid #e8e0d4;
+      border-bottom: 1px solid var(--border);
       scroll-margin-top: 56px;
     }
 
@@ -175,31 +239,31 @@
       left: 50%;
       transform: translateX(-50%);
       font-size: 0.45rem;
-      color: #c8a97e;
-      background: #faf7f2;
+      color: var(--accent);
+      background: var(--bg);
       padding: 0 12px;
       line-height: 1;
     }
 
     h2 {
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 0.75rem;
-      font-weight: 400;
+      font-family: Futura, "Century Gothic", "Trebuchet MS", Arial, sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
       letter-spacing: 2.5px;
       text-transform: uppercase;
-      color: #c8a97e;
+      color: var(--accent);
       margin-bottom: 20px;
     }
 
     p {
-      color: #444;
+      color: var(--text-muted);
       max-width: 60ch;
     }
 
     /* ── Stoic Quote ── */
     .quote-block {
       padding: 48px 0;
-      border-bottom: 1px solid #e8e0d4;
+      border-bottom: 1px solid var(--border);
       text-align: center;
       scroll-margin-top: 56px;
     }
@@ -208,7 +272,7 @@
       font-family: Georgia, "Times New Roman", serif;
       font-size: 1.45rem;
       font-style: italic;
-      color: #c8a97e;
+      color: var(--accent);
       line-height: 1.6;
       max-width: 52ch;
       margin: 0 auto 16px;
@@ -218,7 +282,7 @@
       font-size: 0.8rem;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: #a89880;
+      color: var(--text-muted);
       font-style: normal;
     }
 
@@ -232,7 +296,7 @@
     }
 
     .client-list li {
-      color: #444;
+      color: var(--text-muted);
       padding-left: 20px;
       position: relative;
     }
@@ -241,7 +305,33 @@
       content: "—";
       position: absolute;
       left: 0;
-      color: #c8a97e;
+      color: var(--accent);
+    }
+
+    /* ── Stoicism Principles ── */
+    .stoic-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .stoic-list li {
+      color: var(--text-muted);
+      padding-left: 20px;
+      position: relative;
+    }
+
+    .stoic-list li::before {
+      content: "—";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+    }
+
+    .stoic-list li strong {
+      color: var(--text);
     }
 
     /* ── Contact ── */
@@ -252,36 +342,46 @@
     }
 
     .contact-links a {
-      color: #2c2c2c;
+      color: var(--text);
       text-decoration: none;
       font-size: 0.95rem;
-      border-bottom: 1px solid #c8a97e;
+      border-bottom: 1px solid var(--accent);
       padding-bottom: 1px;
       transition: color 0.15s, border-color 0.15s;
     }
 
     .contact-links a:hover {
-      color: #c8a97e;
+      color: var(--accent);
     }
 
     /* ── Responsive ── */
     @media (max-width: 520px) {
-      .hero h1 { font-size: 1.8rem; }
+      .hero { flex-direction: column; text-align: center; }
+      .hero-photo { flex: none; width: 100%; height: auto; max-height: 320px; order: -1; margin-bottom: 24px; }
+      .hero .tagline { font-size: 2rem; }
+      .hero .subtitle { max-width: none; }
       .quote-block blockquote { font-size: 1.2rem; }
       .cta-floating { padding: 10px 22px; font-size: 0.75rem; bottom: 16px; right: 16px; }
-      .site-nav { gap: 14px; padding: 10px 16px; }
-      .site-nav a { font-size: 0.6rem; letter-spacing: 1.5px; }
+      .site-nav { flex-wrap: wrap; gap: 8px; padding: 10px 16px; }
+      .nav-logo-name { display: none; }
+      .nav-links { gap: 14px; }
+      .nav-links a { font-size: 0.6rem; letter-spacing: 1.5px; }
     }
   </style>
 </head>
 <body>
   <!-- EDIT: Navigation links -->
   <nav class="site-nav">
-    <a href="index.html" class="active">Home</a>
-    <a href="services.html#services">Services</a>
-    <a href="services.html#process">Process</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
+    <a href="index.html" class="nav-logo">
+      <span class="nav-logo-circle">KW</span>
+      <span class="nav-logo-name">Kyle Whittle</span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html" class="active">Home</a>
+      <a href="services.html">What I Offer</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
   </nav>
   <!-- END EDIT -->
 
@@ -291,17 +391,85 @@
          HERO
     ═══════════════════════════════════════════ -->
     <header class="hero">
-      <div class="avatar">
+      <div class="hero-text">
+        <!-- EDIT: Hero headline, subtitle, and challenge -->
+        <p class="tagline">Built to Last.</p>
+        <p class="subtitle">No-BS Stoic coaching for men who are done settling.</p>
+        <p class="challenge">Done settling? Good. Let's go.</p>
+        <a href="contact.html" class="cta-btn">Book a Free Call</a>
+        <!-- END EDIT -->
+      </div>
+      <div class="hero-photo">
         <img src="HS-11.jpg" alt="Kyle Whittle">
       </div>
-
-      <h1><!-- EDIT: Your full name -->Kyle Whittle<!-- END EDIT --></h1>
-      <p class="title"><!-- EDIT: Your job title or tagline -->Life Coach &middot; Learning Experience Designer<!-- END EDIT --></p>
-      <p class="tagline"><!-- EDIT: Tagline -->"How does this stop you?"<!-- END EDIT --></p>
-      <!-- EDIT: CTA button text and link -->
-      <a href="contact.html" class="cta-btn">Book a Free Call</a>
-      <!-- END EDIT -->
     </header>
+
+    <!-- ═══════════════════════════════════════════
+         WHAT IS A LIFE COACH?
+    ═══════════════════════════════════════════ -->
+    <section id="what-is-coaching">
+      <h2>What Is a Life Coach?</h2>
+      <!-- EDIT: Coaching explanation -->
+      <p>
+        A life coach isn't a therapist. I'm not going to ask you about your childhood or
+        diagnose anything. I'm also not your mate who gives advice after three beers.
+      </p>
+      <p style="margin-top: 16px;">
+        A life coach is someone who asks the questions you've been avoiding, then holds you
+        accountable to your own answers. I help you see the patterns you're stuck in, figure
+        out what's actually in your control, and then do something about it. That's it. No
+        fluff, no affirmations taped to your mirror — just honest work.
+      </p>
+      <!-- END EDIT -->
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         WHO I WORK WITH
+    ═══════════════════════════════════════════ -->
+    <section id="who">
+      <h2>Who I Work With</h2>
+      <!-- EDIT: Describe your ideal client -->
+      <p style="margin-bottom: 20px;">
+        I coach men. Not because women don't need coaching — they absolutely do — but because
+        I've found that men, specifically, tend to avoid asking for help until the wheels are
+        already off. This isn't some hyper-masculine, chest-thumping thing. It's the opposite.
+        It's about being honest enough to admit something isn't working and doing the hard thing
+        of actually changing it.
+      </p>
+      <ul class="client-list">
+        <li>You're stuck and you can't quite figure out why</li>
+        <li>You keep running the same patterns and getting the same results</li>
+        <li>You want someone who'll be straight with you, not just tell you what you want to hear</li>
+        <li>You're done with motivational nonsense and ready for a real framework</li>
+        <li>You're going through a transition — career, relationship, identity — and need a sounding board that actually pushes back</li>
+      </ul>
+      <!-- END EDIT -->
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         WHAT IS STOICISM?
+    ═══════════════════════════════════════════ -->
+    <section id="stoicism">
+      <h2>What Is Stoicism?</h2>
+      <!-- EDIT: Stoicism explanation -->
+      <p>
+        Stoicism isn't about being emotionless or hard. It's a 2,000-year-old operating system
+        for figuring out what you can control and what you can't — then putting all your energy
+        into the stuff you can. That's it.
+      </p>
+      <p style="margin-top: 16px;">
+        A few core ideas that drive how I coach:
+      </p>
+      <ul class="stoic-list">
+        <li><strong>Control what's yours.</strong> You can't control what happens to you. You can control how you respond. Most of the stress in your life comes from forgetting which is which.</li>
+        <li><strong>Do the work today.</strong> Stoicism is a practice, not a philosophy you read about and nod at. Every session, every question I ask, is about what you're going to do — not what you wish would happen.</li>
+        <li><strong>Be honest with yourself.</strong> The Stoics were ruthless about self-honesty. Not in a beat-yourself-up way, but in a "stop telling yourself stories" way. That's where the real shifts happen.</li>
+      </ul>
+      <p style="margin-top: 16px;">
+        That's the framework I use. Every session, every question, comes back to this.
+      </p>
+      <!-- END EDIT -->
+    </section>
 
     <!-- ═══════════════════════════════════════════
          STOIC QUOTE
@@ -314,42 +482,6 @@
       <cite>Marcus Aurelius</cite>
     </div>
     <!-- END EDIT -->
-
-    <!-- ═══════════════════════════════════════════
-         ABOUT
-    ═══════════════════════════════════════════ -->
-    <section id="about">
-      <h2>About</h2>
-      <!-- EDIT: Write 2–4 sentences about yourself -->
-      <p>
-        I help people get out of their own way. As a life coach trained in Stoicism,
-        I work with clients to separate what they can control from what they can't —
-        and then act decisively on what remains. My background in Learning Experience
-        Design shapes how I coach: every conversation is structured to move you forward,
-        not just feel good.
-      </p>
-      <!-- END EDIT -->
-    </section>
-
-    <!-- ═══════════════════════════════════════════
-         WHO I WORK WITH
-    ═══════════════════════════════════════════ -->
-    <section id="who">
-      <h2>Who I Work With</h2>
-      <!-- EDIT: Describe your ideal client -->
-      <p style="margin-bottom: 20px;">
-        You're capable — but something keeps getting in the way. Maybe it's indecision,
-        avoidance, or a story you've been telling yourself for years. My clients tend to be
-        people who are done with excuses and ready for a framework that demands honest work.
-      </p>
-      <ul class="client-list">
-        <li>You feel stuck and can't clearly see why</li>
-        <li>You're tired of repeating the same patterns</li>
-        <li>You want a disciplined, honest approach — not empty motivation</li>
-        <li>You're willing to be challenged, not just validated</li>
-      </ul>
-      <!-- END EDIT -->
-    </section>
 
     <!-- ═══════════════════════════════════════════
          CONTACT

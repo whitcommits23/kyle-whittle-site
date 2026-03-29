@@ -32,7 +32,7 @@ open name-game/index.html
 
 ## index.html (personal website)
 
-- Palette: bg `#faf7f2`, text `#2c2c2c`, accent `#c8a97e`
+- Palette: bg `#ffffff`, text `#1a1a1a`, accent `#e85d26` (orange)
 - All user-editable content is wrapped in `<!-- EDIT: ... -->` / `<!-- END EDIT -->` HTML comments to make personalization easy
 - Max-width 680px centered layout
 
