@@ -354,6 +354,97 @@
       color: var(--accent);
     }
 
+    /* ── On-page journey (interactive, no JS) ── */
+    .page-journey {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px 12px;
+      padding: 20px 0 8px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .page-journey-label {
+      font-family: Futura, "Century Gothic", "Trebuchet MS", Arial, sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      width: 100%;
+      margin-bottom: 4px;
+    }
+
+    .page-journey a {
+      display: inline-block;
+      padding: 8px 14px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-decoration: none;
+      color: var(--text);
+      background: var(--bg-alt);
+      transition: border-color 0.15s, color 0.15s, background 0.15s;
+    }
+
+    .page-journey a:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: var(--bg);
+    }
+
+    /* ── FAQ accordion ── */
+    .faq-section h2 {
+      margin-bottom: 8px;
+    }
+
+    .faq-section .faq-lede {
+      color: var(--text-muted);
+      margin-bottom: 24px;
+      max-width: 42ch;
+    }
+
+    .faq-list details {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      margin-bottom: 10px;
+      padding: 0 18px;
+      background: var(--bg);
+    }
+
+    .faq-list summary {
+      cursor: pointer;
+      list-style: none;
+      padding: 16px 0;
+      font-weight: 600;
+      font-size: 0.95rem;
+      position: relative;
+    }
+
+    .faq-list summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq-list summary::after {
+      content: "+";
+      position: absolute;
+      right: 0;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .faq-list details[open] summary::after {
+      content: "−";
+    }
+
+    .faq-list details p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      padding-bottom: 16px;
+      line-height: 1.65;
+    }
+
     /* ── Responsive ── */
     @media (max-width: 520px) {
       .hero { flex-direction: column; text-align: center; }
@@ -394,7 +485,7 @@
       <div class="hero-text">
         <!-- EDIT: Hero headline, subtitle, and challenge -->
         <p class="tagline">Built to Last.</p>
-        <p class="subtitle">No-BS Stoic coaching for men who are done settling.</p>
+        <p class="subtitle">No BS Stoic Coaching for men who want to gain clarity and confidence.</p>
         <p class="challenge">Done settling? Good. Let's go.</p>
         <a href="contact.html" class="cta-btn">Book a Free Call</a>
         <!-- END EDIT -->
@@ -404,6 +495,18 @@
       </div>
     </header>
 
+    <!-- EDIT: On-page journey — quick jumps for visitors -->
+    <nav class="page-journey" aria-label="On this page">
+      <span class="page-journey-label">Start here</span>
+      <a href="#what-is-coaching">What coaching is</a>
+      <a href="#who">Who I work with</a>
+      <a href="#stoicism">The framework</a>
+      <a href="#faq">Common questions</a>
+      <a href="services.html">What I offer</a>
+      <a href="contact.html">Book a call</a>
+    </nav>
+    <!-- END EDIT -->
+
     <!-- ═══════════════════════════════════════════
          WHAT IS A LIFE COACH?
     ═══════════════════════════════════════════ -->
@@ -412,7 +515,7 @@
       <!-- EDIT: Coaching explanation -->
       <p>
         A life coach isn't a therapist. I'm not going to ask you about your childhood or
-        diagnose anything. I'm also not your mate who gives advice after three beers.
+        diagnose anything. I'm also not someone who gives advice after three beers. I don't even drink.
       </p>
       <p style="margin-top: 16px;">
         A life coach is someone who asks the questions you've been avoiding, then holds you
@@ -470,6 +573,46 @@
       </p>
       <!-- END EDIT -->
     </section>
+
+    <!-- ═══════════════════════════════════════════
+         FAQ (native <details> — interactive, no JS)
+    ═══════════════════════════════════════════ -->
+    <!-- EDIT: FAQ questions / answers -->
+    <section id="faq" class="faq-section">
+      <h2>Common Questions</h2>
+      <p class="faq-lede">Straight answers — tap a question to open it.</p>
+      <div class="faq-list">
+        <details>
+          <summary>Is this therapy?</summary>
+          <p>
+            No. Coaching is forward-looking and action-oriented. If you need clinical support,
+            that’s not me — and I’ll tell you if I think you should talk to a licensed professional.
+          </p>
+        </details>
+        <details>
+          <summary>What happens on the free call?</summary>
+          <p>
+            We’ll figure out what you’re actually trying to change, whether we’re a fit, and what
+            working together would look like. No pressure, no weird sales script.
+          </p>
+        </details>
+        <details>
+          <summary>How is this “Stoic” without being cold?</summary>
+          <p>
+            Stoicism here means clarity on what you control, honest self-assessment, and steady
+            follow-through — not pretending feelings don’t exist.
+          </p>
+        </details>
+        <details>
+          <summary>Do you work online?</summary>
+          <p>
+            Yes. Sessions are remote unless we arrange something different. What matters is showing
+            up ready to be honest and do the work.
+          </p>
+        </details>
+      </div>
+    </section>
+    <!-- END EDIT -->
 
     <!-- ═══════════════════════════════════════════
          STOIC QUOTE

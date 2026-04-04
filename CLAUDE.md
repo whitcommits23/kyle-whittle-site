@@ -9,8 +9,6 @@ This is a personal Desktop directory, not a software project. It contains a few 
 | File | Purpose |
 |---|---|
 | `index.html` | Personal website (single-page, pure HTML/CSS) |
-| `name-game/index.html` | Face-to-name guessing game (HTML/CSS/JS, uses localStorage) |
-| `tictactoe.html` | Tic Tac Toe game |
 
 ## Running
 
@@ -18,8 +16,6 @@ All files are zero-dependency, no-build HTML. Open directly in a browser:
 
 ```
 open index.html
-open tictactoe.html
-open name-game/index.html
 ```
 
 ## Conventions
@@ -35,10 +31,3 @@ open name-game/index.html
 - Palette: bg `#ffffff`, text `#1a1a1a`, accent `#e85d26` (orange)
 - All user-editable content is wrapped in `<!-- EDIT: ... -->` / `<!-- END EDIT -->` HTML comments to make personalization easy
 - Max-width 680px centered layout
-
-## name-game/index.html
-
-- Three screens managed by toggling `.active` class: `screen-setup`, `screen-game`, `screen-results`
-- Participant data (name + base64 photo) stored in `localStorage` key `namegame_participants`
-- Photos are read via `FileReader` → base64 data URLs; no server upload
-- Game picks up to 10 random rounds from the roster; 4 multiple-choice options per round
