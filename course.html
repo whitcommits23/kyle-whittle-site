@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free Stoicism Mini-Course | Kyle Whittle</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='16' fill='%23e85d26'/><text x='16' y='16' font-family='Georgia,serif' font-size='12' font-weight='400' fill='%23ffffff' text-anchor='middle' dominant-baseline='central' letter-spacing='1'>KW</text></svg>">
+  <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='16' fill='%23e85d26'/><text x='16' y='16' font-family='Georgia,serif' font-size='12' font-weight='400' fill='%23ffffff' text-anchor='middle' dominant-baseline='central' letter-spacing='1'>KW</text></svg>">
+  <style>
+    :root {
+      --bg: #ffffff;
+      --bg-alt: #f5f5f5;
+      --text: #1a1a1a;
+      --text-muted: #666666;
+      --accent: #e85d26;
+      --accent-hover: #cf4f1e;
+      --border: #e0e0e0;
+    }
+
+    html { scroll-behavior: smooth; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    main {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 60px 24px 80px;
+    }
+
+    /* ── Scroll Progress Bar ── */
+    #progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 3px;
+      background: var(--accent);
+      z-index: 1100;
+      transition: width 0.1s linear;
+    }
+
+    /* ── Navigation ── */
+    .site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 900;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 24px;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .nav-logo-circle {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #ffffff;
+      font-family: Futura, "Century Gothic", "Trebuchet MS", Arial, sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .nav-logo-name {
+      font-family: Futura, "Century Gothic", "Trebuchet MS", Arial, sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: var(--text);
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .nav-links a {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--text);
+      padding-bottom: 4px;
+      border-bottom: 2px solid transparent;
+      transition: color 0.15s, border-color 0.15s;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    .nav-links a.active {
+      color: var(--accent);
+      border-bottom: 2px solid var(--accent);
+    }
+
+    /* ── Hero ── */
+    .hero {
+      padding-bottom: 48px;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+    }
+
+    .hero-eyebrow {
+      font-family: Futura, "Century Gothic", "Trebuchet MS", Arial, sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    .hero .tagline {
+      font-family: Futura, "Century Gothic", "Trebuchet MS", Arial, sans-serif;
+      font-size: 2.6rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+
+    .hero .subtitle {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      max-width: 48ch;
+      line-height: 1.6;
+      margin-bottom: 0;
+    }
+
+    .hero::after {
+      content: "◆";
+      position: absolute;
+      bottom: -0.35em;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.45rem;
+      color: var(--accent);
+      background: var(--bg);
+      padding: 0 12px;
+      line-height: 1;
+    }
+
+    /* ── Lesson Nav ── */
+    .lesson-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding: 32px 0 8px;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+    }
+
+    .lesson-nav-label {
+      font-family: Futura, "Century Gothic", "Trebuchet MS", Arial, sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      width: 100%;
+      margin-bottom: 4px;
+    }
+
+    .lesson-nav a {
+      display: inline-block;
+      padding: 8px 14px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-decoration: none;
+      color: var(--text);
+      background: var(--bg-alt);
+      transition: border-color 0.15s, color 0.15s, background 0.15s;
+    }
+
+    .lesson-nav a:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: var(--bg);
+    }
+
+    .lesson-nav::after {
+      content: "◆";
+      position: absolute;
+      bottom: -0.35em;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.45rem;
+      color: var(--accent);
+      background: var(--bg);
+      padding: 0 12px;
+      line-height: 1;
+    }
+
+    /* ── Lesson Sections ── */
+    .lesson {
+      padding: 52px 0 48px;
+      border-bottom: 1px solid var(--border);
+      scroll-margin-top: 60px;
+      position: relative;
+    }
+
+    .lesson:not(:last-of-type)::after {
+      content: "◆";
+      position: absolute;
+      bottom: -0.35em;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.45rem;
+      color: var(--accent);
+      background: var(--bg);
+      padding: 0 12px;
+      line-height: 1;
+    }
+
+    .lesson-header {
+      margin-bottom: 24px;
+    }
+
+    .lesson-number {
+      display: block;
+      font-family: Futura, "Century Gothic", "Trebuchet MS", Arial, sans-serif;
+      font-size: 3.5rem;
+      font-weight: 700;
+      color: var(--accent);
+      opacity: 0.18;
+      line-height: 1;
+      margin-bottom: -8px;
+      letter-spacing: -2px;
+    }
+
+    .lesson-title {
+      font-family: Futura, "Century Gothic", "Trebuchet MS", Arial, sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: none;
+      color: var(--text);
+      line-height: 1.25;
+    }
+
+    .lesson p {
+      color: var(--text-muted);
+      max-width: 60ch;
+      margin-top: 16px;
+    }
+
+    .lesson p:first-of-type {
+      margin-top: 0;
+    }
+
+    /* ── Inline Lesson Quote ── */
+    .lesson-quote {
+      border-left: 3px solid var(--accent);
+      padding: 12px 0 12px 20px;
+      margin: 28px 0;
+    }
+
+    .lesson-quote p {
+      font-family: Georgia, "Times New Roman", serif;
+      font-style: italic;
+      font-size: 1.05rem;
+      color: var(--text);
+      max-width: 52ch;
+      line-height: 1.65;
+      margin-top: 0;
+    }
+
+    .lesson-quote cite {
+      display: block;
+      margin-top: 8px;
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      font-style: normal;
+    }
+
+    /* ── Try This Today Prompt ── */
+    .lesson-prompt {
+      background: var(--bg-alt);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 8px 8px 0;
+      padding: 20px 24px;
+      margin-top: 28px;
+    }
+
+    .prompt-label {
+      font-family: Futura, "Century Gothic", "Trebuchet MS", Arial, sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 8px;
+      margin-top: 0;
+    }
+
+    .lesson-prompt p {
+      color: var(--text);
+      font-size: 0.95rem;
+      line-height: 1.65;
+      max-width: 54ch;
+      margin-top: 0;
+    }
+
+    /* ── CTA Section ── */
+    .cta-section {
+      padding: 56px 0 0;
+      text-align: center;
+    }
+
+    .cta-section h2 {
+      font-family: Futura, "Century Gothic", "Trebuchet MS", Arial, sans-serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: none;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+
+    .cta-section p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      max-width: 44ch;
+      margin: 0 auto 32px;
+      line-height: 1.6;
+    }
+
+    /* ── CTA Button ── */
+    .cta-btn {
+      display: inline-block;
+      padding: 14px 36px;
+      background: var(--text);
+      color: #ffffff;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 40px;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .cta-btn:hover {
+      background: #333333;
+      transform: translateY(-1px);
+    }
+
+    /* ── Floating CTA ── */
+    .cta-floating {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 1000;
+      padding: 12px 28px;
+      background: var(--text);
+      color: #ffffff;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 40px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .cta-floating:hover {
+      background: #333333;
+      transform: translateY(-2px);
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 520px) {
+      .hero .tagline { font-size: 1.9rem; }
+      .lesson-number { font-size: 2.5rem; }
+      .lesson-title { font-size: 1.25rem; }
+      .lesson-nav a { font-size: 0.75rem; padding: 6px 12px; }
+      .cta-section h2 { font-size: 1.4rem; }
+      .cta-floating { padding: 10px 22px; font-size: 0.75rem; bottom: 16px; right: 16px; }
+      .site-nav { flex-wrap: wrap; gap: 8px; padding: 10px 16px; }
+      .nav-logo-name { display: none; }
+      .nav-links { gap: 14px; }
+      .nav-links a { font-size: 0.6rem; letter-spacing: 1.5px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Scroll progress bar -->
+  <div id="progress-bar"></div>
+
+  <!-- Navigation -->
+  <nav class="site-nav">
+    <a href="index.html" class="nav-logo">
+      <span class="nav-logo-circle">KW</span>
+      <span class="nav-logo-name">Kyle Whittle</span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="services.html">What I Offer</a>
+      <a href="about.html">About</a>
+      <a href="course.html" class="active">Free Course</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- ═══════════════════════════════════════════
+         HERO
+    ═══════════════════════════════════════════ -->
+    <header class="hero">
+      <!-- EDIT: Hero headline and subtitle -->
+      <p class="hero-eyebrow">Free 5-Part Mini-Course</p>
+      <p class="tagline">Stoicism for People Who Don't Read Philosophy.</p>
+      <p class="subtitle">Five lessons. Practical tools you can use today. No prior knowledge needed, just a willingness to look honestly at your life.</p>
+      <!-- END EDIT -->
+    </header>
+
+    <!-- Lesson nav -->
+    <nav class="lesson-nav" aria-label="Lessons">
+      <span class="lesson-nav-label">Jump to a lesson</span>
+      <a href="#lesson-1">01 Cheat Code</a>
+      <a href="#lesson-2">02 Control</a>
+      <a href="#lesson-3">03 Reality</a>
+      <a href="#lesson-4">04 Your Mind</a>
+      <a href="#lesson-5">05 Daily Practice</a>
+    </nav>
+
+    <!-- ═══════════════════════════════════════════
+         LESSON 1
+    ═══════════════════════════════════════════ -->
+    <!-- EDIT: Lesson 1 content -->
+    <section class="lesson" id="lesson-1">
+      <div class="lesson-header">
+        <span class="lesson-number">01</span>
+        <h2 class="lesson-title">The 2,000-Year-Old Cheat Code</h2>
+      </div>
+
+      <p>
+        Most people think Stoicism is about suppressing your feelings and pretending nothing bothers
+        you. That's not it. The Stoics, Marcus Aurelius, Seneca, Epictetus, were not emotionless
+        robots. Marcus Aurelius ran an empire while grieving his children. Epictetus was a former slave.
+        Seneca watched his wealth and status get ripped away. These were people under enormous pressure,
+        and they developed a framework for not losing their minds because of it.
+      </p>
+      <p>
+        Stoicism is a practical operating system for your life. It doesn't ask you to believe anything
+        supernatural or join anything. It asks you to think clearly, act well, and focus on what's
+        actually in your hands. That's it. Two thousand years later, it still works because human
+        nature hasn't changed. We're still stressed about things we can't control. We're still telling
+        ourselves stories that make us miserable. We're still waiting for the right circumstances
+        before we show up the way we want to. Stoicism is the antidote.
+      </p>
+
+      <div class="lesson-quote">
+        <p>"Waste no more time arguing about what a good man should be. Be one."</p>
+        <cite>Marcus Aurelius</cite>
+      </div>
+
+      <div class="lesson-prompt">
+        <p class="prompt-label">Try This Today</p>
+        <p>
+          Think of one thing you've been overthinking or worrying about. Write it down, or just
+          hold it in your head. Ask yourself: <em>Is there anything I can actually do about this
+          right now?</em> If yes, do it. If no, you just found something that doesn't deserve
+          your energy.
+        </p>
+      </div>
+    </section>
+    <!-- END EDIT -->
+
+    <!-- ═══════════════════════════════════════════
+         LESSON 2
+    ═══════════════════════════════════════════ -->
+    <!-- EDIT: Lesson 2 content -->
+    <section class="lesson" id="lesson-2">
+      <div class="lesson-header">
+        <span class="lesson-number">02</span>
+        <h2 class="lesson-title">The One Question That Changes Everything</h2>
+      </div>
+
+      <p>
+        The foundational concept in Stoicism is the dichotomy of control, and once you actually
+        internalize it, it changes how you move through the world. Here's the whole thing: some
+        things are in your control, and some things aren't. That's it. The Stoics were almost
+        annoying about this because they knew how easy it is to forget.
+      </p>
+      <p>
+        What's in your control? Your actions. Your choices. How you respond. What you decide to
+        focus on. That's the full list. Everything else, outcomes, other people's behavior,
+        what happened yesterday, what someone thinks of you, not yours. The problem is that
+        most of us spend 80% of our mental energy on the second column. We replay conversations,
+        stress about results we can't guarantee, and try to manage how we're perceived. It's
+        exhausting. And it doesn't work.
+      </p>
+      <p>
+        The question to ask yourself constantly: <em>Is this mine to control?</em> Not "can I
+        influence this", but <em>is it actually mine?</em> When the answer is no, you've just
+        identified something you can let go of.
+      </p>
+
+      <div class="lesson-quote">
+        <p>"Make the best use of what is in your power, and take the rest as it happens."</p>
+        <cite>Epictetus</cite>
+      </div>
+
+      <div class="lesson-prompt">
+        <p class="prompt-label">Try This Today</p>
+        <p>
+          Write down your top three current stressors. Next to each one, write either
+          <em>Mine</em> or <em>Not mine</em>. For everything in the "Not mine" column,
+          notice how much energy you've been giving it. You don't have to fix that right
+          now. Just notice.
+        </p>
+      </div>
+    </section>
+    <!-- END EDIT -->
+
+    <!-- ═══════════════════════════════════════════
+         LESSON 3
+    ═══════════════════════════════════════════ -->
+    <!-- EDIT: Lesson 3 content -->
+    <section class="lesson" id="lesson-3">
+      <div class="lesson-header">
+        <span class="lesson-number">03</span>
+        <h2 class="lesson-title">Stop Fighting Reality</h2>
+      </div>
+
+      <p>
+        There's a concept in Stoicism called <em>amor fati</em>, love of fate. It sounds like
+        resigned acceptance, like you're just supposed to roll over and be fine with everything.
+        That's not it. What it actually means is this: stop wasting energy fighting what has
+        already happened. Accept reality as it is, and then act from there.
+      </p>
+      <p>
+        The distinction matters. Acceptance doesn't mean approval. It means you stop arguing
+        with the present moment so you can actually do something about it. Most people lose
+        enormous amounts of time and energy fighting what is, wishing circumstances were
+        different, replaying decisions they can't undo, resenting outcomes they didn't choose.
+        Meanwhile, the only place you have any real power is right now, working with what's
+        actually in front of you.
+      </p>
+      <p>
+        Marcus Aurelius put it plainly: the obstacle in front of you isn't blocking the path.
+        It <em>is</em> the path. The thing you're resisting is often exactly where the growth is.
+      </p>
+
+      <div class="lesson-quote">
+        <p>"The impediment to action advances action. What stands in the way becomes the way."</p>
+        <cite>Marcus Aurelius</cite>
+      </div>
+
+      <div class="lesson-prompt">
+        <p class="prompt-label">Try This Today</p>
+        <p>
+          Name one situation in your life you've been resisting, a relationship, a circumstance,
+          a consequence of a past decision. Ask yourself: <em>What would I do differently if I
+          fully accepted this and just worked with it?</em> You don't have to like it. You just
+          have to stop fighting it.
+        </p>
+      </div>
+    </section>
+    <!-- END EDIT -->
+
+    <!-- ═══════════════════════════════════════════
+         LESSON 4
+    ═══════════════════════════════════════════ -->
+    <!-- EDIT: Lesson 4 content -->
+    <section class="lesson" id="lesson-4">
+      <div class="lesson-header">
+        <span class="lesson-number">04</span>
+        <h2 class="lesson-title">Your Mind Is the Problem (And the Fix)</h2>
+      </div>
+
+      <p>
+        Epictetus said it two thousand years ago: "Men are disturbed not by things, but by their
+        opinions about things." Read that again. The event itself isn't what's causing you pain.
+        It's the story you're telling yourself about the event. This isn't toxic positivity or
+        some "just think happy thoughts" nonsense. It's a precise observation about where suffering
+        actually comes from.
+      </p>
+      <p>
+        Something happens. Your brain immediately layers a judgment on top of it, this is bad,
+        this is unfair, this means something about me, this is going to lead to disaster. That
+        judgment feels automatic. It feels like reality. But it's not. It's an interpretation.
+        And interpretations can be examined.
+      </p>
+      <p>
+        The Stoics called this the art of examining your impressions, pausing before you accept
+        a thought as true and asking whether it actually holds up. Not every uncomfortable thought
+        is accurate. Most of the stories we tell ourselves under stress are distorted. Your power
+        is in noticing the story before you become it.
+      </p>
+
+      <div class="lesson-quote">
+        <p>"It is not things that disturb us, but our judgments about things."</p>
+        <cite>Epictetus</cite>
+      </div>
+
+      <div class="lesson-prompt">
+        <p class="prompt-label">Try This Today</p>
+        <p>
+          The next time you feel frustrated, anxious, or stuck, pause before you react. Ask
+          yourself: <em>What story am I telling myself about this?</em> Then ask: <em>Is that
+          story actually true?</em> You don't have to fix anything right now. Just get in the
+          habit of catching the story before it runs you.
+        </p>
+      </div>
+    </section>
+    <!-- END EDIT -->
+
+    <!-- ═══════════════════════════════════════════
+         LESSON 5
+    ═══════════════════════════════════════════ -->
+    <!-- EDIT: Lesson 5 content -->
+    <section class="lesson" id="lesson-5">
+      <div class="lesson-header">
+        <span class="lesson-number">05</span>
+        <h2 class="lesson-title">The Daily Practice</h2>
+      </div>
+
+      <p>
+        Here's the thing about everything you've read in this course: it means nothing if you
+        only think about it. Stoicism isn't a philosophy you understand, it's a practice you
+        do. Every single day. The Stoics were rigorous about this. Marcus Aurelius wrote his
+        journal not because he'd figured everything out, but because he was constantly working
+        to hold onto these ideas under pressure.
+      </p>
+      <p>
+        The practice is simple. Morning: before you open your phone or dive into the day, take
+        two minutes. Ask yourself: <em>What kind of person do I want to be today?</em> Not what
+        you want to accomplish, who do you want to be. That's your intention. Evening: sit
+        quietly for two minutes before bed. Ask: <em>What did I do well today?</em> Then: <em>What
+        would I do differently?</em> Not to beat yourself up, to get honest and get better.
+      </p>
+      <p>
+        That's it. Two minutes in the morning. Two minutes at night. Do it for a week. You will
+        notice things about yourself you've been walking past for years.
+      </p>
+
+      <div class="lesson-quote">
+        <p>"Confine yourself to the present."</p>
+        <cite>Marcus Aurelius</cite>
+      </div>
+
+      <div class="lesson-prompt">
+        <p class="prompt-label">Try This Today</p>
+        <p>
+          Do the evening review tonight. No journal required, just sit somewhere quiet for two
+          minutes. Ask yourself: <em>What did I do well today?</em> Then: <em>What would I
+          change?</em> Answer honestly, without judgment. That's the whole thing. Start there.
+        </p>
+      </div>
+    </section>
+    <!-- END EDIT -->
+
+    <!-- ═══════════════════════════════════════════
+         FINAL CTA
+    ═══════════════════════════════════════════ -->
+    <!-- EDIT: Closing CTA -->
+    <section class="cta-section">
+      <h2>Ready to Go Deeper?</h2>
+      <p>
+        This is a taste. Real change happens in conversation, when someone who knows the
+        framework holds you accountable to it. That's what I do.
+      </p>
+      <a href="contact.html" class="cta-btn">Book a Free Call</a>
+    </section>
+    <!-- END EDIT -->
+
+  </main>
+
+  <!-- Floating CTA -->
+  <a href="contact.html" class="cta-floating">Book a Free Call</a>
+
+  <script>
+    // Scroll progress bar
+    const bar = document.getElementById('progress-bar');
+    function updateProgress() {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      bar.style.width = pct + '%';
+    }
+    window.addEventListener('scroll', updateProgress, { passive: true });
+  </script>
+
+</body>
+</html>
