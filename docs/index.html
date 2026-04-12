@@ -4,8 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- EDIT: Page title shown in browser tab -->
-  <title>Kyle Whittle</title>
+  <title>Kyle Whittle — Life Coach for Men | Clarity, Confidence & Connection</title>
   <!-- END EDIT -->
+  <meta name="description" content="Kyle Whittle is a Stoic-inspired life coach for men. If you're stuck, disconnected, or ready to stop running the same patterns, let's talk. Book a free call.">
   <!-- Favicon: KW monogram -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='16' fill='%23e85d26'/><text x='16' y='16' font-family='Georgia,serif' font-size='12' font-weight='400' fill='%23ffffff' text-anchor='middle' dominant-baseline='central' letter-spacing='1'>KW</text></svg>">
   <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='16' fill='%23e85d26'/><text x='16' y='16' font-family='Georgia,serif' font-size='12' font-weight='400' fill='%23ffffff' text-anchor='middle' dominant-baseline='central' letter-spacing='1'>KW</text></svg>">
@@ -394,6 +395,45 @@
       background: var(--bg);
     }
 
+    /* ── Course Promo ── */
+    .course-promo {
+      background: var(--bg-alt);
+      border-radius: 16px;
+      padding: 36px 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin: 0;
+    }
+
+    .course-promo-label {
+      font-family: Futura, "Century Gothic", "Trebuchet MS", Arial, sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .course-promo h3 {
+      font-family: Futura, "Century Gothic", "Trebuchet MS", Arial, sans-serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.3;
+    }
+
+    .course-promo p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      max-width: 52ch;
+    }
+
+    .course-promo .cta-btn {
+      align-self: flex-start;
+      margin-top: 8px;
+    }
+
     /* ── FAQ accordion ── */
     .faq-section h2 {
       margin-bottom: 8px;
@@ -487,7 +527,7 @@
       <div class="hero-text">
         <!-- EDIT: Hero headline, subtitle, and challenge -->
         <p class="tagline">Built to Last.</p>
-        <p class="subtitle">No BS Stoic Coaching for men who want to gain clarity and confidence.</p>
+        <p class="subtitle">No BS coaching for men who want clarity, confidence, and real connection.</p>
         <p class="challenge">Done settling? Good. Let's go.</p>
         <a href="contact.html" class="cta-btn">Book a Free Call</a>
         <!-- END EDIT -->
@@ -535,6 +575,12 @@
       <h2>Who I Work With</h2>
       <!-- EDIT: Describe your ideal client -->
       <p style="margin-bottom: 20px;">
+        Men are lonelier than they've ever been — and most of them don't know how to say it, or
+        even recognize it. They're busy, connected on paper, and quietly disconnected in practice.
+        That's not a character flaw. It's what happens when you've spent years optimizing for
+        output and never learned how to ask for what you actually need.
+      </p>
+      <p style="margin-bottom: 20px;">
         I coach men. Not because women don't need coaching — they absolutely do — but because
         I've found that men, specifically, tend to avoid asking for help until the wheels are
         already off. This isn't some hyper-masculine, chest-thumping thing. It's the opposite.
@@ -544,6 +590,8 @@
       <ul class="client-list">
         <li>You're stuck and you can't quite figure out why</li>
         <li>You keep running the same patterns and getting the same results</li>
+        <li>You feel disconnected — from people around you, from what you're building, from yourself</li>
+        <li>You want to stop shrinking in conversations that matter and start asking for what you actually need</li>
         <li>You want someone who'll be straight with you, not just tell you what you want to hear</li>
         <li>You're done with motivational nonsense and ready for a real framework</li>
         <li>You're going through a transition — career, relationship, identity — and need a sounding board that actually pushes back</li>
@@ -574,6 +622,22 @@
         That's the framework I use. Every session, every question, comes back to this.
       </p>
       <!-- END EDIT -->
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         FREE COURSE PROMO
+    ═══════════════════════════════════════════ -->
+    <section id="free-course">
+      <div class="course-promo">
+        <span class="course-promo-label">Free — No Sign-up Required</span>
+        <h3>Not ready to book a call? Start here.</h3>
+        <p>
+          The Stoicism mini-course is 5 short lessons that give you the core framework —
+          practical tools you can use today, no prior knowledge needed. It's the clearest
+          way to see how I think and whether this approach is for you.
+        </p>
+        <a href="course.html" class="cta-btn">Start the Free Course</a>
+      </div>
     </section>
 
     <!-- ═══════════════════════════════════════════
