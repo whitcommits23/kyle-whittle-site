@@ -16,6 +16,12 @@
       --accent: #e85d26;
       --accent-hover: #cf4f1e;
       --border: #e0e0e0;
+      --bg-dark:            #0d0d0d;
+      --bg-warm:            #f5f0e8;
+      --text-on-dark:       #e8e0d4;
+      --text-muted-on-dark: #a09080;
+      --border-dark:        rgba(255, 255, 255, 0.10);
+      --accent-light:       #f07040;
     }
 
     html { scroll-behavior: smooth; }
@@ -29,12 +35,6 @@
       line-height: 1.7;
     }
 
-    main {
-      max-width: 680px;
-      margin: 0 auto;
-      padding: 60px 24px 80px;
-    }
-
     /* ── Navigation ── */
     .site-nav {
       position: sticky;
@@ -44,8 +44,15 @@
       justify-content: space-between;
       align-items: center;
       padding: 10px 24px;
-      background: var(--bg);
-      border-bottom: 1px solid var(--border);
+      background: transparent;
+      border-bottom: 1px solid transparent;
+      transition: background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+    }
+
+    .site-nav.nav-scrolled {
+      background: var(--bg-dark);
+      border-bottom-color: var(--border-dark);
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);
     }
 
     .nav-logo {
@@ -75,7 +82,7 @@
       font-size: 0.8rem;
       font-weight: 700;
       letter-spacing: 1px;
-      color: var(--text);
+      color: #ffffff;
       text-transform: uppercase;
     }
 
@@ -91,41 +98,42 @@
       letter-spacing: 2px;
       text-transform: uppercase;
       text-decoration: none;
-      color: var(--text);
+      color: #ffffff;
       padding-bottom: 4px;
       border-bottom: 2px solid transparent;
       transition: color 0.15s, border-color 0.15s;
     }
 
     .nav-links a:hover {
-      color: var(--accent);
+      color: var(--accent-light);
     }
 
     /* ── Hero ── */
     .hero {
+      background: var(--bg-dark);
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: center;
       text-align: center;
-      padding-bottom: 56px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .hero::after {
-      content: "\25C6";
-      position: absolute;
-      bottom: -0.35em;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 0.45rem;
-      color: var(--accent);
-      background: var(--bg);
-      padding: 0 12px;
-      line-height: 1;
-    }
-
-    .hero {
+      padding: clamp(80px, 16vw, 180px) 24px;
       position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "\2713";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: Futura, "Century Gothic", "Trebuchet MS", Arial, sans-serif;
+      font-size: clamp(280px, 45vw, 560px);
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.025);
+      line-height: 1;
+      pointer-events: none;
+      user-select: none;
     }
 
     .checkmark {
@@ -136,7 +144,9 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 28px;
+      margin-bottom: 32px;
+      position: relative;
+      z-index: 1;
     }
 
     .checkmark svg {
@@ -144,25 +154,61 @@
       height: 32px;
     }
 
+    .hero-eyebrow {
+      font-family: Futura, "Century Gothic", "Trebuchet MS", Arial, sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--accent-light);
+      margin-bottom: 16px;
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .hero-eyebrow::before,
+    .hero-eyebrow::after {
+      content: "";
+      display: inline-block;
+      width: 32px;
+      height: 1px;
+      background: var(--accent-light);
+      flex-shrink: 0;
+    }
+
     .tagline {
       font-family: Futura, "Century Gothic", "Trebuchet MS", Arial, sans-serif;
-      font-size: 2.2rem;
+      font-size: clamp(2.4rem, 5vw, 4rem);
       font-weight: 700;
-      letter-spacing: 0.5px;
-      color: var(--text);
-      margin-bottom: 12px;
-      line-height: 1.2;
+      letter-spacing: -0.02em;
+      color: #ffffff;
+      margin-bottom: 16px;
+      line-height: 1.1;
+      position: relative;
+      z-index: 1;
     }
 
     .subtitle {
-      font-size: 1rem;
-      color: var(--text-muted);
+      font-size: clamp(1rem, 1.8vw, 1.1rem);
+      color: var(--text-on-dark);
       max-width: 44ch;
+      line-height: 1.65;
+      position: relative;
+      z-index: 1;
     }
 
-    /* ── Section ── */
+    /* ── Content Section ── */
+    main {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
     section {
-      padding: 48px 0;
+      padding: 64px 0 80px;
       text-align: center;
     }
 
@@ -176,7 +222,7 @@
       display: inline-block;
       margin-top: 32px;
       padding: 14px 36px;
-      background: var(--text);
+      background: var(--accent);
       color: #ffffff;
       font-size: 0.85rem;
       font-weight: 600;
@@ -188,13 +234,29 @@
     }
 
     .cta-link:hover {
-      background: #333333;
+      background: var(--accent-hover);
       transform: translateY(-1px);
+    }
+
+    /* ── Fade-up scroll animation ── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-up.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .fade-up { opacity: 1; transform: none; transition: none; }
     }
 
     /* ── Responsive ── */
     @media (max-width: 520px) {
-      .tagline { font-size: 1.8rem; }
+      .tagline { font-size: 2rem; }
       .site-nav { flex-wrap: wrap; gap: 8px; padding: 10px 16px; }
       .nav-logo-name { display: none; }
       .nav-links { gap: 14px; }
@@ -217,23 +279,51 @@
     </div>
   </nav>
 
+  <header class="hero" id="hero">
+    <div class="checkmark">
+      <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polyline points="6,17 13,24 26,9" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <p class="hero-eyebrow">You're all set</p>
+    <p class="tagline">Message received.</p>
+    <p class="subtitle">I'll be in touch soon. In the meantime, take a breath — you already did the hard part.</p>
+  </header>
+
   <main>
-
-    <header class="hero">
-      <div class="checkmark">
-        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <polyline points="6,17 13,24 26,9" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </div>
-      <p class="tagline">Message received.</p>
-      <p class="subtitle">I'll be in touch soon. In the meantime, take a breath — you already did the hard part.</p>
-    </header>
-
-    <section>
+    <section class="fade-up">
       <p>While you wait, feel free to explore the free Stoicism mini-course or read more about how I work.</p>
       <a href="index.html" class="cta-link">Back to Home</a>
     </section>
-
   </main>
+
+  <script>
+    (function () {
+      var nav = document.querySelector('.site-nav');
+      var hero = document.getElementById('hero');
+      if (!nav || !hero) return;
+      var obs = new IntersectionObserver(function (entries) {
+        nav.classList.toggle('nav-scrolled', !entries[0].isIntersecting);
+      }, { threshold: 0, rootMargin: '-60px 0px 0px 0px' });
+      obs.observe(hero);
+    }());
+  </script>
+
+  <script>
+    (function () {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      var targets = document.querySelectorAll('.fade-up');
+      if (!targets.length) return;
+      var obs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+      targets.forEach(function (el) { obs.observe(el); });
+    }());
+  </script>
 </body>
 </html>

@@ -16,8 +16,12 @@
       --accent: #e85d26;
       --accent-hover: #cf4f1e;
       --border: #e0e0e0;
-      --values-bg: #111111;
-      --values-text: #ffffff;
+      --bg-dark:            #0d0d0d;
+      --bg-warm:            #f5f0e8;
+      --text-on-dark:       #e8e0d4;
+      --text-muted-on-dark: #a09080;
+      --border-dark:        rgba(255, 255, 255, 0.10);
+      --accent-light:       #f07040;
     }
 
     html { scroll-behavior: smooth; }
@@ -31,6 +35,15 @@
       line-height: 1.7;
     }
 
+    /* ── Centered content column ── */
+    .content-col {
+      max-width: 680px;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 24px;
+      padding-right: 24px;
+    }
+
     /* ── Navigation ── */
     .site-nav {
       position: sticky;
@@ -40,8 +53,15 @@
       justify-content: space-between;
       align-items: center;
       padding: 10px 24px;
-      background: var(--bg);
-      border-bottom: 1px solid var(--border);
+      background: transparent;
+      border-bottom: 1px solid transparent;
+      transition: background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+    }
+
+    .site-nav.nav-scrolled {
+      background: var(--bg-dark);
+      border-bottom-color: var(--border-dark);
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);
     }
 
     .nav-logo {
@@ -71,7 +91,7 @@
       font-size: 0.8rem;
       font-weight: 700;
       letter-spacing: 1px;
-      color: var(--text);
+      color: #ffffff;
       text-transform: uppercase;
     }
 
@@ -87,58 +107,108 @@
       letter-spacing: 2px;
       text-transform: uppercase;
       text-decoration: none;
-      color: var(--text);
+      color: #ffffff;
       padding-bottom: 4px;
       border-bottom: 2px solid transparent;
       transition: color 0.15s, border-color 0.15s;
     }
 
     .nav-links a:hover {
-      color: var(--accent);
+      color: var(--accent-light);
     }
 
     .nav-links a.active {
-      color: var(--accent);
-      border-bottom: 2px solid var(--accent);
+      color: var(--accent-light);
+      border-bottom: 2px solid var(--accent-light);
     }
-
-    /* ── Container (narrow content) ── */
-    .container {
-      max-width: 680px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-
-    .page-top { padding-top: 60px; }
-    .page-bottom { padding-bottom: 80px; }
 
     /* ── Hero ── */
     .hero {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      gap: 40px;
-      padding-bottom: 56px;
-      border-bottom: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 100svh;
+      overflow: hidden;
+      background: var(--bg-dark);
       position: relative;
     }
 
-    .hero-text {
-      flex: 1;
-      min-width: 0;
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: clamp(40px, 8vw, 100px) clamp(32px, 6vw, 80px);
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-content::before {
+      content: "K";
+      position: absolute;
+      top: -0.05em;
+      left: -0.1em;
+      font-family: Futura, "Century Gothic", "Trebuchet MS", Arial, sans-serif;
+      font-size: clamp(200px, 30vw, 380px);
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.03);
+      line-height: 1;
+      pointer-events: none;
+      user-select: none;
+      z-index: 0;
+    }
+
+    .hero-eyebrow {
+      font-family: Futura, "Century Gothic", "Trebuchet MS", Arial, sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--accent-light);
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .hero-eyebrow::before {
+      content: "";
+      display: inline-block;
+      width: 32px;
+      height: 1px;
+      background: var(--accent-light);
+      flex-shrink: 0;
+    }
+
+    .hero-tagline {
+      font-family: Futura, "Century Gothic", "Trebuchet MS", Arial, sans-serif;
+      font-size: clamp(3.5rem, 7vw, 6rem);
+      font-weight: 700;
+      line-height: 1.0;
+      color: #ffffff;
+      letter-spacing: -0.02em;
+      margin-bottom: 28px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-tagline .accent {
+      color: var(--accent-light);
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1rem, 1.8vw, 1.15rem);
+      color: var(--text-on-dark);
+      line-height: 1.65;
+      max-width: 36ch;
+      margin-bottom: 36px;
+      position: relative;
+      z-index: 1;
     }
 
     .hero-photo {
-      flex: 0 0 280px;
-      width: 280px;
-      height: 360px;
-      border-radius: 12px;
+      position: relative;
       overflow: hidden;
-      background: var(--bg-alt);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      order: 2;
     }
 
     .hero-photo img {
@@ -149,58 +219,85 @@
       display: block;
     }
 
-    .hero-photo .placeholder {
-      color: var(--text-muted);
+    .hero-photo::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, var(--bg-dark) 0%, transparent 25%);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    /* ── CTA Buttons ── */
+    .cta-btn {
+      display: inline-block;
+      padding: 16px 40px;
+      background: var(--accent);
+      color: #ffffff;
       font-size: 0.8rem;
-      letter-spacing: 1px;
+      font-weight: 600;
+      letter-spacing: 2px;
       text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 0;
+      position: relative;
+      z-index: 1;
+      align-self: flex-start;
+      transition: background 0.2s, box-shadow 0.2s;
     }
 
-    .hero .tagline {
-      font-family: Futura, "Century Gothic", "Trebuchet MS", Arial, sans-serif;
-      font-size: 2.4rem;
-      font-weight: 700;
-      color: var(--text);
-      line-height: 1.2;
-      margin-bottom: 16px;
+    .cta-btn:hover {
+      background: var(--accent-hover);
+      box-shadow: 0 0 0 2px var(--accent);
     }
 
-    .hero .tagline .accent {
-      color: var(--accent);
+    /* CTA button in light sections gets rounded treatment */
+    .light-cta .cta-btn {
+      border-radius: 40px;
+      padding: 14px 36px;
     }
 
-    .hero .subtitle {
-      font-size: 1.05rem;
-      color: var(--text-muted);
-      max-width: 34ch;
-      line-height: 1.6;
+    .cta-section {
+      text-align: center;
+    }
+
+    .cta-section p {
+      max-width: 50ch;
+      margin: 0 auto;
+    }
+
+    .cta-section .cta-btn {
+      align-self: center;
+    }
+
+    .cta-floating {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 1000;
+      padding: 12px 28px;
+      background: var(--accent);
+      color: #ffffff;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 40px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .cta-floating:hover {
+      background: var(--accent-hover);
+      transform: translateY(-2px);
     }
 
     /* ── Sections ── */
     section {
-      padding: 48px 0;
-      border-bottom: 1px solid var(--border);
-      scroll-margin-top: 56px;
+      padding: 56px 0;
       position: relative;
-    }
-
-    section:last-child {
-      border-bottom: none;
-    }
-
-    /* ── Section Ornament Dividers ── */
-    .hero::after,
-    section:not(:last-child):not(.values-section)::after {
-      content: "\25C6";
-      position: absolute;
-      bottom: -0.35em;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 0.45rem;
-      color: var(--accent);
-      background: var(--bg);
-      padding: 0 12px;
-      line-height: 1;
+      scroll-margin-top: 56px;
     }
 
     h2 {
@@ -220,6 +317,28 @@
 
     p + p {
       margin-top: 14px;
+    }
+
+    /* ── Section backgrounds ── */
+    .white-section {
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .warm-section {
+      background: var(--bg-warm);
+    }
+
+    .dark-section {
+      background: var(--bg-dark);
+    }
+
+    .dark-section h2 {
+      color: var(--accent-light);
+    }
+
+    .dark-section p {
+      color: var(--text-muted-on-dark);
     }
 
     /* ── Highlights List ── */
@@ -244,21 +363,19 @@
       color: var(--accent);
     }
 
-    /* ── Values Section ── */
-    .values-section {
-      background: var(--values-bg);
-      color: var(--values-text);
-      padding: 64px 24px;
-      text-align: center;
-      border-bottom: none;
+    .warm-section .highlights-list li {
+      color: var(--text-muted);
     }
 
-    .values-section::after {
-      display: none !important;
+    /* ── Values Section ── */
+    .values-section {
+      background: var(--bg-dark);
+      padding: 64px 24px;
+      text-align: center;
     }
 
     .values-section h2 {
-      color: var(--values-text);
+      color: #ffffff;
       font-size: 1.8rem;
       font-weight: 700;
       font-family: Futura, "Century Gothic", "Trebuchet MS", Arial, sans-serif;
@@ -282,15 +399,14 @@
       letter-spacing: 2px;
       text-transform: uppercase;
       margin-bottom: 16px;
-      color: var(--values-text);
+      color: var(--accent-light);
     }
 
     .value-card p {
-      color: var(--values-text);
+      color: var(--text-muted-on-dark);
       max-width: none;
       font-size: 0.95rem;
       line-height: 1.7;
-      opacity: 0.9;
     }
 
     /* ── Education ── */
@@ -318,66 +434,55 @@
       color: var(--text-muted);
     }
 
-    /* ── CTA Button ── */
-    .cta-btn {
-      display: inline-block;
-      margin-top: 28px;
-      padding: 14px 36px;
-      background: var(--text);
-      color: #ffffff;
-      font-size: 0.85rem;
-      font-weight: 600;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      text-decoration: none;
-      border-radius: 40px;
-      transition: background 0.2s, transform 0.2s;
-    }
-
-    .cta-btn:hover {
-      background: #333333;
-      transform: translateY(-1px);
-    }
-
-    .cta-section {
+    /* ── Dark CTA section ── */
+    .cta-dark {
+      background: var(--bg-dark);
       text-align: center;
     }
 
-    .cta-section p {
-      max-width: 50ch;
+    .cta-dark h2 {
+      color: var(--accent-light);
+    }
+
+    .cta-dark p {
+      color: var(--text-muted-on-dark);
       margin: 0 auto;
     }
 
-    .cta-floating {
-      position: fixed;
-      bottom: 24px;
-      right: 24px;
-      z-index: 1000;
-      padding: 12px 28px;
-      background: var(--text);
-      color: #ffffff;
-      font-size: 0.8rem;
-      font-weight: 600;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      text-decoration: none;
-      border-radius: 40px;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
-      transition: background 0.2s, transform 0.2s;
+    .cta-dark .cta-btn {
+      margin-top: 28px;
+      align-self: center;
     }
 
-    .cta-floating:hover {
-      background: #333333;
-      transform: translateY(-2px);
+    /* ── Fade-up scroll animation ── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-up.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .fade-up { opacity: 1; transform: none; transition: none; }
     }
 
     /* ── Responsive ── */
+    @media (max-width: 768px) {
+      .hero { min-height: 70vh; }
+    }
+
     @media (max-width: 520px) {
-      .hero { flex-direction: column; text-align: center; }
-      .hero-photo { flex: none; width: 100%; height: auto; order: -1; margin-bottom: 24px; }
-      .hero-photo img { height: auto; }
-      .hero .tagline { font-size: 1.8rem; }
-      .hero .subtitle { max-width: none; }
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-photo { height: 65vw; order: -1; }
+      .hero-photo::before {
+        background: linear-gradient(to bottom, transparent 60%, var(--bg-dark) 100%);
+      }
+      .hero-content { padding: 36px 24px 48px; }
+      .hero-content::before { display: none; }
       .values-grid { grid-template-columns: 1fr; gap: 32px; }
       .values-section h2 { font-size: 1.3rem; }
       .cta-floating { padding: 10px 22px; font-size: 0.75rem; bottom: 16px; right: 16px; }
@@ -403,30 +508,30 @@
     </div>
   </nav>
 
-  <main>
-
-    <!-- ═══════════════════════════════════════════
-         HERO
-    ═══════════════════════════════════════════ -->
-    <div class="container page-top">
-      <header class="hero">
-        <div class="hero-text">
-          <!-- EDIT: Hero headline and subtitle -->
-          <p class="tagline">Hello legend.<br>I'm <span class="accent">Kyle Whittle.</span></p>
-          <p class="subtitle">Get clear AF on who you are and where you're going — with ease, confidence, and a genuine smile.</p>
-          <!-- END EDIT -->
-        </div>
-        <div class="hero-photo">
-          <img src="HS-12.jpeg" alt="Kyle Whittle">
-        </div>
-      </header>
+  <!-- ═══════════════════════════════════════════
+       HERO
+  ═══════════════════════════════════════════ -->
+  <header class="hero" id="hero">
+    <div class="hero-content">
+      <!-- EDIT: Hero headline and subtitle -->
+      <p class="hero-eyebrow">About Kyle</p>
+      <h1 class="hero-tagline">Hello legend.<br>I'm <span class="accent">Kyle Whittle.</span></h1>
+      <p class="hero-subtitle">Get clear AF on who you are and where you're going — with ease, confidence, and a genuine smile.</p>
+      <!-- END EDIT -->
+      <a href="contact.html" class="cta-btn">Book a Free Call</a>
     </div>
+    <div class="hero-photo">
+      <img src="HS-12.jpeg" alt="Kyle Whittle">
+    </div>
+  </header>
+
+  <main>
 
     <!-- ═══════════════════════════════════════════
          MY STORY
     ═══════════════════════════════════════════ -->
-    <div class="container">
-      <section>
+    <section class="white-section fade-up">
+      <div class="content-col">
         <h2>My Story</h2>
         <!-- EDIT: Update summary paragraphs as needed -->
         <p>
@@ -464,14 +569,14 @@
           it's like to be in it. And I'm here to help.
         </p>
         <!-- END EDIT -->
-      </section>
-    </div>
+      </div>
+    </section>
 
     <!-- ═══════════════════════════════════════════
          WHAT I BRING
     ═══════════════════════════════════════════ -->
-    <div class="container">
-      <section>
+    <section class="warm-section fade-up">
+      <div class="content-col">
         <h2>What I Bring</h2>
         <!-- EDIT: Update highlights as needed -->
         <ul class="highlights-list">
@@ -482,14 +587,14 @@
           <li>Stoicism as a practical operating system, not just philosophy</li>
         </ul>
         <!-- END EDIT -->
-      </section>
-    </div>
+      </div>
+    </section>
 
     <!-- ═══════════════════════════════════════════
          WHAT SHAPED MY THINKING
     ═══════════════════════════════════════════ -->
-    <div class="container">
-      <section>
+    <section class="white-section fade-up">
+      <div class="content-col">
         <h2>What Shaped My Thinking</h2>
         <p>
           Stoicism is the framework. But the deeper influence is a genre, not a single philosophy.
@@ -506,13 +611,13 @@
           performance under real conditions. What actually worked, for real people, when the stakes
           were high.
         </p>
-      </section>
-    </div>
+      </div>
+    </section>
 
     <!-- ═══════════════════════════════════════════
          VALUES I OPERATE BY
     ═══════════════════════════════════════════ -->
-    <section class="values-section">
+    <section class="values-section fade-up">
       <h2>Values I Operate By</h2>
       <div class="values-grid">
         <div class="value-card">
@@ -533,8 +638,8 @@
     <!-- ═══════════════════════════════════════════
          EDUCATION & CREDENTIALS
     ═══════════════════════════════════════════ -->
-    <div class="container">
-      <section>
+    <section class="warm-section fade-up">
+      <div class="content-col">
         <h2>Education &amp; Credentials</h2>
         <!-- EDIT: Update education entries as needed -->
         <ul class="edu-list">
@@ -552,25 +657,56 @@
           </li>
         </ul>
         <!-- END EDIT -->
-      </section>
-    </div>
+      </div>
+    </section>
 
     <!-- ═══════════════════════════════════════════
          CTA
     ═══════════════════════════════════════════ -->
-    <div class="container page-bottom">
-      <section class="cta-section">
+    <section class="cta-dark fade-up">
+      <div class="content-col" style="display:flex; flex-direction:column; align-items:center; text-align:center;">
         <h2>Let's Talk</h2>
-        <p>
+        <!-- EDIT: CTA copy -->
+        <p style="max-width:44ch;">
           If you're ready to stop going in circles and start building something
           that works, I'd like to hear from you.
         </p>
-        <a href="contact.html" class="cta-btn">Book a Free Call</a>
-      </section>
-    </div>
+        <!-- END EDIT -->
+        <a href="contact.html" class="cta-btn" style="margin-top:28px; border-radius:40px;">Book a Free Call</a>
+      </div>
+    </section>
 
   </main>
 
   <a href="contact.html" class="cta-floating">Book a Free Call</a>
+
+  <script>
+    (function () {
+      var nav = document.querySelector('.site-nav');
+      var hero = document.getElementById('hero');
+      if (!nav || !hero) return;
+      var obs = new IntersectionObserver(function (entries) {
+        nav.classList.toggle('nav-scrolled', !entries[0].isIntersecting);
+      }, { threshold: 0, rootMargin: '-60px 0px 0px 0px' });
+      obs.observe(hero);
+    }());
+  </script>
+
+  <script>
+    (function () {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      var targets = document.querySelectorAll('.fade-up');
+      if (!targets.length) return;
+      var obs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+      targets.forEach(function (el) { obs.observe(el); });
+    }());
+  </script>
 </body>
 </html>

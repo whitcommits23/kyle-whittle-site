@@ -16,6 +16,12 @@
       --accent: #e85d26;
       --accent-hover: #cf4f1e;
       --border: #e0e0e0;
+      --bg-dark:            #0d0d0d;
+      --bg-warm:            #f5f0e8;
+      --text-on-dark:       #e8e0d4;
+      --text-muted-on-dark: #a09080;
+      --border-dark:        rgba(255, 255, 255, 0.10);
+      --accent-light:       #f07040;
     }
 
     html { scroll-behavior: smooth; }
@@ -29,10 +35,12 @@
       line-height: 1.7;
     }
 
-    main {
+    .content-col {
       max-width: 680px;
-      margin: 0 auto;
-      padding: 60px 24px 80px;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 24px;
+      padding-right: 24px;
     }
 
     /* ── Navigation ── */
@@ -44,8 +52,15 @@
       justify-content: space-between;
       align-items: center;
       padding: 10px 24px;
-      background: var(--bg);
-      border-bottom: 1px solid var(--border);
+      background: transparent;
+      border-bottom: 1px solid transparent;
+      transition: background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+    }
+
+    .site-nav.nav-scrolled {
+      background: var(--bg-dark);
+      border-bottom-color: var(--border-dark);
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);
     }
 
     .nav-logo {
@@ -75,7 +90,7 @@
       font-size: 0.8rem;
       font-weight: 700;
       letter-spacing: 1px;
-      color: var(--text);
+      color: #ffffff;
       text-transform: uppercase;
     }
 
@@ -91,95 +106,106 @@
       letter-spacing: 2px;
       text-transform: uppercase;
       text-decoration: none;
-      color: var(--text);
+      color: #ffffff;
       padding-bottom: 4px;
       border-bottom: 2px solid transparent;
       transition: color 0.15s, border-color 0.15s;
     }
 
     .nav-links a:hover {
-      color: var(--accent);
+      color: var(--accent-light);
     }
 
     .nav-links a.active {
-      color: var(--accent);
-      border-bottom: 2px solid var(--accent);
+      color: var(--accent-light);
+      border-bottom: 2px solid var(--accent-light);
     }
 
-    /* ── Hero ── */
+    /* ── Hero (text-only, centered, dark) ── */
     .hero {
+      background: var(--bg-dark);
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: center;
       text-align: center;
-      padding-bottom: 56px;
-      border-bottom: 1px solid var(--border);
+      padding: clamp(72px, 14vw, 160px) 24px;
+      position: relative;
+      overflow: hidden;
     }
 
-    .avatar {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      background: var(--accent);
+    .hero::before {
+      content: "C";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: Futura, "Century Gothic", "Trebuchet MS", Arial, sans-serif;
+      font-size: clamp(300px, 50vw, 600px);
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.025);
+      line-height: 1;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .hero-eyebrow {
+      font-family: Futura, "Century Gothic", "Trebuchet MS", Arial, sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--accent-light);
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
       display: flex;
       align-items: center;
-      justify-content: center;
-      margin-bottom: 24px;
-      flex-shrink: 0;
+      gap: 14px;
     }
 
-    .avatar span {
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 40px;
-      font-weight: 400;
-      color: #ffffff;
-      letter-spacing: 2px;
+    .hero-eyebrow::before,
+    .hero-eyebrow::after {
+      content: "";
+      display: inline-block;
+      width: 32px;
+      height: 1px;
+      background: var(--accent-light);
+      flex-shrink: 0;
     }
 
     .hero h1 {
       font-family: Futura, "Century Gothic", "Trebuchet MS", Arial, sans-serif;
-      font-size: 2.2rem;
+      font-size: clamp(2.4rem, 4.5vw, 3.5rem);
       font-weight: 700;
-      letter-spacing: 0.5px;
-      color: var(--text);
-      margin-bottom: 6px;
+      line-height: 1.05;
+      color: #ffffff;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+      max-width: 22ch;
+      position: relative;
+      z-index: 1;
     }
 
-    .hero .title {
-      font-size: 1rem;
-      color: var(--text-muted);
-      letter-spacing: 0.5px;
+    .hero .subtitle {
+      font-size: clamp(1rem, 1.8vw, 1.1rem);
+      color: var(--text-on-dark);
+      line-height: 1.65;
+      max-width: 40ch;
+      position: relative;
+      z-index: 1;
     }
 
     /* ── Sections ── */
     section {
-      padding: 48px 0;
-      border-bottom: 1px solid var(--border);
+      padding: 56px 0;
+      position: relative;
       scroll-margin-top: 56px;
     }
 
-    section:last-child {
-      border-bottom: none;
-    }
-
-    /* ── Section Ornament Dividers ── */
-    .hero,
-    section {
-      position: relative;
-    }
-
-    .hero::after,
-    section:not(:last-child)::after {
-      content: "\25C6";
-      position: absolute;
-      bottom: -0.35em;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 0.45rem;
-      color: var(--accent);
+    .form-section {
       background: var(--bg);
-      padding: 0 12px;
-      line-height: 1;
+      border-bottom: 1px solid var(--border);
     }
 
     h2 {
@@ -303,7 +329,7 @@
       align-self: flex-start;
       margin-top: 4px;
       padding: 14px 36px;
-      background: var(--text);
+      background: var(--accent);
       color: #ffffff;
       font-size: 0.85rem;
       font-weight: 600;
@@ -318,13 +344,29 @@
     }
 
     .submit-btn:hover {
-      background: #333333;
+      background: var(--accent-hover);
       transform: translateY(-1px);
+    }
+
+    /* ── Fade-up scroll animation ── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-up.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .fade-up { opacity: 1; transform: none; transition: none; }
     }
 
     /* ── Responsive ── */
     @media (max-width: 520px) {
-      .hero h1 { font-size: 1.8rem; }
+      .hero h1 { font-size: 1.9rem; }
       .site-nav { flex-wrap: wrap; gap: 8px; padding: 10px 16px; }
       .nav-logo-name { display: none; }
       .nav-links { gap: 14px; }
@@ -348,77 +390,111 @@
     </div>
   </nav>
 
-  <main>
+  <!-- ═══════════════════════════════════════════
+       HERO
+  ═══════════════════════════════════════════ -->
+  <header class="hero" id="hero">
+    <!-- EDIT: Hero headline and subtitle -->
+    <p class="hero-eyebrow">Get in Touch</p>
+    <h1>You don't have to figure it out alone.</h1>
+    <p class="subtitle">Reach out. That's the whole move. Everything else follows from there.</p>
+    <!-- END EDIT -->
+  </header>
 
-    <!-- ═══════════════════════════════════════════
-         HERO
-    ═══════════════════════════════════════════ -->
-    <header class="hero">
-      <p class="tagline">You don't have to figure it out alone.</p>
-      <p class="subtitle">Reach out. That's the whole move. Everything else follows from there.</p>
-    </header>
+  <main>
 
     <!-- ═══════════════════════════════════════════
          CONTACT FORM
     ═══════════════════════════════════════════ -->
-    <section>
-      <h2>Get in Touch</h2>
-      <p style="margin-bottom: 28px;">
-        Interested in working together? Fill out the form below and I'll be in touch.
-      </p>
+    <section class="form-section fade-up">
+      <div class="content-col">
+        <h2>Get in Touch</h2>
+        <p style="margin-bottom: 28px;">
+          Interested in working together? Fill out the form below and I'll be in touch.
+        </p>
 
-      <form class="contact-form" action="https://formspree.io/f/mzdknyrj" method="POST">
-        <input type="hidden" name="_next" value="https://whittlemethat.com/thankyou.html">
+        <form class="contact-form" action="https://formspree.io/f/mzdknyrj" method="POST">
+          <input type="hidden" name="_next" value="https://whittlemethat.com/thankyou.html">
 
-        <div class="form-group">
-          <label for="full-name">Full Name</label>
-          <input type="text" id="full-name" name="full-name" placeholder="Your name" required>
-        </div>
-
-        <div class="form-group">
-          <label>Preferred Contact Method</label>
-          <div class="radio-group">
-            <label class="radio-option">
-              <input type="radio" name="contact-method" value="email" checked>
-              <span>Email</span>
-            </label>
-            <label class="radio-option">
-              <input type="radio" name="contact-method" value="phone">
-              <span>Phone</span>
-            </label>
-            <label class="radio-option">
-              <input type="radio" name="contact-method" value="either">
-              <span>Either</span>
-            </label>
+          <div class="form-group">
+            <label for="full-name">Full Name</label>
+            <input type="text" id="full-name" name="full-name" placeholder="Your name" required>
           </div>
-        </div>
 
-        <div class="form-group">
-          <label for="contact-info">Email or Phone</label>
-          <input type="text" id="contact-info" name="contact-info" placeholder="How should I reach you?" required>
-        </div>
+          <div class="form-group">
+            <label>Preferred Contact Method</label>
+            <div class="radio-group">
+              <label class="radio-option">
+                <input type="radio" name="contact-method" value="email" checked>
+                <span>Email</span>
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="contact-method" value="phone">
+                <span>Phone</span>
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="contact-method" value="either">
+                <span>Either</span>
+              </label>
+            </div>
+          </div>
 
-        <div class="form-group">
-          <label for="service">Service Interested In</label>
-          <select id="service" name="service" required>
-            <option value="" disabled selected>Select a service</option>
-            <option value="1on1">1-on-1 Life Coaching</option>
-            <option value="stoicism">Stoicism-Based Coaching Programs</option>
-            <option value="workshop">Workshop &amp; Group Sessions</option>
-            <option value="unsure">Not sure yet</option>
-          </select>
-        </div>
+          <div class="form-group">
+            <label for="contact-info">Email or Phone</label>
+            <input type="text" id="contact-info" name="contact-info" placeholder="How should I reach you?" required>
+          </div>
 
-        <div class="form-group">
-          <label for="message">Anything Else?</label>
-          <textarea id="message" name="message" placeholder="Tell me a bit about where you are and what you're looking to change (optional)"></textarea>
-        </div>
+          <div class="form-group">
+            <label for="service">Service Interested In</label>
+            <select id="service" name="service" required>
+              <option value="" disabled selected>Select a service</option>
+              <option value="1on1">1-on-1 Life Coaching</option>
+              <option value="stoicism">Stoicism-Based Coaching Programs</option>
+              <option value="workshop">Workshop &amp; Group Sessions</option>
+              <option value="unsure">Not sure yet</option>
+            </select>
+          </div>
 
-        <button type="submit" class="submit-btn">Send Message</button>
+          <div class="form-group">
+            <label for="message">Anything Else?</label>
+            <textarea id="message" name="message" placeholder="Tell me a bit about where you are and what you're looking to change (optional)"></textarea>
+          </div>
 
-      </form>
+          <button type="submit" class="submit-btn">Send Message</button>
+
+        </form>
+      </div>
     </section>
 
   </main>
+
+  <script>
+    (function () {
+      var nav = document.querySelector('.site-nav');
+      var hero = document.getElementById('hero');
+      if (!nav || !hero) return;
+      var obs = new IntersectionObserver(function (entries) {
+        nav.classList.toggle('nav-scrolled', !entries[0].isIntersecting);
+      }, { threshold: 0, rootMargin: '-60px 0px 0px 0px' });
+      obs.observe(hero);
+    }());
+  </script>
+
+  <script>
+    (function () {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      var targets = document.querySelectorAll('.fade-up');
+      if (!targets.length) return;
+      var obs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+      targets.forEach(function (el) { obs.observe(el); });
+    }());
+  </script>
 </body>
 </html>
