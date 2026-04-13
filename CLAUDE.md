@@ -8,10 +8,12 @@ A multi-page personal website for Kyle Whittle — life coach. Pure HTML/CSS, no
 
 | File | Purpose |
 |---|---|
-| `index.html` | Homepage — hero, what-is-coaching, who I work with, Stoicism framework, FAQ |
-| `about.html` | About page — personal story, values |
-| `services.html` | Services/offerings page |
-| `contact.html` | Contact page with inquiry form |
+| `docs/index.html` | Homepage — hero, what-is-coaching, who I work with, Stoicism framework, FAQ |
+| `docs/about.html` | About page — personal story, values |
+| `docs/services.html` | Services/offerings page |
+| `docs/contact.html` | Contact page with inquiry form |
+| `docs/course.html` | Free 5-part Stoicism mini-course |
+| `docs/thankyou.html` | Post-form-submit confirmation page (noindex) |
 
 ## Deployment
 
@@ -22,10 +24,12 @@ Site is served as **static files** (e.g. GitHub Pages). `CNAME` maps the custom 
 All files are zero-dependency, no-build HTML. Open directly in a browser:
 
 ```
-open index.html
-open about.html
-open services.html
-open contact.html
+open docs/index.html
+open docs/about.html
+open docs/services.html
+open docs/contact.html
+open docs/course.html
+open docs/thankyou.html
 ```
 
 On Windows or Linux, open each file from the file manager or via `file://` in the browser (same idea as `open` on macOS).
@@ -39,12 +43,17 @@ On Windows or Linux, open each file from the file manager or via `file://` in th
 
 ## Site-wide
 
-- **Main column width:** `main` is **680px** on `index.html`, `about.html`, and `contact.html`; **900px** on `services.html` for the wider offerings layout
-- Palette: bg `#ffffff`, text `#1a1a1a`, accent `#e85d26` (orange), muted `#666666`, border `#e0e0e0`
+- **Main column width:** `.content-col` is **680px** on most pages; `services.html` also uses `.content-col-wide` at **900px** for the service cards grid
+- **CSS variables** — all 13 vars defined at `:root` on every page:
+  - Light palette: `--bg #ffffff`, `--bg-alt #f5f5f5`, `--text #1a1a1a`, `--text-muted #666666`, `--accent #e85d26`, `--accent-hover #cf4f1e`, `--border #e0e0e0`
+  - Dark/warm palette: `--bg-dark #0d0d0d`, `--bg-warm #f5f0e8`, `--text-on-dark #e8e0d4`, `--text-muted-on-dark #a09080`, `--border-dark rgba(255,255,255,0.10)`, `--accent-light #f07040`
+- **Visual system ("Ordered Courage"):** dark full-viewport hero → alternating warm/dark/white sections → cinematic quote blocks. All pages share this aesthetic.
+- **Nav behavior:** starts transparent (readable over dark hero), transitions to `var(--bg-dark)` on scroll via IntersectionObserver watching `#hero`. Nav links are always `color: #ffffff`; hover/active use `var(--accent-light)`.
+- **Hero structure:** `<header class="hero" id="hero">` lives *outside* `<main>` so it can span full viewport width. Contains `.hero-eyebrow` (small caps with flanking lines) + `.tagline` / `.hero-tagline` + `.subtitle`.
+- **Animations:** `.fade-up` class + IntersectionObserver (threshold 0.12). Applied to all below-fold sections. Respects `prefers-reduced-motion`.
+- **Content column pattern:** sections use `<div class="content-col">` inside full-width `<section>` elements rather than constraining `<main>`.
 - All user-editable content is wrapped in `<!-- EDIT: ... -->` / `<!-- END EDIT -->` HTML comments
-- Shared nav and footer pattern repeated across all pages
-- Hero sections use `.tagline` (large, Futura bold) + `.subtitle` (muted gray) on every page
-- **Assets:** reference images and similar files with **paths relative to the repo root** (same folder as the HTML), e.g. `HS-12.jpeg` on about. **Fonts:** system stack + Futura (no self-hosted font files required)
+- **Assets:** paths relative to the `docs/` folder (same directory as the HTML files), e.g. `kyle26.jpeg`, `HS-12.jpeg`. **Fonts:** system stack + Futura (no self-hosted font files required)
 
 ## Page notes
 
@@ -63,5 +72,14 @@ On Windows or Linux, open each file from the file manager or via `file://` in th
 - **CTA:** closing section plus fixed **floating button** (`.cta-floating`) linking to `contact.html`
 
 ### contact.html
-- Hero uses tagline + subtitle only (no photo/monogram)
-- **Inquiry form** is **presentational only**: `<form ... onsubmit="return false;">` with no `action`, no backend, and no JS handler — submit does not send data. Do not assume mailto, Netlify forms, or an API unless you wire one up intentionally
+- Hero uses tagline + subtitle only (no photo/monogram); ghost "C" letter watermark
+- **Inquiry form** posts to **Formspree** (`action="https://formspree.io/f/mzdknyrj"`); on success redirects to `thankyou.html`
+
+### course.html
+- Free 5-part Stoicism mini-course; lesson content sections stay white for readability
+- `.lesson-prompt` ("Try This Today") boxes are dark cards (`var(--bg-dark)`) with terracotta left border
+- Scroll progress bar at top of page (JS-driven, `var(--accent)` fill)
+
+### thankyou.html
+- Noindex confirmation page shown after contact form submission
+- Simple: dark hero with checkmark circle + "Message received." tagline, single below-fold section with "Back to Home" CTA
