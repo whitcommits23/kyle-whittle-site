@@ -2,6 +2,27 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository. **Personal OS** (goals, tasks, `Knowledge/`) lives in `AGENTS.md` — use that for productivity context; use this file for the **static site** only.
 
+**Before doing any work for Kyle:** read `SHARED-AI/ABOUT ME/` for context on who he is, how he writes, and what he cares about. That folder is the single source of truth across all projects.
+
+## Shared files setup
+
+`SHARED-AI/` is a **symlink** pointing to `../SHARED-AI/` (one level above this repo). The real folder lives alongside the repo, not inside it. This lets multiple project repos (coaching site, portfolio site, etc.) all point to the same voice/identity files without duplicating them.
+
+**To add this to a new project repo:** from the repo root, run `ln -s "../SHARED-AI" SHARED-AI` and add `SHARED-AI` to `.gitignore`. The path `SHARED-AI/ABOUT ME/` will resolve the same way in every repo.
+
+**Folder layout on disk:**
+```
+ClaudeProjects/          (or whatever the parent folder is)
+├── SHARED-AI/           ← the real copy, shared across repos
+│   └── ABOUT ME/
+├── ClaudeOS/            ← this repo (coaching site)
+│   ├── SHARED-AI → ../SHARED-AI  (symlink)
+│   └── ...
+└── portfolio-site/      ← other repo
+    ├── SHARED-AI → ../SHARED-AI  (symlink)
+    └── ...
+```
+
 ## What's here
 
 A multi-page personal website for Kyle Whittle — life coach. Pure HTML/CSS, no build step.
