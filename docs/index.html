@@ -189,16 +189,60 @@
       flex-shrink: 0;
     }
 
-    .hero-tagline {
-      font-family: Futura, "Century Gothic", "Trebuchet MS", Arial, sans-serif;
-      font-size: clamp(3.5rem, 7vw, 6rem);
-      font-weight: 700;
-      line-height: 1.0;
-      color: #ffffff;
-      letter-spacing: -0.02em;
-      margin-bottom: 28px;
+    .hero-carousel {
+      display: grid;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
       position: relative;
       z-index: 1;
+    }
+
+    .hero-tagline {
+      font-family: Futura, "Century Gothic", "Trebuchet MS", Arial, sans-serif;
+      font-size: clamp(2rem, 4.5vw, 3.6rem);
+      font-weight: 700;
+      line-height: 1.08;
+      color: #ffffff;
+      letter-spacing: -0.02em;
+      margin-bottom: 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-carousel .hero-tagline {
+      grid-area: 1 / 1;
+      opacity: 0;
+      transition: opacity 0.7s ease;
+      pointer-events: none;
+    }
+
+    .hero-carousel .hero-tagline.is-active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .carousel-dots {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .carousel-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.25);
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      transition: background 0.25s, transform 0.25s;
+    }
+
+    .carousel-dot.is-active {
+      background: var(--accent-light);
+      transform: scale(1.4);
     }
 
     .hero-subtitle {
@@ -206,18 +250,16 @@
       color: var(--text-on-dark);
       line-height: 1.65;
       max-width: 36ch;
-      margin-bottom: 14px;
+      margin-bottom: 10px;
       position: relative;
       z-index: 1;
     }
 
-    .hero-challenge {
-      font-family: Futura, "Century Gothic", "Trebuchet MS", Arial, sans-serif;
-      font-size: 0.8rem;
-      font-weight: 700;
-      letter-spacing: 2.5px;
-      text-transform: uppercase;
-      color: var(--accent-light);
+    .hero-support {
+      font-size: clamp(0.9rem, 1.6vw, 1rem);
+      color: var(--text-muted-on-dark);
+      line-height: 1.65;
+      max-width: 36ch;
       margin-bottom: 36px;
       position: relative;
       z-index: 1;
@@ -603,6 +645,58 @@
       box-shadow: 0 0 0 2px var(--accent);
     }
 
+    /* ── Inline quote (inside sections) ── */
+    .inline-quote {
+      border-left: 2px solid var(--accent);
+      padding: 16px 0 16px 20px;
+      margin-top: 32px;
+    }
+
+    .inline-quote blockquote {
+      font-family: Georgia, "Times New Roman", serif;
+      font-style: italic;
+      font-size: 1rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      max-width: none;
+    }
+
+    .inline-quote cite {
+      display: block;
+      margin-top: 8px;
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-style: normal;
+    }
+
+    /* ── Testimonial block ── */
+    .testimonial-block {
+      border-left: 3px solid var(--accent);
+      padding: 24px 0 24px 28px;
+      margin-top: 8px;
+    }
+
+    .testimonial-block blockquote {
+      font-family: Georgia, "Times New Roman", serif;
+      font-style: italic;
+      font-size: clamp(1rem, 1.8vw, 1.15rem);
+      color: var(--text-muted);
+      line-height: 1.75;
+      max-width: 54ch;
+    }
+
+    .testimonial-block cite {
+      display: block;
+      margin-top: 16px;
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-style: normal;
+    }
+
     /* ── FAQ accordion ── */
     .faq-section h2 {
       margin-bottom: 8px;
@@ -695,8 +789,12 @@
       }
 
       .hero-photo {
-        height: 65vw;
+        height: 75vw;
         order: -1;
+      }
+
+      .hero-photo img {
+        object-position: center 25%;
       }
 
       .hero-photo::before {
@@ -769,11 +867,20 @@
   ═══════════════════════════════════════════ -->
   <header class="hero" id="hero">
     <div class="hero-content">
-      <!-- EDIT: Hero headline, subtitle, and challenge -->
+      <!-- EDIT: Hero carousel, subtitle, and supporting line -->
       <p class="hero-eyebrow">Stoic Life Coaching</p>
-      <h1 class="hero-tagline">Built<br>to Last.</h1>
-      <p class="hero-subtitle">No&#8209;BS coaching for men who want clarity, confidence, and real connection.</p>
-      <p class="hero-challenge">Done settling? Good. Let's go.</p>
+      <div class="hero-carousel" id="hero-carousel">
+        <h1 class="hero-tagline is-active">"I don't know who I am outside of my job."</h1>
+        <h1 class="hero-tagline">"I keep having the same argument with my wife and I don't know how to stop it."</h1>
+        <h1 class="hero-tagline">"I've been successful for years and I still don't feel like I'm supposed to be doing what I'm doing."</h1>
+      </div>
+      <div class="carousel-dots" id="carousel-dots">
+        <button class="carousel-dot is-active" aria-label="Statement 1"></button>
+        <button class="carousel-dot" aria-label="Statement 2"></button>
+        <button class="carousel-dot" aria-label="Statement 3"></button>
+      </div>
+      <p class="hero-subtitle">If you've thought that, even once, this is for you.</p>
+      <p class="hero-support">Stoic-grounded coaching for men who are done circling the same problems.</p>
       <a href="contact.html" class="cta-btn">Book a Free Call</a>
       <!-- END EDIT -->
     </div>
@@ -789,9 +896,11 @@
       <div class="content-col">
         <nav class="page-journey" aria-label="On this page">
           <span class="page-journey-label">Start here</span>
-          <a href="#what-is-coaching">What coaching is</a>
-          <a href="#who">Who I work with</a>
+          <a href="#problem">The problem</a>
+          <a href="#method">The method</a>
           <a href="#stoicism">The framework</a>
+          <a href="#proof">What clients say</a>
+          <a href="#about-kyle">Who I am</a>
           <a href="#faq">Common questions</a>
           <a href="services.html">What I offer</a>
           <a href="contact.html">Book a call</a>
@@ -801,57 +910,51 @@
     <!-- END EDIT -->
 
     <!-- ═══════════════════════════════════════════
-         WHAT IS A LIFE COACH?
+         THE PROBLEM
     ═══════════════════════════════════════════ -->
-    <section id="what-is-coaching" class="warm-section fade-up">
+    <section id="problem" class="dark-section fade-up">
       <div class="content-col">
         <span class="section-num" aria-hidden="true">01</span>
-        <h2>What Is a Life Coach?</h2>
-        <!-- EDIT: Coaching explanation -->
+        <h2>Sound familiar?</h2>
+        <!-- EDIT: The problem section -->
+        <p style="margin-bottom: 20px;">
+          You've hit most of the goals you set. Career's moving. Family's there. On paper, things are fine.
+        </p>
+        <p style="margin-bottom: 20px;">
+          But something's off. You can't name it, which makes it worse. You keep running the same patterns. The same arguments. The same feeling of going through the motions.
+        </p>
         <p>
-          A life coach isn't a therapist. I'm not going to ask you about your childhood or
-          diagnose anything. I'm also not someone who gives advice after three beers. I don't even drink.
+          You're not broken. You just never got a real framework for the stuff that actually matters: who you are, what you're building, and why it's worth it.
         </p>
-        <p style="margin-top: 16px;">
-          A life coach is someone who asks the questions you've been avoiding, then holds you
-          accountable to your own answers. I help you see the patterns you're stuck in, figure
-          out what's actually in your control, and then do something about it. That's it. No
-          fluff, no affirmations taped to your mirror. Just honest work.
-        </p>
+        <p style="margin-top: 20px;">That's what this is for.</p>
         <!-- END EDIT -->
       </div>
     </section>
 
     <!-- ═══════════════════════════════════════════
-         WHO I WORK WITH
+         THE WHITTLE METHOD
     ═══════════════════════════════════════════ -->
-    <section id="who" class="dark-section fade-up">
+    <section id="method" class="warm-section fade-up">
       <div class="content-col">
         <span class="section-num" aria-hidden="true">02</span>
-        <h2>Who I Work With</h2>
-        <!-- EDIT: Describe your ideal client -->
+        <h2>The framework</h2>
+        <!-- EDIT: Whittle Method section -->
+        <p style="margin-bottom: 16px; font-size: 1.05rem; font-weight: 600; color: var(--text);">The Whittle Method</p>
         <p style="margin-bottom: 20px;">
-          Men are lonelier than they've ever been, and most of them don't know how to say it, or
-          even recognize it. They're busy, connected on paper, and quietly disconnected in practice.
-          That's not a character flaw. It's what happens when you've spent years optimizing for
-          output and never learned how to ask for what you actually need.
+          Most coaching gives you tools. The Whittle Method gives you a lens.
         </p>
         <p style="margin-bottom: 20px;">
-          I coach men. Not because women don't need coaching (they absolutely do) but because
-          I've found that men, specifically, tend to avoid asking for help until the wheels are
-          already off. This isn't some hyper-masculine, chest-thumping thing. It's the opposite.
-          It's about being honest enough to admit something isn't working and doing the hard thing
-          of actually changing it.
+          It's a 16-week Stoic-based framework built around one idea: you can't build a life worth living until you know what's actually yours to control and what you've been carrying that was never yours to begin with.
         </p>
-        <ul class="client-list">
-          <li>You're stuck and you can't quite figure out why</li>
-          <li>You keep running the same patterns and getting the same results</li>
-          <li>You feel disconnected: from people around you, from what you're building, from yourself</li>
-          <li>You want to stop shrinking in conversations that matter and start asking for what you actually need</li>
-          <li>You want someone who'll be straight with you, not just tell you what you want to hear</li>
-          <li>You're done with motivational nonsense and ready for a real framework</li>
-          <li>You're going through a transition (career, relationship, identity) and need a sounding board that actually pushes back</li>
+        <p style="margin-bottom: 16px;">Every session works through three areas:</p>
+        <ul class="stoic-list">
+          <li><strong>Clarity</strong> — What do you actually want, and what story have you been telling yourself instead?</li>
+          <li><strong>Confidence</strong> — Where are you shrinking, and what would it look like to stop?</li>
+          <li><strong>Connection</strong> — What relationships matter, and are you showing up in them honestly?</li>
         </ul>
+        <p style="margin-top: 20px;">
+          This isn't motivational content. It's structured work with a clear arc and a real outcome.
+        </p>
         <!-- END EDIT -->
       </div>
     </section>
@@ -862,7 +965,7 @@
     <section id="stoicism" class="white-section fade-up">
       <div class="content-col">
         <span class="section-num" aria-hidden="true">03</span>
-        <h2>What Is Stoicism?</h2>
+        <h2>The operating system</h2>
         <!-- EDIT: Stoicism explanation -->
         <p>
           Stoicism isn't about being emotionless or hard. It's a 2,000-year-old operating system
@@ -880,6 +983,10 @@
         <p style="margin-top: 16px;">
           That's the framework I use. Every session, every question, comes back to this.
         </p>
+        <div class="inline-quote">
+          <blockquote>You have power over your mind, not outside events. Realize this, and you will find strength.</blockquote>
+          <cite>Marcus Aurelius</cite>
+        </div>
         <!-- END EDIT -->
       </div>
     </section>
@@ -898,6 +1005,40 @@
             way to see how I think and whether this approach is for you.
           </p>
           <a href="course.html" class="cta-btn">Start the Free Course</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         WHAT CLIENTS SAY
+    ═══════════════════════════════════════════ -->
+    <section id="proof" class="white-section fade-up">
+      <div class="content-col">
+        <h2>What clients say</h2>
+        <div class="testimonial-block">
+          <blockquote>
+            "He encouraged me to question the status quo and challenge conventional thinking, pushing me to grow both professionally and personally. He is passionate about inspiring you to work hard while also taking time to take care of yourself to avoid burnout."
+          </blockquote>
+          <cite>Nathan</cite>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         WHO I AM
+    ═══════════════════════════════════════════ -->
+    <section id="about-kyle" class="dark-section fade-up">
+      <div class="content-col">
+        <h2>Who I am</h2>
+        <p style="font-size: 1.1rem; font-weight: 600; color: var(--text-on-dark); margin-bottom: 20px;">Kyle Whittle</p>
+        <p style="margin-bottom: 20px;">
+          I'm a husband, father of three, and a guy who spent years optimizing for output before I asked the question that changed everything: what am I actually building this for?
+        </p>
+        <p style="margin-bottom: 24px;">
+          I'm not a therapist. I'm a coach with a framework, a Stoic philosophy background, and a habit of asking the questions most people are avoiding. I'll be straight with you. That's the whole thing.
+        </p>
+        <div class="contact-links">
+          <a href="about.html">Read more about my background</a>
         </div>
       </div>
     </section>
@@ -945,32 +1086,17 @@
     <!-- END EDIT -->
 
     <!-- ═══════════════════════════════════════════
-         STOIC QUOTE — cinematic dark moment
-    ═══════════════════════════════════════════ -->
-    <!-- EDIT: Replace quote text and attribution as desired -->
-    <div class="quote-block fade-up">
-      <span class="quote-ornament" aria-hidden="true">"</span>
-      <div class="content-col">
-        <blockquote>
-          You have power over your mind, not outside events. Realize this, and you will find strength.
-        </blockquote>
-        <cite>Marcus Aurelius</cite>
-      </div>
-    </div>
-    <!-- END EDIT -->
-
-    <!-- ═══════════════════════════════════════════
-         CONTACT
+         CTA / CONTACT
     ═══════════════════════════════════════════ -->
     <section id="contact" class="dark-section fade-up">
       <div class="content-col">
-        <h2>Contact</h2>
-        <!-- EDIT: Replace href values and link text with your real info -->
+        <h2>Ready to stop circling?</h2>
+        <!-- EDIT: CTA copy and contact links -->
         <p style="color: var(--text-muted-on-dark); margin-bottom: 24px; max-width: 44ch;">
-          Ready to stop circling the same problems? Book a free 30-minute call. No pitch, no pressure.
+          Book a free 30-minute call. We'll figure out what's actually stuck and whether working together makes sense. No pitch. No script.
         </p>
         <div class="contact-links">
-          <a href="contact.html">Fill out the contact form</a>
+          <a href="contact.html">Book a Free Call</a>
           <a href="mailto:kbwhittle88@gmail.com">kbwhittle88@gmail.com</a>
         </div>
         <!-- END EDIT -->
@@ -993,6 +1119,38 @@
         nav.classList.toggle('nav-scrolled', !entries[0].isIntersecting);
       }, { threshold: 0, rootMargin: '-60px 0px 0px 0px' });
       obs.observe(hero);
+    }());
+  </script>
+
+  <script>
+    /* Hero carousel — fade between three statements every 4s */
+    (function () {
+      var items = document.querySelectorAll('#hero-carousel .hero-tagline');
+      var dots  = document.querySelectorAll('#carousel-dots .carousel-dot');
+      var current = 0;
+      var timer;
+
+      function goTo(index) {
+        items[current].classList.remove('is-active');
+        dots[current].classList.remove('is-active');
+        current = index;
+        items[current].classList.add('is-active');
+        dots[current].classList.add('is-active');
+      }
+
+      function startTimer() {
+        timer = setInterval(function () { goTo((current + 1) % items.length); }, 4000);
+      }
+
+      dots.forEach(function (dot, i) {
+        dot.addEventListener('click', function () {
+          clearInterval(timer);
+          goTo(i);
+          startTimer();
+        });
+      });
+
+      startTimer();
     }());
   </script>
 
