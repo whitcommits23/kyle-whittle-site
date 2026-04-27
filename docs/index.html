@@ -132,8 +132,8 @@
 
     /* ── Hero ── */
     .hero {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
+      display: flex;
+      flex-direction: column;
       min-height: 100svh;
       overflow: hidden;
       background: var(--bg-dark);
@@ -143,10 +143,11 @@
     .hero-content {
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      padding: clamp(40px, 8vw, 100px) clamp(32px, 6vw, 80px);
+      justify-content: flex-start;
+      padding: clamp(60px, 10vw, 120px) clamp(32px, 6vw, 80px) clamp(40px, 6vw, 80px);
       position: relative;
       z-index: 2;
+      flex: 1 1 auto;
     }
 
     /* Decorative oversized "K" in background */
@@ -189,12 +190,22 @@
       flex-shrink: 0;
     }
 
+    .carousel-attribution {
+      font-size: 0.875rem;
+      font-style: italic;
+      color: var(--text-muted-on-dark);
+      margin-bottom: 12px;
+      position: relative;
+      z-index: 1;
+    }
+
     .hero-carousel {
       display: grid;
       margin-bottom: 16px;
       padding-bottom: 12px;
       position: relative;
       z-index: 1;
+      min-height: 8rem;
     }
 
     .hero-tagline {
@@ -268,22 +279,27 @@
     .hero-photo {
       position: relative;
       overflow: hidden;
+      width: calc(100% - clamp(32px, 6vw, 80px));
+      max-height: 72vh;
+      margin-top: 48px;
+      flex-shrink: 0;
+      border-top: 2px solid var(--accent);
     }
 
     .hero-photo img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center top;
+      object-position: center 55%;
       display: block;
     }
 
-    /* Gradient blends photo into the dark left panel */
+    /* Subtle fade at top edges photo into the dark bg */
     .hero-photo::before {
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(to right, var(--bg-dark) 0%, transparent 25%);
+      background: linear-gradient(to bottom, var(--bg-dark) 0%, transparent 15%);
       z-index: 1;
       pointer-events: none;
     }
@@ -311,7 +327,7 @@
 
     .hero .cta-btn {
       background: var(--accent);
-      border-radius: 0;
+      border-radius: 40px;
       padding: 16px 40px;
       font-size: 0.8rem;
       letter-spacing: 2px;
@@ -784,25 +800,20 @@
 
     @media (max-width: 520px) {
       .hero {
-        grid-template-columns: 1fr;
         min-height: auto;
       }
 
       .hero-photo {
-        height: 75vw;
-        order: -1;
+        max-height: 70vw;
+        margin-top: 24px;
       }
 
       .hero-photo img {
         object-position: center 25%;
       }
 
-      .hero-photo::before {
-        background: linear-gradient(to bottom, transparent 60%, var(--bg-dark) 100%);
-      }
-
       .hero-content {
-        padding: 36px 24px 48px;
+        padding: 36px 24px 0;
       }
 
       .hero-content::before {
@@ -869,6 +880,7 @@
     <div class="hero-content">
       <!-- EDIT: Hero carousel, subtitle, and supporting line -->
       <p class="hero-eyebrow">Stoic Life Coaching</p>
+      <p class="carousel-attribution">If you've thought any of these...</p>
       <div class="hero-carousel" id="hero-carousel">
         <h1 class="hero-tagline is-active">"I don't know who I am outside of my job."</h1>
         <h1 class="hero-tagline">"I keep having the same argument with my wife and I don't know how to stop it."</h1>
@@ -882,10 +894,10 @@
       <p class="hero-subtitle">If you've thought that, even once, this is for you.</p>
       <p class="hero-support">Stoic-grounded coaching for men who are done circling the same problems.</p>
       <a href="contact.html" class="cta-btn">Book a Free Call</a>
+      <div class="hero-photo">
+        <img src="kyle26.jpeg" alt="Kyle Whittle">
+      </div>
       <!-- END EDIT -->
-    </div>
-    <div class="hero-photo">
-      <img src="kyle26.jpeg" alt="Kyle Whittle">
     </div>
   </header>
 
@@ -944,7 +956,7 @@
           Most coaching gives you tools. The Whittle Method gives you a lens.
         </p>
         <p style="margin-bottom: 20px;">
-          It's a 16-week Stoic-based framework built around one idea: you can't build a life worth living until you know what's actually yours to control and what you've been carrying that was never yours to begin with.
+          It's a 12-week Stoic-based framework built around one idea: you can't build a life worth living until you know what's actually yours to control and what you've been carrying that was never yours to begin with.
         </p>
         <p style="margin-bottom: 16px;">Every session works through three areas:</p>
         <ul class="stoic-list">
@@ -952,6 +964,9 @@
           <li><strong>Confidence</strong> — Where are you shrinking, and what would it look like to stop?</li>
           <li><strong>Connection</strong> — What relationships matter, and are you showing up in them honestly?</li>
         </ul>
+        <p style="margin-top: 20px;">
+          The program runs 12 weeks. Investment starts at $2,500.
+        </p>
         <p style="margin-top: 20px;">
           This isn't motivational content. It's structured work with a clear arc and a real outcome.
         </p>
@@ -997,7 +1012,6 @@
     <section id="free-course" class="warm-section fade-up">
       <div class="content-col">
         <div class="course-promo">
-          <span class="course-promo-label">Free. No Sign-up Required</span>
           <h3>Not ready to book a call? Start here.</h3>
           <p>
             The Stoicism mini-course is 5 short lessons that give you the core framework.
@@ -1055,8 +1069,7 @@
           <details>
             <summary>Is this therapy?</summary>
             <p>
-              No. Coaching is forward-looking and action-oriented. If you need clinical support,
-              that's not me. I'll tell you if I think you should talk to a licensed professional.
+              No. Coaching is forward-looking and action-oriented. We work on what you're going to do, not why you are the way you are. If you need clinical support, I'll tell you honestly, and I can point you toward the right resources.
             </p>
           </details>
           <details>
