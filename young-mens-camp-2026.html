@@ -262,6 +262,14 @@
 
   .activity-wrap { flex: 1; }
 
+  .activity .sub {
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 400;
+    color: var(--muted);
+    margin-top: 1px;
+  }
+
   .activity {
     font-size: 0.88rem;
     font-weight: 600;
@@ -350,6 +358,40 @@
 
   .mleg { display: flex; align-items: center; gap: 8px; font-size: 0.8rem; font-weight: 500; }
   .mleg-swatch { width: 18px; height: 14px; border-radius: 3px; flex-shrink: 0; border: 1px solid rgba(0,0,0,0.1); }
+
+  /* ===== FREE TIME ACTIVITIES ===== */
+  .activities-outer { max-width: 1040px; margin: 0 auto; padding: 32px 24px 64px; }
+
+  .activities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 12px;
+    margin-top: 20px;
+  }
+
+  .activity-card {
+    background: #fff;
+    border-radius: 6px;
+    padding: 16px 18px;
+    border: 1px solid rgba(0,0,0,0.06);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .act-icon { font-size: 1.4rem; flex-shrink: 0; line-height: 1.2; }
+
+  .act-name { font-size: 0.88rem; font-weight: 600; color: var(--charcoal); }
+
+  .act-note { font-size: 0.74rem; color: var(--muted); margin-top: 2px; }
+
+  @media (max-width: 680px) {
+    .activities-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 380px) {
+    .activities-grid { grid-template-columns: 1fr; }
+  }
 
   /* ===== PACKING LIST ===== */
   .gear-outer {
@@ -549,7 +591,7 @@
 
 <!-- ===== HEADER ===== -->
 <div class="header">
-  <div class="header-eyebrow">&#9632; Pioneer Trail Camp &#9632; Summer 2026 &#9632;</div>
+  <div class="header-eyebrow">&#9632; Pioneer Trail Camp &#9632; Hiram Ohio Stake &#9632; Summer 2026 &#9632;</div>
   <h1>YOUNG MEN'S<span class="accent">CAMP</span></h1>
   <div class="header-theme">Walk with Me</div>
   <div class="header-meta">
@@ -592,20 +634,20 @@
           <div class="activity-wrap"><div class="activity">Dinner <span class="tag tag-meal">Meal</span></div></div>
         </div>
         <div class="block type-campfire">
-          <div class="time">6:30 PM</div>
-          <div class="activity-wrap"><div class="activity">Bonfire <span class="tag tag-campfire">Campfire</span></div></div>
+          <div class="time">7:00 PM</div>
+          <div class="activity-wrap"><div class="activity">Bonfire &amp; Fireside Kick Off <span class="tag tag-campfire">Campfire</span> <span class="tag tag-devotional">Devotional</span></div></div>
         </div>
-        <div class="block type-devotional">
-          <div class="time">8:00 PM</div>
-          <div class="activity-wrap"><div class="activity">Fireside Kick Off <span class="tag tag-devotional">Devotional</span></div></div>
+        <div class="block type-sports">
+          <div class="time">8:30 PM</div>
+          <div class="activity-wrap"><div class="activity">Free Time <span class="tag tag-free">Free</span></div></div>
         </div>
         <div class="block type-campfire">
           <div class="time">9:30 PM</div>
           <div class="activity-wrap"><div class="activity">Campsite Fire <span class="tag tag-campfire">Campfire</span></div></div>
         </div>
         <div class="block type-lights">
-          <div class="time">10:30 PM</div>
-          <div class="activity-wrap"><div class="activity">Quiet Time</div></div>
+          <div class="time">10:00 PM</div>
+          <div class="activity-wrap"><div class="activity">In Tents &amp; Quiet Time</div></div>
         </div>
       </div>
     </div>
@@ -629,29 +671,21 @@
           <div class="time">9:00 AM</div>
           <div class="activity-wrap"><div class="activity">Quorum Leader Scriptural Thought <span class="tag tag-devotional">Devotional</span></div></div>
         </div>
-        <div class="block type-excursion">
-          <div class="time">9:30 AM</div>
-          <div class="activity-wrap"><div class="activity">Survivor Trail Challenge <span class="tag tag-excursion">Activity</span></div></div>
-        </div>
-        <div class="block type-meal">
-          <div class="time">12:00 PM</div>
-          <div class="activity-wrap"><div class="activity">Lunch <span class="tag tag-meal">Meal</span></div></div>
-        </div>
         <div class="block type-travel">
-          <div class="time">12:30 PM</div>
-          <div class="activity-wrap"><div class="activity">Bus Ride</div></div>
+          <div class="time">9:30 AM</div>
+          <div class="activity-wrap"><div class="activity">Bus to Canoeing</div></div>
         </div>
         <div class="block type-excursion">
-          <div class="time">1:00 PM</div>
-          <div class="activity-wrap"><div class="activity">Bowling <span class="tag tag-offsite">Off-Site</span></div></div>
+          <div class="time">10:00 AM</div>
+          <div class="activity-wrap"><div class="activity">Canoeing <span class="tag tag-offsite">Off-Site</span></div></div>
+        </div>
+        <div class="block type-excursion">
+          <div class="time">12:30 PM</div>
+          <div class="activity-wrap"><div class="activity">Bowling + Lunch <span class="tag tag-offsite">Off-Site</span></div></div>
         </div>
         <div class="block type-travel">
           <div class="time">3:30 PM</div>
           <div class="activity-wrap"><div class="activity">Bus Ride</div></div>
-        </div>
-        <div class="block type-sports">
-          <div class="time">4:00 PM</div>
-          <div class="activity-wrap"><div class="activity">Free Time <span class="tag tag-free">Free</span></div></div>
         </div>
         <div class="block type-meal">
           <div class="time">5:30 PM</div>
@@ -661,21 +695,21 @@
           <div class="time">6:30 PM</div>
           <div class="activity-wrap"><div class="activity">Taco Tuesday Mixer <span class="tag tag-mixer">Mixer</span></div></div>
         </div>
-        <div class="block type-sports">
-          <div class="time">7:30 PM</div>
-          <div class="activity-wrap"><div class="activity">Capture the Flag <span class="tag tag-sports">Game</span></div></div>
-        </div>
         <div class="block type-devotional">
-          <div class="time">8:00 PM</div>
+          <div class="time">7:30 PM</div>
           <div class="activity-wrap"><div class="activity">Fireside <span class="tag tag-devotional">Devotional</span></div></div>
+        </div>
+        <div class="block type-sports">
+          <div class="time">8:00 PM</div>
+          <div class="activity-wrap"><div class="activity">Free Time <span class="tag tag-free">Free</span></div></div>
         </div>
         <div class="block type-campfire">
           <div class="time">9:30 PM</div>
           <div class="activity-wrap"><div class="activity">Campsite Fire <span class="tag tag-campfire">Campfire</span></div></div>
         </div>
         <div class="block type-lights">
-          <div class="time">10:30 PM</div>
-          <div class="activity-wrap"><div class="activity">Quiet Time</div></div>
+          <div class="time">10:00 PM</div>
+          <div class="activity-wrap"><div class="activity">In Tents &amp; Quiet Time</div></div>
         </div>
       </div>
     </div>
@@ -727,25 +761,25 @@
           <div class="time">5:30 PM</div>
           <div class="activity-wrap"><div class="activity">Dinner <span class="tag tag-meal">Meal</span></div></div>
         </div>
-        <div class="block type-sports">
-          <div class="time">6:30 PM</div>
-          <div class="activity-wrap"><div class="activity">Free Time <span class="tag tag-free">Free</span></div></div>
-        </div>
-        <div class="block type-sports">
-          <div class="time">7:00 PM</div>
-          <div class="activity-wrap"><div class="activity">Gaga Ball &amp; 9 Square <span class="tag tag-sports">Game</span></div></div>
-        </div>
         <div class="block type-devotional">
-          <div class="time">8:00 PM</div>
+          <div class="time">7:00 PM</div>
           <div class="activity-wrap"><div class="activity">Fireside <span class="tag tag-devotional">Devotional</span></div></div>
+        </div>
+        <div class="block type-sports">
+          <div class="time">7:30 PM</div>
+          <div class="activity-wrap"><div class="activity">Capture the Flag <span class="tag tag-sports">Game</span></div></div>
+        </div>
+        <div class="block type-sports">
+          <div class="time">8:30 PM</div>
+          <div class="activity-wrap"><div class="activity">Free Time <span class="tag tag-free">Free</span></div></div>
         </div>
         <div class="block type-campfire">
           <div class="time">9:30 PM</div>
           <div class="activity-wrap"><div class="activity">Campsite Fire <span class="tag tag-campfire">Campfire</span></div></div>
         </div>
         <div class="block type-lights">
-          <div class="time">10:30 PM</div>
-          <div class="activity-wrap"><div class="activity">Quiet Time</div></div>
+          <div class="time">10:00 PM</div>
+          <div class="activity-wrap"><div class="activity">In Tents &amp; Quiet Time</div></div>
         </div>
       </div>
     </div>
@@ -773,6 +807,10 @@
           <div class="time">9:30 AM</div>
           <div class="activity-wrap"><div class="activity">Team Wilderness Build <span class="tag tag-excursion">Activity</span></div></div>
         </div>
+        <div class="block type-excursion">
+          <div class="time">10:30 AM</div>
+          <div class="activity-wrap"><div class="activity">Survivor Trail Challenge <span class="tag tag-excursion">Activity</span></div></div>
+        </div>
         <div class="block type-meal">
           <div class="time">12:00 PM</div>
           <div class="activity-wrap"><div class="activity">Lunch <span class="tag tag-meal">Meal</span></div></div>
@@ -797,10 +835,6 @@
           <div class="time">5:30 PM</div>
           <div class="activity-wrap"><div class="activity">Dinner <span class="tag tag-meal">Meal</span></div></div>
         </div>
-        <div class="block type-sports">
-          <div class="time">6:30 PM</div>
-          <div class="activity-wrap"><div class="activity">Free Time <span class="tag tag-free">Free</span></div></div>
-        </div>
         <div class="block type-devotional">
           <div class="time">7:00 PM</div>
           <div class="activity-wrap"><div class="activity">Bishop Fireside Chat <span class="tag tag-devotional">Devotional</span></div></div>
@@ -810,8 +844,8 @@
           <div class="activity-wrap"><div class="activity">Free Time <span class="tag tag-free">Free</span></div></div>
         </div>
         <div class="block type-lights">
-          <div class="time">10:30 PM</div>
-          <div class="activity-wrap"><div class="activity">Quiet Time</div></div>
+          <div class="time">10:00 PM</div>
+          <div class="activity-wrap"><div class="activity">In Tents &amp; Quiet Time</div></div>
         </div>
       </div>
     </div>
@@ -831,9 +865,13 @@
           <div class="time">8:00 AM</div>
           <div class="activity-wrap"><div class="activity">Breakfast <span class="tag tag-meal">Meal</span></div></div>
         </div>
-        <div class="block type-travel">
+        <div class="block type-devotional">
           <div class="time">8:30 AM</div>
-          <div class="activity-wrap"><div class="activity">Departure — See you at home!</div></div>
+          <div class="activity-wrap"><div class="activity">Closing Thoughts <span class="tag tag-devotional">Devotional</span></div></div>
+        </div>
+        <div class="block type-travel">
+          <div class="time">9:00 AM</div>
+          <div class="activity-wrap"><div class="activity">Break Down Camp &amp; Depart</div></div>
         </div>
       </div>
     </div>
@@ -1036,6 +1074,71 @@
       <div class="mleg"><div class="mleg-swatch" style="background:#2a1a08; border-color:rgba(0,0,0,0.2)"></div> Fire Pit</div>
     </div>
     <p style="font-size:0.75rem;color:var(--muted);margin-top:10px;font-family:'Courier Prime',monospace;">* Map is illustrative. Actual layout may vary. Ask your leaders for directions to specific areas.</p>
+  </div>
+
+  <div class="activities-outer">
+    <div class="section-title">FREE TIME ACTIVITIES</div>
+    <div class="section-sub">What's available at camp</div>
+
+    <div class="activities-grid">
+
+      <div class="activity-card">
+        <div class="act-icon">🏐</div>
+        <div>
+          <div class="act-name">Volleyball</div>
+          <div class="act-note">Sports area near the field</div>
+        </div>
+      </div>
+
+      <div class="activity-card">
+        <div class="act-icon">🎯</div>
+        <div>
+          <div class="act-name">Gaga Ball</div>
+          <div class="act-note">Gaga pit — everyone in at once</div>
+        </div>
+      </div>
+
+      <div class="activity-card">
+        <div class="act-icon">🔲</div>
+        <div>
+          <div class="act-name">9 Square</div>
+          <div class="act-note">Next to Gaga Ball pit</div>
+        </div>
+      </div>
+
+      <div class="activity-card">
+        <div class="act-icon">🎣</div>
+        <div>
+          <div class="act-name">Fishing</div>
+          <div class="act-note">Bring your own gear if you have it</div>
+        </div>
+      </div>
+
+      <div class="activity-card">
+        <div class="act-icon">🎲</div>
+        <div>
+          <div class="act-name">Board Games</div>
+          <div class="act-note">Available in the mess hall</div>
+        </div>
+      </div>
+
+      <div class="activity-card">
+        <div class="act-icon">🏸</div>
+        <div>
+          <div class="act-name">Badminton</div>
+          <div class="act-note">Nets set up near the field</div>
+        </div>
+      </div>
+
+      <div class="activity-card">
+        <div class="act-icon">🏓</div>
+        <div>
+          <div class="act-name">Ping Pong</div>
+          <div class="act-note">Tables in the mess hall</div>
+        </div>
+      </div>
+
+    </div>
   </div>
 </section>
 
