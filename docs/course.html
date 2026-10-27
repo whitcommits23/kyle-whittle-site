@@ -3,503 +3,358 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- EDIT: Page title shown in browser tab -->
   <title>Free Stoicism Mini-Course | Kyle Whittle | Life Coach for Men</title>
+  <!-- END EDIT -->
   <meta name="description" content="A free 5-part mini-course on Stoicism for people who don't read philosophy. Practical tools for clarity, resilience, and honest self-assessment. No prior knowledge needed.">
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='16' fill='%23e85d26'/><text x='16' y='16' font-family='Georgia,serif' font-size='12' font-weight='400' fill='%23ffffff' text-anchor='middle' dominant-baseline='central' letter-spacing='1'>KW</text></svg>">
-  <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='16' fill='%23e85d26'/><text x='16' y='16' font-family='Georgia,serif' font-size='12' font-weight='400' fill='%23ffffff' text-anchor='middle' dominant-baseline='central' letter-spacing='1'>KW</text></svg>">
+  <meta name="theme-color" content="#2B2F33">
+  <!-- Favicon: carved block KW mark -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 44 44'><path d='M9 0H35L44 9V35L35 44H9L0 35V9Z' fill='%232B2F33'/><text x='22' y='29.5' text-anchor='middle' font-family='Palatino,Georgia,serif' font-size='20' fill='%23ECEAE4'>KW</text></svg>">
+  <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 44 44'><path d='M9 0H35L44 9V35L35 44H9L0 35V9Z' fill='%232B2F33'/><text x='22' y='29.5' text-anchor='middle' font-family='Palatino,Georgia,serif' font-size='20' fill='%23ECEAE4'>KW</text></svg>">
   <style>
+    /* Palette: weathered stone. Bronze is reserved for things you can click. */
     :root {
-      --bg: #ffffff;
-      --bg-alt: #f5f5f5;
-      --text: #1a1a1a;
-      --text-muted: #666666;
-      --accent: #e85d26;
-      --accent-hover: #cf4f1e;
-      --border: #e0e0e0;
-      --bg-dark:            #0d0d0d;
-      --bg-warm:            #f5f0e8;
-      --text-on-dark:       #e8e0d4;
-      --text-muted-on-dark: #a09080;
-      --border-dark:        rgba(255, 255, 255, 0.10);
-      --accent-light:       #f07040;
+      --granite:       #E4E2DC;
+      --limestone:     #F3F2EE;
+      --slate:         #2B2F33;
+      --slate-soft:    #3A3F44;
+      --bronze:        #8A6A3B;
+      --bronze-hover:  #765A30;
+      --bronze-deep:   #6F5430;
+      --bronze-light:  #C9A56A;
+      --moss:          #4E5B45;
+      --text:          #2B2F33;
+      --text-muted:    #5C6166;
+      --text-on-slate: #ECEAE4;
+      --muted-on-slate:#A9ADA8;
+      --rule:          #C9C6BE;
+      --rule-on-slate: rgba(236, 234, 228, 0.16);
+      --radius:        4px;
+
+      /* Carved corners, matching the logo block. Small for buttons, large for photos. */
+      --carve-sm: polygon(7px 0, calc(100% - 7px) 0, 100% 7px, 100% calc(100% - 7px), calc(100% - 7px) 100%, 7px 100%, 0 calc(100% - 7px), 0 7px);
+      --carve-lg: polygon(32px 0, calc(100% - 32px) 0, 100% 32px, 100% calc(100% - 32px), calc(100% - 32px) 100%, 32px 100%, 0 calc(100% - 32px), 0 32px);
+
+      --serif: "Palatino Linotype", Palatino, "Book Antiqua", "URW Palladio L", P052, Georgia, serif;
+      --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
     }
 
-    html { scroll-behavior: smooth; }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+    html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+
     body {
-      background: var(--bg);
+      font-family: var(--sans);
+      font-size: 1.0625rem;
+      line-height: 1.65;
       color: var(--text);
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-      font-size: 16px;
-      line-height: 1.7;
+      background: var(--granite);
+      -webkit-font-smoothing: antialiased;
     }
 
-    main {
-      max-width: 680px;
-      margin: 0 auto;
-      padding: 40px 24px 80px;
+    img { display: block; max-width: 100%; }
+
+    a { color: var(--bronze-deep); text-underline-offset: 3px; text-decoration-thickness: 1px; }
+    a:hover { color: var(--slate); }
+
+    :focus-visible { outline: 2px solid var(--bronze); outline-offset: 3px; border-radius: 2px; }
+
+    h1, h2, h3 { font-family: var(--serif); font-weight: 400; color: inherit; }
+
+    h2 {
+      font-size: clamp(1.75rem, 3.6vw, 2.375rem);
+      line-height: 1.15;
+      letter-spacing: -0.005em;
+      margin-bottom: 1.25rem;
     }
 
-    /* ── Scroll Progress Bar ── */
+    h3 { font-size: 1.375rem; line-height: 1.25; margin-bottom: 0.75rem; }
+
+    p + p { margin-top: 1.1em; }
+
+    /* ── Nav ─────────────────────────────────────── */
+    .site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px 32px;
+      padding: 18px clamp(16px, 5vw, 56px);
+      background: var(--slate);
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s ease;
+    }
+
+    .site-nav.nav-scrolled { border-bottom-color: var(--rule-on-slate); }
+
+    .site-nav :focus-visible { outline-color: var(--bronze-light); }
+
+    .nav-logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--serif);
+      font-size: 1.25rem;
+      color: var(--text-on-slate);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .nav-logo:hover { color: var(--text-on-slate); }
+
+    .nav-mark { width: 32px; height: 32px; flex: none; }
+
+    .nav-links { display: flex; flex-wrap: wrap; gap: 6px 26px; }
+
+    .nav-links a {
+      font-size: 0.9375rem;
+      color: var(--muted-on-slate);
+      text-decoration: none;
+    }
+
+    .nav-links a:hover { color: var(--bronze-light); }
+
+    .nav-links a.active { color: var(--text-on-slate); text-decoration: underline; text-underline-offset: 6px; }
+
+    /* ── Buttons ─────────────────────────────────── */
+    .cta-btn {
+      display: inline-block;
+      padding: 14px 26px;
+      font-family: var(--sans);
+      font-size: 1rem;
+      font-weight: 600;
+      color: #fff;
+      background: var(--bronze);
+      border: 0;
+      clip-path: var(--carve-sm);
+      text-decoration: none;
+      cursor: pointer;
+      transition: background 0.15s ease;
+    }
+
+    .cta-btn:hover { background: var(--bronze-hover); color: #fff; }
+
+    /* clip-path would hide an outside outline, so the focus ring sits inside the button. */
+    .cta-btn:focus-visible { outline: none; box-shadow: inset 0 0 0 2px var(--slate), inset 0 0 0 4px #fff; }
+
+    .band--slate .cta-btn { background: var(--bronze-light); color: var(--slate); }
+    .band--slate .cta-btn:hover { background: #D8B87F; color: var(--slate); }
+
+    /* ── Page hero ───────────────────────────────── */
+    .hero {
+      padding: clamp(48px, 9vh, 104px) clamp(16px, 5vw, 56px) clamp(56px, 9vh, 96px);
+    }
+
+    .hero-inner { max-width: 1120px; margin: 0 auto; }
+
+    .hero-tagline {
+      font-size: clamp(2.375rem, 5vw, 4rem);
+      line-height: 1.07;
+      letter-spacing: -0.015em;
+      max-width: 16ch;
+      color: var(--slate);
+    }
+
+    .hero-subtitle {
+      margin-top: 24px;
+      max-width: 34em;
+      font-size: 1.1875rem;
+      line-height: 1.6;
+      color: var(--text-muted);
+    }
+
+    .hero-actions { margin-top: 34px; display: flex; flex-wrap: wrap; align-items: center; gap: 14px 28px; }
+
+    /* ── Section bands ──────────────────────────── */
+    .band { padding: clamp(64px, 10vw, 120px) 16px; }
+
+    .band--granite   { background: var(--granite); }
+    .band--limestone { background: var(--limestone); }
+    .band--slate     { background: var(--slate); color: var(--text-on-slate); }
+
+    .band--slate a { color: var(--bronze-light); }
+    .band--slate a:hover { color: var(--text-on-slate); }
+
+    .content-col { max-width: 680px; margin: 0 auto; }
+    .content-col-wide { max-width: 900px; margin: 0 auto; }
+
+    .lede { font-size: 1.1875rem; color: var(--text-muted); }
+    .band--slate .lede { color: var(--muted-on-slate); }
+
+    .contact-links { margin-top: 32px; display: flex; flex-wrap: wrap; align-items: center; gap: 16px 28px; }
+
+    /* ── Floating CTA: hidden while the page's own button is on screen ── */
+    .cta-floating {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 40;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(8px);
+      transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+    }
+
+    .cta-floating.is-shown { opacity: 1; visibility: visible; transform: none; }
+
+    /* ── Reading progress ───────────────────────── */
     #progress-bar {
       position: fixed;
       top: 0;
       left: 0;
-      width: 0%;
+      z-index: 60;
       height: 3px;
-      background: var(--accent);
-      z-index: 1100;
-      transition: width 0.1s linear;
+      width: 0;
+      background: var(--bronze-light);
     }
 
-    /* ── Navigation ── */
-    .site-nav {
-      position: sticky;
-      top: 0;
-      z-index: 900;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px 24px;
-      background: transparent;
-      border-bottom: 1px solid transparent;
-      transition: background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
-    }
-
-    .site-nav.nav-scrolled {
-      background: var(--bg-dark);
-      border-bottom-color: var(--border-dark);
-      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);
-    }
-
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      text-decoration: none;
-    }
-
-    .nav-logo-circle {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      background: var(--accent);
-      color: #ffffff;
-      font-family: Futura, "Century Gothic", "Trebuchet MS", Arial, sans-serif;
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .nav-logo-name {
-      font-family: Futura, "Century Gothic", "Trebuchet MS", Arial, sans-serif;
-      font-size: 0.8rem;
-      font-weight: 700;
-      letter-spacing: 1px;
-      color: #ffffff;
-      text-transform: uppercase;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 28px;
-    }
-
-    .nav-links a {
-      font-size: 0.7rem;
-      font-weight: 600;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      text-decoration: none;
-      color: #ffffff;
-      padding-bottom: 4px;
-      border-bottom: 2px solid transparent;
-      transition: color 0.15s, border-color 0.15s;
-    }
-
-    .nav-links a:hover {
-      color: var(--accent-light);
-    }
-
-    .nav-links a.active {
-      color: var(--accent-light);
-      border-bottom: 2px solid var(--accent-light);
-    }
-
-    /* ── Hero (dark, centered, outside main) ── */
-    .hero {
-      background: var(--bg-dark);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: clamp(60px, 12vw, 140px) 24px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero::before {
-      content: "S";
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-family: Futura, "Century Gothic", "Trebuchet MS", Arial, sans-serif;
-      font-size: clamp(300px, 50vw, 600px);
-      font-weight: 700;
-      color: rgba(255, 255, 255, 0.025);
-      line-height: 1;
-      pointer-events: none;
-      user-select: none;
-    }
-
-    .hero-eyebrow {
-      font-family: Futura, "Century Gothic", "Trebuchet MS", Arial, sans-serif;
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--accent-light);
-      margin-bottom: 20px;
-      position: relative;
-      z-index: 1;
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-
-    .hero-eyebrow::before,
-    .hero-eyebrow::after {
-      content: "";
-      display: inline-block;
-      width: 32px;
-      height: 1px;
-      background: var(--accent-light);
-      flex-shrink: 0;
-    }
-
-    .hero .tagline {
-      font-family: Futura, "Century Gothic", "Trebuchet MS", Arial, sans-serif;
-      font-size: clamp(2.4rem, 4.5vw, 3.8rem);
-      font-weight: 700;
-      line-height: 1.1;
-      color: #ffffff;
-      letter-spacing: -0.02em;
-      margin-bottom: 20px;
-      max-width: 22ch;
-      position: relative;
-      z-index: 1;
-    }
-
-    .hero .subtitle {
-      font-size: clamp(1rem, 1.8vw, 1.1rem);
-      color: var(--text-on-dark);
-      line-height: 1.65;
-      max-width: 46ch;
-      position: relative;
-      z-index: 1;
-    }
-
-    /* ── Lesson Nav ── */
+    /* ── Lesson list: a real sequence, so it's numbered ── */
     .lesson-nav {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding-top: 18px;
+      border-top: 1px solid var(--rule);
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
-      padding: 28px 0 20px;
-      border-bottom: 1px solid var(--border);
+      gap: 8px 24px;
+      font-size: 0.9375rem;
     }
 
-    .lesson-nav-label {
-      font-family: Futura, "Century Gothic", "Trebuchet MS", Arial, sans-serif;
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      width: 100%;
-      margin-bottom: 4px;
-    }
+    .lesson-nav-label { color: var(--text-muted); }
+    .lesson-nav a { color: var(--slate); }
+    .lesson-nav a:hover { color: var(--bronze-deep); }
 
-    .lesson-nav a {
-      display: inline-block;
-      padding: 8px 14px;
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      text-decoration: none;
-      color: var(--text);
-      background: var(--bg-alt);
-      transition: border-color 0.15s, color 0.15s, background 0.15s;
-    }
+    .journey-wrap { padding: 0 clamp(16px, 5vw, 56px) clamp(40px, 6vh, 64px); }
 
-    .lesson-nav a:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-      background: var(--bg);
-    }
+    /* ── Lessons ─────────────────────────────────── */
+    .lessons { background: var(--limestone); }
 
-    /* ── Lesson Sections ── */
-    .lesson {
-      padding: 52px 0 48px;
-      border-bottom: 1px solid var(--border);
-      scroll-margin-top: 60px;
-    }
+    .lesson { padding: clamp(56px, 8vw, 96px) 16px; }
+    .lesson + .lesson { border-top: 1px solid var(--rule); }
 
-    .lesson:last-of-type {
-      border-bottom: none;
-    }
-
-    .lesson-header {
-      margin-bottom: 24px;
-    }
+    .lesson-header { display: flex; align-items: baseline; gap: 18px; margin-bottom: 1.25rem; }
 
     .lesson-number {
-      display: block;
-      font-family: Futura, "Century Gothic", "Trebuchet MS", Arial, sans-serif;
-      font-size: clamp(60px, 12vw, 110px);
-      font-weight: 700;
-      color: var(--accent);
-      opacity: 0.12;
-      line-height: 0.85;
-      margin-bottom: -0.2em;
-      letter-spacing: -2px;
-      pointer-events: none;
-      user-select: none;
+      font-family: var(--serif);
+      font-size: clamp(2.25rem, 4.5vw, 3rem);
+      line-height: 1;
+      color: var(--moss);
     }
 
-    .lesson-title {
-      font-family: Futura, "Century Gothic", "Trebuchet MS", Arial, sans-serif;
-      font-size: 1.5rem;
-      font-weight: 700;
-      letter-spacing: 0.5px;
-      color: var(--text);
-      line-height: 1.25;
-    }
+    .lesson-title { margin-bottom: 0; }
 
-    .lesson p {
-      color: var(--text-muted);
-      max-width: 60ch;
-      margin-top: 16px;
-    }
-
-    .lesson p:first-of-type {
-      margin-top: 0;
-    }
-
-    /* ── Inline Lesson Quote ── */
-    .lesson-quote {
-      border-left: 3px solid var(--accent);
-      padding: 12px 0 12px 20px;
-      margin: 28px 0;
-    }
+    .lesson-quote { margin: 36px 0; padding-left: 24px; border-left: 3px solid var(--bronze); }
 
     .lesson-quote p {
-      font-family: Georgia, "Times New Roman", serif;
-      font-style: italic;
-      font-size: 1.05rem;
-      color: var(--text);
-      max-width: 52ch;
-      line-height: 1.65;
-      margin-top: 0;
+      font-family: var(--serif);
+      font-size: clamp(1.3125rem, 2.5vw, 1.625rem);
+      line-height: 1.35;
+      color: var(--slate);
     }
 
-    .lesson-quote cite {
-      display: block;
-      margin-top: 8px;
-      font-size: 0.75rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      font-style: normal;
-    }
+    .lesson-quote cite { display: block; margin-top: 10px; font-style: normal; color: var(--moss); }
 
-    /* ── Try This Today Prompt — dark card ── */
+    /* "Try this today" cards: dark, with the carved corners. */
     .lesson-prompt {
-      background: var(--bg-dark);
-      border-left: 3px solid var(--accent);
-      border-radius: 0;
-      padding: 20px 24px;
-      margin-top: 28px;
+      margin-top: 8px;
+      padding: 28px 30px;
+      background: var(--slate);
+      color: var(--text-on-slate);
+      clip-path: var(--carve-sm);
     }
 
     .prompt-label {
-      font-family: Futura, "Century Gothic", "Trebuchet MS", Arial, sans-serif;
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 2.5px;
-      text-transform: uppercase;
-      color: var(--accent-light);
+      font-family: var(--serif);
+      font-size: 1.25rem;
+      color: var(--bronze-light);
       margin-bottom: 8px;
-      margin-top: 0;
     }
 
-    .lesson-prompt p {
-      color: var(--text-muted-on-dark);
-      font-size: 0.95rem;
-      line-height: 1.65;
-      max-width: 54ch;
-      margin-top: 0;
+    .lesson-prompt p + p { margin-top: 0; }
+
+    @media (max-width: 560px) {
+      .lesson-prompt { padding: 24px 20px; }
+      .lesson-header { flex-direction: column; gap: 6px; }
     }
 
-    /* ── CTA Section ── */
-    .cta-section {
-      background: var(--bg-dark);
-      text-align: center;
-      padding: 64px 24px;
-      margin: 0 -24px -80px;
-    }
+    .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
-    .cta-section h2 {
-      font-family: Futura, "Century Gothic", "Trebuchet MS", Arial, sans-serif;
-      font-size: clamp(1.6rem, 3vw, 2rem);
-      font-weight: 700;
-      letter-spacing: 0.5px;
-      text-transform: none;
-      color: #ffffff;
-      margin-bottom: 16px;
-    }
-
-    .cta-section p {
-      color: var(--text-muted-on-dark);
-      font-size: 1.05rem;
-      max-width: 44ch;
-      margin: 0 auto 32px;
-      line-height: 1.6;
-    }
-
-    /* ── CTA Button ── */
-    .cta-btn {
-      display: inline-block;
-      padding: 14px 36px;
-      background: var(--accent);
-      color: #ffffff;
-      font-size: 0.85rem;
-      font-weight: 600;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      text-decoration: none;
-      border-radius: 40px;
-      transition: background 0.2s, transform 0.2s;
-    }
-
-    .cta-btn:hover {
-      background: var(--accent-hover);
-      transform: translateY(-1px);
-    }
-
-    /* ── Floating CTA ── */
-    .cta-floating {
-      position: fixed;
-      bottom: 24px;
-      right: 24px;
-      z-index: 1000;
-      padding: 12px 28px;
-      background: var(--accent);
-      color: #ffffff;
-      font-size: 0.8rem;
-      font-weight: 600;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      text-decoration: none;
-      border-radius: 40px;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
-      transition: background 0.2s, transform 0.2s;
-    }
-
-    .cta-floating:hover {
-      background: var(--accent-hover);
-      transform: translateY(-2px);
-    }
-
-    /* ── Fade-up scroll animation ── */
-    .fade-up {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.5s ease, transform 0.5s ease;
-    }
-
-    .fade-up.is-visible {
-      opacity: 1;
-      transform: translateY(0);
+    @media (max-width: 560px) {
+      body { font-size: 1rem; }
+      /* On phones the nav scrolls away; the floating button covers booking. */
+      .site-nav { position: static; flex-direction: column; align-items: flex-start; gap: 6px; padding: 14px 16px; }
+      .nav-links { gap: 4px 16px; }
+      .nav-links a { font-size: 0.875rem; }
+      .hero { padding-top: 36px; }
+      .hero-subtitle { font-size: 1.0625rem; }
+      .cta-floating { right: 16px; bottom: 16px; left: 16px; text-align: center; }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .fade-up { opacity: 1; transform: none; transition: none; }
-    }
-
-    /* ── Responsive ── */
-    @media (max-width: 520px) {
-      .hero .tagline { font-size: 1.9rem; }
-      .lesson-number { font-size: 2.5rem; }
-      .lesson-title { font-size: 1.25rem; }
-      .lesson-nav a { font-size: 0.75rem; padding: 6px 12px; }
-      .cta-section { margin: 0 -24px -80px; padding: 48px 24px; }
-      .cta-floating { padding: 10px 22px; font-size: 0.75rem; bottom: 16px; right: 16px; }
-      .site-nav { flex-wrap: wrap; gap: 8px; padding: 10px 16px; }
-      .nav-logo-name { display: none; }
-      .nav-links { gap: 14px; }
-      .nav-links a { font-size: 0.6rem; letter-spacing: 1.5px; }
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition: none !important; }
     }
   </style>
 </head>
 <body>
-
-  <!-- Scroll progress bar -->
-  <div id="progress-bar"></div>
-
-  <!-- Navigation -->
-  <nav class="site-nav">
+  <!-- EDIT: Navigation links -->
+  <nav class="site-nav" aria-label="Main">
     <a href="index.html" class="nav-logo">
-      <span class="nav-logo-circle">KW</span>
-      <span class="nav-logo-name">Kyle Whittle</span>
+      <!-- Logo mark: a block with its corners carved off, KW cut out of it -->
+      <svg class="nav-mark" viewBox="0 0 44 44" aria-hidden="true">
+        <mask id="kw-cut">
+          <path d="M9 0H35L44 9V35L35 44H9L0 35V9Z" fill="#fff"/>
+          <text x="22" y="29.5" text-anchor="middle" font-family="Palatino Linotype, Palatino, Book Antiqua, Georgia, serif" font-size="20" fill="#000">KW</text>
+        </mask>
+        <rect width="44" height="44" fill="currentColor" mask="url(#kw-cut)"/>
+      </svg>
+      <span>Kyle Whittle</span>
     </a>
     <div class="nav-links">
       <a href="index.html">Home</a>
-      <a href="services.html">What I Offer</a>
+      <a href="services.html">What I offer</a>
       <a href="about.html">About</a>
-      <a href="course.html" class="active">Free Course</a>
+      <a href="course.html" class="active" aria-current="page">Free course</a>
       <a href="contact.html">Contact</a>
     </div>
   </nav>
+  <!-- END EDIT -->
 
-  <!-- ═══════════════════════════════════════════
-       HERO
-  ═══════════════════════════════════════════ -->
+
+  <!-- Reading progress bar -->
+  <div id="progress-bar" aria-hidden="true"></div>
+
   <header class="hero" id="hero">
-    <!-- EDIT: Hero headline and subtitle -->
-    <p class="hero-eyebrow">Free 5-Part Mini-Course</p>
-    <p class="tagline">Stoicism for People Who Don't Read Philosophy.</p>
-    <p class="subtitle">Five lessons. Practical tools you can use today. No prior knowledge needed, just a willingness to look honestly at your life.</p>
-    <!-- END EDIT -->
+    <div class="hero-inner">
+      <!-- EDIT: Hero headline and subtitle -->
+      <h1 class="hero-tagline">Stoicism for people who don't read philosophy.</h1>
+      <p class="hero-subtitle">Five lessons. Practical tools you can use today. No prior knowledge needed, just a willingness to look honestly at your life.</p>
+      <!-- END EDIT -->
+    </div>
   </header>
 
-  <main>
-
-    <!-- Lesson nav -->
+  <div class="journey-wrap" data-cta-start>
     <nav class="lesson-nav" aria-label="Lessons">
-      <span class="lesson-nav-label">Jump to a lesson</span>
-      <a href="#lesson-1">01 Cheat Code</a>
-      <a href="#lesson-2">02 Control</a>
-      <a href="#lesson-3">03 Reality</a>
-      <a href="#lesson-4">04 Your Mind</a>
-      <a href="#lesson-5">05 Daily Practice</a>
+      <span class="lesson-nav-label">Jump to a lesson:</span>
+      <a href="#lesson-1">1. Cheat code</a>
+      <a href="#lesson-2">2. Control</a>
+      <a href="#lesson-3">3. Reality</a>
+      <a href="#lesson-4">4. Your mind</a>
+      <a href="#lesson-5">5. Daily practice</a>
     </nav>
+  </div>
 
-    <!-- ═══════════════════════════════════════════
-         LESSON 1
-    ═══════════════════════════════════════════ -->
+  <main>
+    <div class="lessons">
+
     <!-- EDIT: Lesson 1 content -->
-    <section class="lesson fade-up" id="lesson-1">
+    <section class="lesson" id="lesson-1">
+      <div class="content-col">
       <div class="lesson-header">
-        <span class="lesson-number">01</span>
-        <h2 class="lesson-title">The 2,000-Year-Old Cheat Code</h2>
+        <span class="lesson-number" aria-hidden="true">1</span>
+        <h2 class="lesson-title"><span class="visually-hidden">Lesson 1: </span>The 2,000-year-old cheat code</h2>
       </div>
 
       <p>
@@ -518,13 +373,13 @@
         before we show up the way we want to. Stoicism is the antidote.
       </p>
 
-      <div class="lesson-quote">
-        <p>"Waste no more time arguing about what a good man should be. Be one."</p>
+      <figure class="lesson-quote">
+        <p>“Waste no more time arguing about what a good man should be. Be one.”</p>
         <cite>Marcus Aurelius</cite>
-      </div>
+      </figure>
 
       <div class="lesson-prompt">
-        <p class="prompt-label">Try This Today</p>
+        <p class="prompt-label">Try this today</p>
         <p>
           Think of one thing you've been overthinking or worrying about. Write it down, or just
           hold it in your head. Ask yourself: <em>Is there anything I can actually do about this
@@ -532,17 +387,16 @@
           your energy.
         </p>
       </div>
+      </div>
     </section>
     <!-- END EDIT -->
 
-    <!-- ═══════════════════════════════════════════
-         LESSON 2
-    ═══════════════════════════════════════════ -->
     <!-- EDIT: Lesson 2 content -->
-    <section class="lesson fade-up" id="lesson-2">
+    <section class="lesson" id="lesson-2">
+      <div class="content-col">
       <div class="lesson-header">
-        <span class="lesson-number">02</span>
-        <h2 class="lesson-title">The One Question That Changes Everything</h2>
+        <span class="lesson-number" aria-hidden="true">2</span>
+        <h2 class="lesson-title"><span class="visually-hidden">Lesson 2: </span>The one question that changes everything</h2>
       </div>
 
       <p>
@@ -565,13 +419,13 @@
         identified something you can let go of.
       </p>
 
-      <div class="lesson-quote">
-        <p>"Make the best use of what is in your power, and take the rest as it happens."</p>
+      <figure class="lesson-quote">
+        <p>“Make the best use of what is in your power, and take the rest as it happens.”</p>
         <cite>Epictetus</cite>
-      </div>
+      </figure>
 
       <div class="lesson-prompt">
-        <p class="prompt-label">Try This Today</p>
+        <p class="prompt-label">Try this today</p>
         <p>
           Write down your top three current stressors. Next to each one, write either
           <em>Mine</em> or <em>Not mine</em>. For everything in the "Not mine" column,
@@ -579,17 +433,16 @@
           now. Just notice.
         </p>
       </div>
+      </div>
     </section>
     <!-- END EDIT -->
 
-    <!-- ═══════════════════════════════════════════
-         LESSON 3
-    ═══════════════════════════════════════════ -->
     <!-- EDIT: Lesson 3 content -->
-    <section class="lesson fade-up" id="lesson-3">
+    <section class="lesson" id="lesson-3">
+      <div class="content-col">
       <div class="lesson-header">
-        <span class="lesson-number">03</span>
-        <h2 class="lesson-title">Stop Fighting Reality</h2>
+        <span class="lesson-number" aria-hidden="true">3</span>
+        <h2 class="lesson-title"><span class="visually-hidden">Lesson 3: </span>Stop fighting reality</h2>
       </div>
 
       <p>
@@ -611,13 +464,13 @@
         It <em>is</em> the path. The thing you're resisting is often exactly where the growth is.
       </p>
 
-      <div class="lesson-quote">
-        <p>"The impediment to action advances action. What stands in the way becomes the way."</p>
+      <figure class="lesson-quote">
+        <p>“The impediment to action advances action. What stands in the way becomes the way.”</p>
         <cite>Marcus Aurelius</cite>
-      </div>
+      </figure>
 
       <div class="lesson-prompt">
-        <p class="prompt-label">Try This Today</p>
+        <p class="prompt-label">Try this today</p>
         <p>
           Name one situation in your life you've been resisting, a relationship, a circumstance,
           a consequence of a past decision. Ask yourself: <em>What would I do differently if I
@@ -625,22 +478,21 @@
           have to stop fighting it.
         </p>
       </div>
+      </div>
     </section>
     <!-- END EDIT -->
 
-    <!-- ═══════════════════════════════════════════
-         LESSON 4
-    ═══════════════════════════════════════════ -->
     <!-- EDIT: Lesson 4 content -->
-    <section class="lesson fade-up" id="lesson-4">
+    <section class="lesson" id="lesson-4">
+      <div class="content-col">
       <div class="lesson-header">
-        <span class="lesson-number">04</span>
-        <h2 class="lesson-title">Your Mind Is the Problem (And the Fix)</h2>
+        <span class="lesson-number" aria-hidden="true">4</span>
+        <h2 class="lesson-title"><span class="visually-hidden">Lesson 4: </span>Your mind is the problem (and the fix)</h2>
       </div>
 
       <p>
-        Epictetus said it two thousand years ago: "Men are disturbed not by things, but by their
-        opinions about things." Read that again. The event itself isn't what's causing you pain.
+        Epictetus said it two thousand years ago: “Men are disturbed not by things, but by their
+        opinions about things.” Read that again. The event itself isn't what's causing you pain.
         It's the story you're telling yourself about the event. This isn't toxic positivity or
         some "just think happy thoughts" nonsense. It's a precise observation about where suffering
         actually comes from.
@@ -658,13 +510,13 @@
         is in noticing the story before you become it.
       </p>
 
-      <div class="lesson-quote">
-        <p>"It is not things that disturb us, but our judgments about things."</p>
+      <figure class="lesson-quote">
+        <p>“It is not things that disturb us, but our judgments about things.”</p>
         <cite>Epictetus</cite>
-      </div>
+      </figure>
 
       <div class="lesson-prompt">
-        <p class="prompt-label">Try This Today</p>
+        <p class="prompt-label">Try this today</p>
         <p>
           The next time you feel frustrated, anxious, or stuck, pause before you react. Ask
           yourself: <em>What story am I telling myself about this?</em> Then ask: <em>Is that
@@ -672,17 +524,16 @@
           habit of catching the story before it runs you.
         </p>
       </div>
+      </div>
     </section>
     <!-- END EDIT -->
 
-    <!-- ═══════════════════════════════════════════
-         LESSON 5
-    ═══════════════════════════════════════════ -->
     <!-- EDIT: Lesson 5 content -->
-    <section class="lesson fade-up" id="lesson-5">
+    <section class="lesson" id="lesson-5">
+      <div class="content-col">
       <div class="lesson-header">
-        <span class="lesson-number">05</span>
-        <h2 class="lesson-title">The Daily Practice</h2>
+        <span class="lesson-number" aria-hidden="true">5</span>
+        <h2 class="lesson-title"><span class="visually-hidden">Lesson 5: </span>The daily practice</h2>
       </div>
 
       <p>
@@ -704,83 +555,86 @@
         notice things about yourself you've been walking past for years.
       </p>
 
-      <div class="lesson-quote">
-        <p>"Confine yourself to the present."</p>
+      <figure class="lesson-quote">
+        <p>“Confine yourself to the present.”</p>
         <cite>Marcus Aurelius</cite>
-      </div>
+      </figure>
 
       <div class="lesson-prompt">
-        <p class="prompt-label">Try This Today</p>
+        <p class="prompt-label">Try this today</p>
         <p>
           Do the evening review tonight. No journal required, just sit somewhere quiet for two
           minutes. Ask yourself: <em>What did I do well today?</em> Then: <em>What would I
           change?</em> Answer honestly, without judgment. That's the whole thing. Start there.
         </p>
       </div>
+      </div>
     </section>
     <!-- END EDIT -->
 
-    <!-- ═══════════════════════════════════════════
-         FINAL CTA
-    ═══════════════════════════════════════════ -->
+    </div>
+
     <!-- EDIT: Closing CTA -->
-    <section class="cta-section">
-      <h2>Ready to Go Deeper?</h2>
-      <p>
-        This is a taste. Real change happens in conversation, when someone who knows the
-        framework holds you accountable to it. That's what I do.
-      </p>
-      <a href="contact.html" class="cta-btn">Book a Free Call</a>
+    <section class="band band--slate" data-cta-end>
+      <div class="content-col">
+        <h2>Ready to go deeper?</h2>
+        <p class="lede">
+          This is a taste. Real change happens in conversation, when someone who knows the
+          framework holds you accountable to it. That's what I do.
+        </p>
+        <div class="contact-links">
+          <a href="contact.html" class="cta-btn">Book a free call</a>
+        </div>
+      </div>
     </section>
     <!-- END EDIT -->
-
   </main>
 
-  <!-- Floating CTA -->
-  <a href="contact.html" class="cta-floating">Book a Free Call</a>
+  <!-- EDIT: Floating CTA button (appears once the page's first button scrolls away) -->
+  <a href="contact.html" class="cta-btn cta-floating" id="cta-floating">Book a free call</a>
+  <!-- END EDIT -->
 
   <script>
-    /* Scroll progress bar */
-    var bar = document.getElementById('progress-bar');
-    function updateProgress() {
-      var scrollTop = window.scrollY;
-      var docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      var pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-      bar.style.width = pct + '%';
-    }
-    window.addEventListener('scroll', updateProgress, { passive: true });
-  </script>
-
-  <script>
-    /* Nav transparent → dark on scroll */
     (function () {
       var nav = document.querySelector('.site-nav');
-      var hero = document.getElementById('hero');
-      if (!nav || !hero) return;
-      var obs = new IntersectionObserver(function (entries) {
-        nav.classList.toggle('nav-scrolled', !entries[0].isIntersecting);
-      }, { threshold: 0, rootMargin: '-60px 0px 0px 0px' });
-      obs.observe(hero);
+      function onScroll() { nav.classList.toggle('nav-scrolled', window.scrollY > 8); }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+
+      var floating = document.getElementById('cta-floating');
+      var start = document.querySelector('[data-cta-start]');
+      var end = document.querySelector('[data-cta-end]');
+      if (!floating || !start || !('IntersectionObserver' in window)) return;
+
+      var startVisible = true;
+      var endVisible = false;
+      function update() { floating.classList.toggle('is-shown', !startVisible && !endVisible); }
+
+      new IntersectionObserver(function (entries) {
+        startVisible = entries[0].isIntersecting;
+        update();
+      }).observe(start);
+
+      if (end) {
+        new IntersectionObserver(function (entries) {
+          endVisible = entries[0].isIntersecting;
+          update();
+        }).observe(end);
+      }
     }());
   </script>
 
   <script>
-    /* Fade-up on scroll */
+    /* Reading progress bar */
     (function () {
-      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-      var targets = document.querySelectorAll('.fade-up');
-      if (!targets.length) return;
-      var obs = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible');
-            obs.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.08, rootMargin: '0px 0px -20px 0px' });
-      targets.forEach(function (el) { obs.observe(el); });
+      var bar = document.getElementById('progress-bar');
+      function update() {
+        var max = document.documentElement.scrollHeight - window.innerHeight;
+        bar.style.width = (max > 0 ? (window.scrollY / max) * 100 : 0) + '%';
+      }
+      window.addEventListener('scroll', update, { passive: true });
+      update();
     }());
   </script>
-
 </body>
 </html>

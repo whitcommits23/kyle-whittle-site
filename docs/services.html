@@ -3,544 +3,400 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- EDIT: Page title shown in browser tab -->
   <title>Coaching Services | Kyle Whittle | Life Coach for Men</title>
+  <!-- END EDIT -->
   <meta name="description" content="1-on-1 life coaching, Stoicism-based programs, and group workshops for men who want clarity, accountability, and real change.">
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='16' fill='%23e85d26'/><text x='16' y='16' font-family='Georgia,serif' font-size='12' font-weight='400' fill='%23ffffff' text-anchor='middle' dominant-baseline='central' letter-spacing='1'>KW</text></svg>">
-  <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2020/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='16' fill='%23e85d26'/><text x='16' y='16' font-family='Georgia,serif' font-size='12' font-weight='400' fill='%23ffffff' text-anchor='middle' dominant-baseline='central' letter-spacing='1'>KW</text></svg>">
+  <meta name="theme-color" content="#2B2F33">
+  <!-- Favicon: carved block KW mark -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 44 44'><path d='M9 0H35L44 9V35L35 44H9L0 35V9Z' fill='%232B2F33'/><text x='22' y='29.5' text-anchor='middle' font-family='Palatino,Georgia,serif' font-size='20' fill='%23ECEAE4'>KW</text></svg>">
+  <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 44 44'><path d='M9 0H35L44 9V35L35 44H9L0 35V9Z' fill='%232B2F33'/><text x='22' y='29.5' text-anchor='middle' font-family='Palatino,Georgia,serif' font-size='20' fill='%23ECEAE4'>KW</text></svg>">
   <style>
+    /* Palette: weathered stone. Bronze is reserved for things you can click. */
     :root {
-      --bg: #ffffff;
-      --bg-alt: #f5f5f5;
-      --text: #1a1a1a;
-      --text-muted: #666666;
-      --accent: #e85d26;
-      --accent-hover: #cf4f1e;
-      --border: #e0e0e0;
-      --bg-dark:            #0d0d0d;
-      --bg-warm:            #f5f0e8;
-      --text-on-dark:       #e8e0d4;
-      --text-muted-on-dark: #a09080;
-      --border-dark:        rgba(255, 255, 255, 0.10);
-      --accent-light:       #f07040;
+      --granite:       #E4E2DC;
+      --limestone:     #F3F2EE;
+      --slate:         #2B2F33;
+      --slate-soft:    #3A3F44;
+      --bronze:        #8A6A3B;
+      --bronze-hover:  #765A30;
+      --bronze-deep:   #6F5430;
+      --bronze-light:  #C9A56A;
+      --moss:          #4E5B45;
+      --text:          #2B2F33;
+      --text-muted:    #5C6166;
+      --text-on-slate: #ECEAE4;
+      --muted-on-slate:#A9ADA8;
+      --rule:          #C9C6BE;
+      --rule-on-slate: rgba(236, 234, 228, 0.16);
+      --radius:        4px;
+
+      /* Carved corners, matching the logo block. Small for buttons, large for photos. */
+      --carve-sm: polygon(7px 0, calc(100% - 7px) 0, 100% 7px, 100% calc(100% - 7px), calc(100% - 7px) 100%, 7px 100%, 0 calc(100% - 7px), 0 7px);
+      --carve-lg: polygon(32px 0, calc(100% - 32px) 0, 100% 32px, 100% calc(100% - 32px), calc(100% - 32px) 100%, 32px 100%, 0 calc(100% - 32px), 0 32px);
+
+      --serif: "Palatino Linotype", Palatino, "Book Antiqua", "URW Palladio L", P052, Georgia, serif;
+      --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
     }
 
-    html { scroll-behavior: smooth; }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+    html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+
     body {
-      background: var(--bg);
+      font-family: var(--sans);
+      font-size: 1.0625rem;
+      line-height: 1.65;
       color: var(--text);
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-      font-size: 16px;
-      line-height: 1.7;
+      background: var(--granite);
+      -webkit-font-smoothing: antialiased;
     }
 
-    /* ── Content columns ── */
-    .content-col {
-      max-width: 680px;
-      margin-left: auto;
-      margin-right: auto;
-      padding-left: 24px;
-      padding-right: 24px;
+    img { display: block; max-width: 100%; }
+
+    a { color: var(--bronze-deep); text-underline-offset: 3px; text-decoration-thickness: 1px; }
+    a:hover { color: var(--slate); }
+
+    :focus-visible { outline: 2px solid var(--bronze); outline-offset: 3px; border-radius: 2px; }
+
+    h1, h2, h3 { font-family: var(--serif); font-weight: 400; color: inherit; }
+
+    h2 {
+      font-size: clamp(1.75rem, 3.6vw, 2.375rem);
+      line-height: 1.15;
+      letter-spacing: -0.005em;
+      margin-bottom: 1.25rem;
     }
 
-    /* Wider column for the service cards grid */
-    .content-col-wide {
-      max-width: 900px;
-      margin-left: auto;
-      margin-right: auto;
-      padding-left: 24px;
-      padding-right: 24px;
-    }
+    h3 { font-size: 1.375rem; line-height: 1.25; margin-bottom: 0.75rem; }
 
-    /* ── Navigation ── */
+    p + p { margin-top: 1.1em; }
+
+    /* ── Nav ─────────────────────────────────────── */
     .site-nav {
       position: sticky;
       top: 0;
-      z-index: 900;
+      z-index: 50;
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      padding: 10px 24px;
-      background: transparent;
+      justify-content: space-between;
+      gap: 16px 32px;
+      padding: 18px clamp(16px, 5vw, 56px);
+      background: var(--slate);
       border-bottom: 1px solid transparent;
-      transition: background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+      transition: border-color 0.2s ease;
     }
 
-    .site-nav.nav-scrolled {
-      background: var(--bg-dark);
-      border-bottom-color: var(--border-dark);
-      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);
-    }
+    .site-nav.nav-scrolled { border-bottom-color: var(--rule-on-slate); }
+
+    .site-nav :focus-visible { outline-color: var(--bronze-light); }
 
     .nav-logo {
-      display: flex;
+      display: inline-flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
+      font-family: var(--serif);
+      font-size: 1.25rem;
+      color: var(--text-on-slate);
       text-decoration: none;
+      white-space: nowrap;
     }
 
-    .nav-logo-circle {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      background: var(--accent);
-      color: #ffffff;
-      font-family: Futura, "Century Gothic", "Trebuchet MS", Arial, sans-serif;
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+    .nav-logo:hover { color: var(--text-on-slate); }
 
-    .nav-logo-name {
-      font-family: Futura, "Century Gothic", "Trebuchet MS", Arial, sans-serif;
-      font-size: 0.8rem;
-      font-weight: 700;
-      letter-spacing: 1px;
-      color: #ffffff;
-      text-transform: uppercase;
-    }
+    .nav-mark { width: 32px; height: 32px; flex: none; }
 
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 28px;
-    }
+    .nav-links { display: flex; flex-wrap: wrap; gap: 6px 26px; }
 
     .nav-links a {
-      font-size: 0.7rem;
-      font-weight: 600;
-      letter-spacing: 2px;
-      text-transform: uppercase;
+      font-size: 0.9375rem;
+      color: var(--muted-on-slate);
       text-decoration: none;
-      color: #ffffff;
-      padding-bottom: 4px;
-      border-bottom: 2px solid transparent;
-      transition: color 0.15s, border-color 0.15s;
     }
 
-    .nav-links a:hover {
-      color: var(--accent-light);
-    }
+    .nav-links a:hover { color: var(--bronze-light); }
 
-    .nav-links a.active {
-      color: var(--accent-light);
-      border-bottom: 2px solid var(--accent-light);
-    }
+    .nav-links a.active { color: var(--text-on-slate); text-decoration: underline; text-underline-offset: 6px; }
 
-    /* ── Hero (text-only, centered, dark) ── */
-    .hero {
-      background: var(--bg-dark);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      min-height: 65vh;
-      padding: clamp(60px, 12vw, 140px) 24px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    /* Decorative "W" behind hero text */
-    .hero::before {
-      content: "W";
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-family: Futura, "Century Gothic", "Trebuchet MS", Arial, sans-serif;
-      font-size: clamp(300px, 50vw, 600px);
-      font-weight: 700;
-      color: rgba(255, 255, 255, 0.025);
-      line-height: 1;
-      pointer-events: none;
-      user-select: none;
-    }
-
-    .hero-eyebrow {
-      font-family: Futura, "Century Gothic", "Trebuchet MS", Arial, sans-serif;
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--accent-light);
-      margin-bottom: 20px;
-      position: relative;
-      z-index: 1;
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-
-    .hero-eyebrow::before,
-    .hero-eyebrow::after {
-      content: "";
+    /* ── Buttons ─────────────────────────────────── */
+    .cta-btn {
       display: inline-block;
-      width: 32px;
-      height: 1px;
-      background: var(--accent-light);
-      flex-shrink: 0;
+      padding: 14px 26px;
+      font-family: var(--sans);
+      font-size: 1rem;
+      font-weight: 600;
+      color: #fff;
+      background: var(--bronze);
+      border: 0;
+      clip-path: var(--carve-sm);
+      text-decoration: none;
+      cursor: pointer;
+      transition: background 0.15s ease;
     }
+
+    .cta-btn:hover { background: var(--bronze-hover); color: #fff; }
+
+    /* clip-path would hide an outside outline, so the focus ring sits inside the button. */
+    .cta-btn:focus-visible { outline: none; box-shadow: inset 0 0 0 2px var(--slate), inset 0 0 0 4px #fff; }
+
+    .band--slate .cta-btn { background: var(--bronze-light); color: var(--slate); }
+    .band--slate .cta-btn:hover { background: #D8B87F; color: var(--slate); }
+
+    /* ── Page hero ───────────────────────────────── */
+    .hero {
+      padding: clamp(48px, 9vh, 104px) clamp(16px, 5vw, 56px) clamp(56px, 9vh, 96px);
+    }
+
+    .hero-inner { max-width: 1120px; margin: 0 auto; }
 
     .hero-tagline {
-      font-family: Futura, "Century Gothic", "Trebuchet MS", Arial, sans-serif;
-      font-size: clamp(2.8rem, 5vw, 4.5rem);
-      font-weight: 700;
-      line-height: 1.05;
-      color: #ffffff;
-      letter-spacing: -0.02em;
-      margin-bottom: 24px;
-      max-width: 18ch;
-      position: relative;
-      z-index: 1;
+      font-size: clamp(2.375rem, 5vw, 4rem);
+      line-height: 1.07;
+      letter-spacing: -0.015em;
+      max-width: 16ch;
+      color: var(--slate);
     }
 
     .hero-subtitle {
-      font-size: clamp(1rem, 1.8vw, 1.1rem);
-      color: var(--text-on-dark);
-      line-height: 1.65;
-      max-width: 40ch;
-      margin-bottom: 36px;
-      position: relative;
-      z-index: 1;
+      margin-top: 24px;
+      max-width: 34em;
+      font-size: 1.1875rem;
+      line-height: 1.6;
+      color: var(--text-muted);
     }
 
-    .hero .cta-btn {
-      position: relative;
-      z-index: 1;
-    }
+    .hero-actions { margin-top: 34px; display: flex; flex-wrap: wrap; align-items: center; gap: 14px 28px; }
 
-    /* ── CTA Buttons ── */
-    .cta-btn {
-      display: inline-block;
-      padding: 14px 36px;
-      background: var(--accent);
-      color: #ffffff;
-      font-size: 0.85rem;
-      font-weight: 600;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      text-decoration: none;
-      border-radius: 40px;
-      transition: background 0.2s, transform 0.2s;
-    }
+    /* ── Section bands ──────────────────────────── */
+    .band { padding: clamp(64px, 10vw, 120px) 16px; }
 
-    .cta-btn:hover {
-      background: var(--accent-hover);
-      transform: translateY(-1px);
-    }
+    .band--granite   { background: var(--granite); }
+    .band--limestone { background: var(--limestone); }
+    .band--slate     { background: var(--slate); color: var(--text-on-slate); }
 
-    .cta-section {
-      text-align: center;
-    }
+    .band--slate a { color: var(--bronze-light); }
+    .band--slate a:hover { color: var(--text-on-slate); }
 
-    .cta-section p {
-      max-width: 50ch;
-      margin: 0 auto;
-    }
+    .content-col { max-width: 680px; margin: 0 auto; }
+    .content-col-wide { max-width: 900px; margin: 0 auto; }
 
+    .lede { font-size: 1.1875rem; color: var(--text-muted); }
+    .band--slate .lede { color: var(--muted-on-slate); }
+
+    .contact-links { margin-top: 32px; display: flex; flex-wrap: wrap; align-items: center; gap: 16px 28px; }
+
+    /* ── Floating CTA: hidden while the page's own button is on screen ── */
     .cta-floating {
       position: fixed;
-      bottom: 24px;
-      right: 24px;
-      z-index: 1000;
-      padding: 12px 28px;
-      background: var(--accent);
-      color: #ffffff;
-      font-size: 0.8rem;
-      font-weight: 600;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      text-decoration: none;
-      border-radius: 40px;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
-      transition: background 0.2s, transform 0.2s;
+      right: 20px;
+      bottom: 20px;
+      z-index: 40;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(8px);
+      transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
     }
 
-    .cta-floating:hover {
-      background: var(--accent-hover);
-      transform: translateY(-2px);
-    }
+    .cta-floating.is-shown { opacity: 1; visibility: visible; transform: none; }
 
-    /* ── Sections ── */
-    section {
-      padding: 56px 0;
-      position: relative;
-      scroll-margin-top: 56px;
-    }
+    /* ── Offerings: name on the left, description on the right ── */
+    .offerings { border-top: 1px solid var(--rule); }
 
-    .warm-section { background: var(--bg-warm); }
-    .white-section { background: var(--bg); border-bottom: 1px solid var(--border); }
-
-    .dark-section {
-      background: var(--bg-dark);
-    }
-
-    .dark-section h2 { color: var(--accent-light); }
-    .dark-section p { color: var(--text-muted-on-dark); }
-
-    h2 {
-      font-family: Futura, "Century Gothic", "Trebuchet MS", Arial, sans-serif;
-      font-size: 1.1rem;
-      font-weight: 700;
-      letter-spacing: 2.5px;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 20px;
-    }
-
-    p {
-      color: var(--text-muted);
-      max-width: 60ch;
-    }
-
-    /* ── Services grid ── */
-    .services-list {
+    .offerings li {
       list-style: none;
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
+      grid-template-columns: minmax(0, 18rem) minmax(0, 1fr);
+      gap: 8px 48px;
+      padding: 28px 0;
+      border-bottom: 1px solid var(--rule);
     }
 
-    .services-list li {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      padding: 28px 24px;
-      border: 1px solid var(--border);
-      border-radius: 0;
-      background: var(--bg);
-      transition: border-color 0.2s, box-shadow 0.2s;
+    .offering-name { font-family: var(--serif); font-size: 1.5rem; line-height: 1.25; }
+    .offering-desc { color: var(--text-muted); max-width: 36em; }
+
+    /* ── Steps: a real sequence, so they're numbered ── */
+    .steps { list-style: none; counter-reset: step; margin-top: 8px; }
+
+    .steps li {
+      counter-increment: step;
+      display: grid;
+      grid-template-columns: 3rem 1fr;
+      gap: 0 16px;
+      padding: 24px 0;
+      border-top: 1px solid var(--rule-on-slate);
     }
 
-    .services-list li:hover {
-      border-color: var(--accent);
-      box-shadow: 0 4px 20px rgba(232, 93, 38, 0.08);
+    .steps li:last-child { border-bottom: 1px solid var(--rule-on-slate); }
+
+    .steps li::before {
+      content: counter(step);
+      font-family: var(--serif);
+      font-size: 2rem;
+      line-height: 1;
+      color: var(--bronze-light);
     }
 
-    .service-name {
-      font-family: Futura, "Century Gothic", "Trebuchet MS", Arial, sans-serif;
-      font-size: 1rem;
-      font-weight: 700;
-      color: var(--text);
+    .steps strong { display: block; font-family: var(--serif); font-weight: 400; font-size: 1.375rem; line-height: 1.3; margin-bottom: 6px; }
+    .steps span { color: var(--muted-on-slate); }
+
+    @media (max-width: 700px) {
+      .offerings li { grid-template-columns: 1fr; }
     }
 
-    .service-desc {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      line-height: 1.6;
-    }
-
-    /* ── How to Work With Me ── */
-    .steps-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      counter-reset: steps;
-    }
-
-    .steps-list li {
-      display: flex;
-      gap: 20px;
-      align-items: flex-start;
-      counter-increment: steps;
-    }
-
-    .steps-list li::before {
-      content: counter(steps);
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 1.3rem;
-      color: var(--accent-light);
-      min-width: 24px;
-      line-height: 1.4;
-    }
-
-    .step-content strong {
-      display: block;
-      font-size: 0.95rem;
-      font-weight: 600;
-      color: var(--text-on-dark);
-      margin-bottom: 2px;
-    }
-
-    .step-content span {
-      font-size: 0.9rem;
-      color: var(--text-muted-on-dark);
-    }
-
-    /* ── Dark CTA ── */
-    .cta-dark {
-      background: var(--bg-dark);
-      text-align: center;
-    }
-
-    .cta-dark h2 { color: var(--accent-light); }
-    .cta-dark p { color: var(--text-muted-on-dark); }
-
-    /* ── Fade-up scroll animation ── */
-    .fade-up {
-      opacity: 0;
-      transform: translateY(28px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-
-    .fade-up.is-visible {
-      opacity: 1;
-      transform: translateY(0);
+    @media (max-width: 560px) {
+      body { font-size: 1rem; }
+      /* On phones the nav scrolls away; the floating button covers booking. */
+      .site-nav { position: static; flex-direction: column; align-items: flex-start; gap: 6px; padding: 14px 16px; }
+      .nav-links { gap: 4px 16px; }
+      .nav-links a { font-size: 0.875rem; }
+      .hero { padding-top: 36px; }
+      .hero-subtitle { font-size: 1.0625rem; }
+      .cta-floating { right: 16px; bottom: 16px; left: 16px; text-align: center; }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .fade-up { opacity: 1; transform: none; transition: none; }
-    }
-
-    /* ── Responsive ── */
-    @media (max-width: 700px) {
-      .services-list { grid-template-columns: 1fr; }
-    }
-
-    @media (max-width: 520px) {
-      .hero { min-height: auto; }
-      .hero-tagline { font-size: 2.2rem; }
-      .steps-list li { gap: 14px; }
-      .cta-floating { padding: 10px 22px; font-size: 0.75rem; bottom: 16px; right: 16px; }
-      .site-nav { flex-wrap: wrap; gap: 8px; padding: 10px 16px; }
-      .nav-logo-name { display: none; }
-      .nav-links { gap: 14px; }
-      .nav-links a { font-size: 0.6rem; letter-spacing: 1.5px; }
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition: none !important; }
     }
   </style>
 </head>
 <body>
-  <nav class="site-nav">
+  <!-- EDIT: Navigation links -->
+  <nav class="site-nav" aria-label="Main">
     <a href="index.html" class="nav-logo">
-      <span class="nav-logo-circle">KW</span>
-      <span class="nav-logo-name">Kyle Whittle</span>
+      <!-- Logo mark: a block with its corners carved off, KW cut out of it -->
+      <svg class="nav-mark" viewBox="0 0 44 44" aria-hidden="true">
+        <mask id="kw-cut">
+          <path d="M9 0H35L44 9V35L35 44H9L0 35V9Z" fill="#fff"/>
+          <text x="22" y="29.5" text-anchor="middle" font-family="Palatino Linotype, Palatino, Book Antiqua, Georgia, serif" font-size="20" fill="#000">KW</text>
+        </mask>
+        <rect width="44" height="44" fill="currentColor" mask="url(#kw-cut)"/>
+      </svg>
+      <span>Kyle Whittle</span>
     </a>
     <div class="nav-links">
       <a href="index.html">Home</a>
-      <a href="services.html" class="active">What I Offer</a>
+      <a href="services.html" class="active" aria-current="page">What I offer</a>
       <a href="about.html">About</a>
-      <a href="course.html">Free Course</a>
+      <a href="course.html">Free course</a>
       <a href="contact.html">Contact</a>
     </div>
   </nav>
+  <!-- END EDIT -->
 
-  <!-- ═══════════════════════════════════════════
-       HERO
-  ═══════════════════════════════════════════ -->
+
   <header class="hero" id="hero">
-    <!-- EDIT: Hero headline and subtitle -->
-    <p class="hero-eyebrow">What I Offer</p>
-    <h1 class="hero-tagline">Build a life worth talking about.</h1>
-    <p class="hero-subtitle">No fluff, no shortcuts. Just the work.</p>
-    <!-- END EDIT -->
-    <a href="contact.html" class="cta-btn">Get in Touch</a>
+    <div class="hero-inner">
+      <!-- EDIT: Hero headline and subtitle -->
+      <h1 class="hero-tagline">Build a life worth talking about.</h1>
+      <p class="hero-subtitle">No fluff, no shortcuts. Just the work.</p>
+      <!-- END EDIT -->
+      <div class="hero-actions">
+        <a href="contact.html" class="cta-btn" data-cta-start>Book a free call</a>
+      </div>
+    </div>
   </header>
 
   <main>
 
-    <!-- ═══════════════════════════════════════════
-         WHAT I OFFER
-    ═══════════════════════════════════════════ -->
-    <section id="services" class="warm-section fade-up">
+    <!-- WHAT I OFFER -->
+    <section id="services" class="band band--limestone">
       <div class="content-col-wide">
-        <h2>What I Offer</h2>
-        <ul class="services-list">
+        <h2>What I offer</h2>
+        <!-- EDIT: Services -->
+        <ul class="offerings">
           <li>
-            <span class="service-name">1-on-1 Life Coaching</span>
-            <span class="service-desc">Regular sessions focused on clarity, accountability, and forward motion. We identify what's blocking you, build a plan to move through it, including how to show up honestly in your relationships and ask for what you actually need.</span>
+            <span class="offering-name">1-on-1 life coaching</span>
+            <span class="offering-desc">Regular sessions focused on clarity, accountability, and forward motion. We identify what's blocking you, build a plan to move through it, including how to show up honestly in your relationships and ask for what you actually need.</span>
           </li>
           <li>
-            <span class="service-name">Stoicism-Based Coaching Programs</span>
-            <span class="service-desc">A structured program applying Stoic philosophy to modern life challenges, designed for people who want a durable framework, not a quick fix.</span>
+            <span class="offering-name">Stoicism-based coaching programs</span>
+            <span class="offering-desc">A structured program applying Stoic philosophy to modern life challenges, designed for people who want a durable framework, not a quick fix.</span>
           </li>
           <li>
-            <span class="service-name">Workshop &amp; Group Sessions</span>
-            <span class="service-desc">Group settings for teams or cohorts looking to build a shared vocabulary around resilience, decision-making, and personal responsibility.</span>
+            <span class="offering-name">Workshops and group sessions</span>
+            <span class="offering-desc">Group settings for teams or cohorts looking to build a shared vocabulary around resilience, decision-making, and personal responsibility.</span>
           </li>
         </ul>
+        <!-- END EDIT -->
       </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════
-         HOW TO WORK WITH ME
-    ═══════════════════════════════════════════ -->
-    <section id="process" class="dark-section fade-up">
+    <!-- HOW TO WORK WITH ME -->
+    <section id="process" class="band band--slate">
       <div class="content-col">
-        <h2>How to Work With Me</h2>
-        <ol class="steps-list">
+        <h2>How to work with me</h2>
+        <!-- EDIT: Steps -->
+        <ol class="steps">
           <li>
-            <div class="step-content">
+            <div>
               <strong>Reach out</strong>
               <span>Send me an email with a few sentences about where you are and what you're trying to change.</span>
             </div>
           </li>
           <li>
-            <div class="step-content">
+            <div>
               <strong>Discovery call (free)</strong>
               <span>We talk for 30 minutes. You ask questions, I ask questions, and we figure out if working together makes sense.</span>
             </div>
           </li>
           <li>
-            <div class="step-content">
+            <div>
               <strong>Coaching begins</strong>
               <span>If it's a fit, we establish a cadence and get to work. No long commitments up front. Just show up and do the work.</span>
             </div>
           </li>
         </ol>
+        <!-- END EDIT -->
       </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════
-         CTA
-    ═══════════════════════════════════════════ -->
-    <section class="cta-dark cta-section fade-up">
+    <!-- CTA -->
+    <section class="band band--granite" data-cta-end>
       <div class="content-col">
-        <h2>Ready to Start?</h2>
+        <h2>Ready to start?</h2>
         <!-- EDIT: CTA copy -->
-        <p>
-          Ready to start? Let's talk about what you're working through.
-        </p>
+        <p class="lede">Let's talk about what you're working through.</p>
         <!-- END EDIT -->
-        <a href="contact.html" class="cta-btn" style="margin-top:28px;">Get in Touch</a>
+        <div class="contact-links">
+          <a href="contact.html" class="cta-btn">Book a free call</a>
+        </div>
       </div>
     </section>
 
   </main>
 
-  <a href="contact.html" class="cta-floating">Get in Touch</a>
+  <!-- EDIT: Floating CTA button (appears once the page's first button scrolls away) -->
+  <a href="contact.html" class="cta-btn cta-floating" id="cta-floating">Book a free call</a>
+  <!-- END EDIT -->
 
   <script>
     (function () {
       var nav = document.querySelector('.site-nav');
-      var hero = document.getElementById('hero');
-      if (!nav || !hero) return;
-      var obs = new IntersectionObserver(function (entries) {
-        nav.classList.toggle('nav-scrolled', !entries[0].isIntersecting);
-      }, { threshold: 0, rootMargin: '-60px 0px 0px 0px' });
-      obs.observe(hero);
-    }());
-  </script>
+      function onScroll() { nav.classList.toggle('nav-scrolled', window.scrollY > 8); }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
 
-  <script>
-    (function () {
-      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-      var targets = document.querySelectorAll('.fade-up');
-      if (!targets.length) return;
-      var obs = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible');
-            obs.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-      targets.forEach(function (el) { obs.observe(el); });
+      var floating = document.getElementById('cta-floating');
+      var start = document.querySelector('[data-cta-start]');
+      var end = document.querySelector('[data-cta-end]');
+      if (!floating || !start || !('IntersectionObserver' in window)) return;
+
+      var startVisible = true;
+      var endVisible = false;
+      function update() { floating.classList.toggle('is-shown', !startVisible && !endVisible); }
+
+      new IntersectionObserver(function (entries) {
+        startVisible = entries[0].isIntersecting;
+        update();
+      }).observe(start);
+
+      if (end) {
+        new IntersectionObserver(function (entries) {
+          endVisible = entries[0].isIntersecting;
+          update();
+        }).observe(end);
+      }
     }());
   </script>
 </body>
